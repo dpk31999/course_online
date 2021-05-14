@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./assest/css/base.css">
+    <link rel="stylesheet" href="./assest/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./assest/font/fontawesome-free-5.15.3-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="headers">
+        <nav class="header__nav">
+            <ul class="navbar-list">
+                <div class="logo-brand">
+                    <img src="./assest/img/logo.png" alt="" class="logo-img">
+                </div>
+            </ul>
+            <ul class="navbar-list">
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">
+                        Trang chủ </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">
+                        Giới thiệu </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">
+                        Khóa học </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">
+                        Tin tức </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-item-link">
+                        Việc làm </a>
+                </li>
+            </ul>
+            <ul class="navbar-list">
+                <li class="navbar-item   ">
+                    <i class="fas fa-user"></i>
+                    <a href="login-pages.html" class="navbar-item-link "> Đăng nhập</a>
+                </li>
+                <li class="navbar-item">
+                    <div class="search-btn">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- End Header -->
+    <!-- Form  -->
+    <div class="container-title" style="margin-top: 30px; margin-bottom: 0;">
+        <ul class="title-list">
+            <li class="title-item navbar-item--separate">
+                <i class="fas fa-home"></i>
+                <a href="#" class="title-item-link">
+                    Trang chủ </a>
+            </li>
+            <li class="title-item">
+                <a href="#" class="title-item-link ">
+                    Đăng ký suất học </a>
+            </li>
+        </ul>
+    </div>
+    <div class="form-container">
+        <div class="form-heading">
+            <a href="#" class="title-link">
+                <i class="fas fa-user-plus"></i>
+                <h3 class="title">Đăng ký khóa học</h3>
+            </a>
+        </div>
+        <form action="/action_page.php">
+            <div class="form-group">
+                <label for="email">Chọn khóa học:</label>
+
+                <input type="email" class="form-control" placeholder="Chọn khóa học" id="email" list="course">
+                <datalist id="course" style="margin: auto;">
+                    <option value="Java và Spring framework">
+                    <option value="Php và laravel framework">
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label for="email">Họ và tên:</label>
+                <input type="email" class="form-control" placeholder="Nhập họ và tên" id="email">
+            </div>
+            <div class="form-group">
+                <label for="email">Ngày tháng năm sinh:</label>
+                <input type="email" class="form-control" placeholder="Nhập ngày tháng năm sinh" id="email">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" placeholder="Nhập email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="email">Địa chỉ:</label>
+                <input type="email" class="form-control" placeholder="Nhập địa chỉ" id="email">
+            </div>
+            <div class="form-group">
+                <label for="email">Ghi chú:</label>
+                <textarea class="form-control" rows="6" id="comment" name="Ghi chú"></textarea>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" id="icon-custom"></label>
+                <input class="form-check-input" type="checkbox"> Tôi đã đọc và đồng ý đăng ký
+            </div>
+
+            <button type="submit" class="btn btn--success " style="margin-top: 20px;">Đăng ký</button>
+        </form>
+    </div>
+    <!-- End Form -->
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="footer-list">
+            <div class="footer-item">
+                <img src="./assest/img/logo.png" alt="" class="footer-img">
+                <ul class="footer-item-body">
+                    <li class="footer-sub">Mã số thế: 04016231</li>
+                    <li class="footer-sub">Trụ sở: 154 Phạm Như Xương, Đà Nẵng</li>
+                    <li class="footer-sub">Cơ sở: 263 Tiểu La, Đà Nẵng</li>
+                    <li class="footer-sub">Cơ sở: 52 Trần Phú, Huế</li>
+                    <li class="footer-sub">Hotline: 0777710005</li>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <div class="footer-item-title footer-title--separate">Khóa học</div>
+                <ul class="footer-item-body">
+
+                    <li class="footer-sub-class">Java và spring framework</li>
+                    <li class="footer-sub-class">PHP và laravel framwork</li>
+                    <li class="footer-sub-class">C#</li>
+                    <li class="footer-sub-class">Python</li>
+
+                </ul>
+            </div>
+            <div class="footer-item">
+                <div class="footer-item-title footer-title--separate">Liên hệ</div>
+                <ul class="footer-item-icon">
+                    <li class="footer-sub-icon"><i class="fab fa-facebook"></i></li>
+                    <li class="footer-sub-icon"><i class="fab fa-instagram"></i></li>
+                    <li class="footer-sub-icon"><i class="far fa-envelope"></i></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: #008657; font-size: 1.5rem; color: #fff;">
+            © 2021 Copyright:
+            <a class="footer-link" href="#" style="color: #fff;">HDTC Team</a>
+        </div>
+    </footer>
+    <!-- End footer -->
+</body>
+
+</html>
