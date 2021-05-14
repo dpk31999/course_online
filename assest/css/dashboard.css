@@ -4,6 +4,19 @@
     --red-color   : #d33 ;
     --text-color : #333 ;
 }
+.color__theme {
+    background-image:linear-gradient(0deg,#4e73df 10%,#224abe 100%); color: #fff;
+}
+.color__admin{
+    border-color: #4268D6 !important;
+}
+.center__btn {
+    margin-left: 40% ;
+
+}
+.color_warn {
+    color: #ffb702  !important;
+}
 
 .m-left {
     margin-left: 1rem !important;
@@ -25,6 +38,7 @@
     padding: 32px;
     margin: 30px auto 50px auto;
     font-size: 16px  ;
+    border: 2px solid #224abe;
 }
 
 #icon-padding {
@@ -76,6 +90,9 @@ color: #4268D6;
     display: flex;
     justify-content: space-around;
     padding: 15px 40px;
+}
+.btn--add {
+    background-color: #224abe !important;
 }
 
 /* ------------Notification----------- */
