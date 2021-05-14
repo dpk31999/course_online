@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./assest/css/base.css">
+    <link rel="stylesheet" href="./assest/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./assest/font/fontawesome-free/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="headers">
+        <nav class="header__nav">
+            <ul class="navbar-list">
+                <div class="logo-brand">
+                    <img src="./assest/img/logo.png" alt="" class="logo-img">
+                </div>
+            </ul>
+            <ul class="navbar-list">
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">Trang chủ </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">Giới thiệu </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">Khóa học </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">Tin tức </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-item-link">Việc làm </a>
+                </li>
+            </ul>
+            <ul class="navbar-list">
+                <li class="navbar-item   ">
+                    <i class="fas fa-user"></i>
+                    <a href="login-pages.html" class="navbar-item-link "> Đăng nhập</a>
+                </li>
+                <li class="navbar-item">
+                    <div class="search-btn">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- End Header -->
+    <!-- Title -->
+    <div class="container-title  " style="margin-top: 30px;">
+        <ul class="title-list">
+            <li class="title-item navbar-item--separate">
+                <i class="fas fa-home"></i>
+                <a href="#" class="title-item-link">
+                    Trang chủ </a>
+            </li>
+            <li class="title-item">
+                <a href="#" class="title-item-link ">
+                    Thông tin </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End Title -->
+
+
+    <div class="notification-success">
+        <div class="alert alert-success">
+            <i class="fas fa-check-circle" id="icon-custom"></i>
+            <h3>Chúc mừng bạn đã đăng ký thành công khóa học <strong>Java & Spring framework</strong></h3>
+        </div>
+    </div>
+    <div class="Container">
+
+        <div class="note-section">
+            <div class="section-heading title--separate">
+                <i class="fab fa-vuejs"></i>
+                Thông tin của bạn
+            </div>
+
+        </div>
+        <div class="note-section">
+            <div class="section-heading title--separate">
+                <i class="fab fa-vuejs"></i>
+                Thông tin khóa học
+            </div>
+
+        </div>
+        <div class="note-section">
+            <div class="section-heading title--separate">
+                <i class="fab fa-vuejs"></i>
+                Học Phí & Ưu đãi
+            </div>
+
+        </div>
+        <!-- Footer -->
+        <footer class="footer-section">
+            <div class="footer-list">
+                <div class="footer-item">
+                    <img src="./assest/img/logo.png" alt="" class="footer-img">
+                    <ul class="footer-item-body">
+                        <li class="footer-sub">Mã số thế: 04016231</li>
+                        <li class="footer-sub">Trụ sở: 154 Phạm Như Xương, Đà Nẵng</li>
+                        <li class="footer-sub">Cơ sở: 263 Tiểu La, Đà Nẵng</li>
+                        <li class="footer-sub">Cơ sở: 52 Trần Phú, Huế</li>
+                        <li class="footer-sub">Hotline: 0777710005</li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-title footer-title--separate">Khóa học</div>
+                    <ul class="footer-item-body">
+
+                        <li class="footer-sub-class">Java và spring framework</li>
+                        <li class="footer-sub-class">PHP và laravel framwork</li>
+                        <li class="footer-sub-class">C#</li>
+                        <li class="footer-sub-class">Python</li>
+
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-title footer-title--separate">Liên hệ</div>
+                    <ul class="footer-item-icon">
+                        <li class="footer-sub-icon"><i class="fab fa-facebook"></i></li>
+                        <li class="footer-sub-icon"><i class="fab fa-instagram"></i></li>
+                        <li class="footer-sub-icon"><i class="far fa-envelope"></i></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center p-3" style="background-color: #008657; font-size: 1.5rem; color: #fff;">
+                © 2021 Copyright:
+                <a class="footer-link" href="#" style="color: #fff;">HDTC Team</a>
+            </div>
+        </footer>
+        <!-- End Footer -->
+    </div>
+    </div>
+</body>
+
+</html>

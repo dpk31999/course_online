@@ -1,0 +1,126 @@
+:root {
+    --white-color : #fff;
+    --black-color : #000 ;
+    --red-color   : #d33 ;
+    --text-color : #333 ;
+}
+
+.m-left {
+    margin-left: 1rem !important;
+}
+.m-top {
+    margin-top: 10rem !important;
+}
+.label-text {
+    font-size: 16px;
+}
+.form-check {
+    display: flex;
+    align-items: center;
+}
+/* ----------Info----------- */
+.info-container {
+    max-width: 720px;
+    background-color: #fff;
+    padding: 32px;
+    margin: 30px auto 50px auto;
+    font-size: 16px  ;
+}
+
+#icon-padding {
+    padding-right: 10px;
+    font-size: 30px;
+}
+.info-title {
+    display: flex;
+    justify-content: center;
+    color:#4268D6;
+    text-decoration: none;
+}
+.info-title:hover {
+text-decoration: none;
+color: #4268D6;
+}
+.title {
+    text-align: center;
+}
+/* ----------course---------- */
+.course-container{
+    max-width: 998px;
+    background-color: #fff;
+    padding: 32px;
+    margin: 30px auto 50px auto;
+    font-size: 16px  ;
+}
+.info-table-course{
+    margin-top: 30px;
+    border: 1px solid #4268D6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.course-title h3:nth-child(2) {
+    margin-right: 30px;
+}
+.course-title{
+    color: #333;
+    
+}
+.table {
+    
+    text-align: center;
+}
+.course-title,
+.course-title-body {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 40px;
+}
+
+/* ------------Notification----------- */
+.toast {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-left: 4px solid;
+    border-radius: 2px;
+    min-width: 400px;
+    max-width: 450px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    padding: 20px 0;
+    transition: all linear .3s;
+} 
+
+.toast + .toast {
+    margin-top: 24px;
+}
+.toast__icon {
+    font-size: 24px;
+}
+.toast__icon , .toast__close {
+  padding: 0 12px;
+} 
+.toast__body {
+  flex-grow: 1;
+  line-height: 1.6;
+} 
+.toast__title {
+ font-size: 16px;
+ font-weight: 600;
+ color: #333;
+} 
+.toast__msg {
+ font-size: 14px;
+ color: #888;
+} 
+.toast__close {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+} 
+.toast__close:hover {
+    opacity: 0.7;
+  } 
+
+

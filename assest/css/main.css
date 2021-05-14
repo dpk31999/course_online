@@ -90,7 +90,8 @@
 /* Product */
 .product-section,
 .new-section,
-.job-section {
+.job-section,
+.note-section {
     margin: 32px auto 0 auto;
     width: 111.4rem;
     height: 42rem;
@@ -145,7 +146,7 @@
     color: var(--black-color); 
 }
 .product-price {
- width: 8.8rem;
+ max-width: 10rem;
  padding: 0.2rem 0.4rem;
  background-color: #d13131;
  color: var(--white-color);
@@ -291,7 +292,7 @@ opacity: 0.6;
 .form-control{
     flex: 1;
 }
-.btn {
+.btn__default {
     text-decoration: none;
     background-color: transparent;
     border: 1px solid var(--black-color);
@@ -306,7 +307,10 @@ opacity: 0.6;
 .btn--success {
 background-color: #008657;
 }
-.btn:hover {
+.btn--warn {
+    background-color: #ffb702 ;
+}
+.btn__default:hover {
     color: var(--white-color);
     opacity: 0.8;
 }
@@ -342,4 +346,17 @@ color: #008657;
 }
 .form-control  {
     font-size: 1.4rem;
+}
+/* -----------Notification---------------- */
+.notification-success {
+    margin: 32px auto 0 auto;
+    width: 111.4rem;
+    
+}
+.alert {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    height: 5rem;
+    margin-top: 25px;
 }
