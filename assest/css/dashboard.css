@@ -79,7 +79,7 @@ color: #4268D6;
 }
 
 /* ------------Notification----------- */
-.toast {
+.toast-msg {
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -89,9 +89,14 @@ color: #4268D6;
     max-width: 450px;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
     padding: 20px 0;
-    transition: all linear .3s;
+   
 } 
-
+.toast--success {
+    border-color: #47d764;
+}
+.toast--success .toast__icon {
+   color: #47d764
+}
 .toast + .toast {
     margin-top: 24px;
 }
