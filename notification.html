@@ -18,6 +18,68 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="./assest/font/fontawesome-free/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .row {
+
+            margin: 40px 0 40px 40px;
+            font-size: 16px;
+        }
+
+        th {
+            padding: 0 10px;
+        }
+
+        .title--separate--md::after {
+            content: "";
+            position: absolute;
+            display: block;
+            border-bottom: 3px solid #008657;
+            width: 20rem;
+            bottom: -4px;
+            border-radius: 3px;
+        }
+
+        th:nth-child(2) {
+            color: rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .m-left {
+            margin-left: 50px !important;
+            margin-bottom: 10px;
+        }
+
+        .color-red {
+            color: #d33;
+        }
+
+        .note-item::marker {
+            color: #d33;
+        }
+
+        strong {
+            font-weight: 500;
+        }
+
+        .btn--red {
+            padding: 4px 20px;
+            color: #d33;
+            background-color: white;
+            text-decoration: none;
+            border: 1px solid #d33;
+            border-radius: 4px;
+        }
+
+        .btn--red:hover {
+            text-decoration: none;
+            background-color: #d33;
+            color: #fff;
+        }
+
+        .m-right {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -86,25 +148,134 @@
     <div class="Container">
 
         <div class="note-section">
-            <div class="section-heading title--separate">
+            <div class="section-heading title--separate--md">
                 <i class="fab fa-vuejs"></i>
                 Thông tin của bạn
             </div>
-
-        </div>
-        <div class="note-section">
-            <div class="section-heading title--separate">
+            <div class="row">
+                <div class="col-sm-6">
+                    <table>
+                        <tr>
+                            <th>Họ và tên:</th>
+                            <th>Nguyễn Văn An</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-5">
+                    <table>
+                        <tr>
+                            <th>Email:</th>
+                            <th>an@gmail.comn</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <table>
+                        <tr>
+                            <th>Số điện thoại:</th>
+                            <th>01212113123</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-5">
+                    <table>
+                        <tr>
+                            <th>Ngày sinh:</th>
+                            <th>12-12-2021</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="section-heading title--separate--md ">
                 <i class="fab fa-vuejs"></i>
                 Thông tin khóa học
             </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <table>
+                        <tr>
+                            <th>Thời Lượng:</th>
+                            <th>8 tháng</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-5">
+                    <table>
+                        <tr>
+                            <th>Lịch học:</th>
+                            <th>Thứ 2 - thứ 4 - thứ 6</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <table>
+                        <tr>
+                            <th>Khai giảng:</th>
+                            <th>10-09-2021</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-5">
+                    <table>
+                        <tr>
+                            <th>Học phí:</th>
+                            <th>8.000.000 đ</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
         </div>
+
         <div class="note-section">
-            <div class="section-heading title--separate">
+            <div class="section-heading title--separate--md">
                 <i class="fab fa-vuejs"></i>
                 Học Phí & Ưu đãi
             </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="note-title m-left color-red">
+                        <i class="fas fa-search-dollar"></i>
+                        Học phí & Ưu đãi
+                    </h3>
+                    <ul class="note-list">
+                        <li class="note-item"><strong>Khai giảng:</strong> Thứ 4, ngày 12/5/2021</li>
+                        <li class="note-item"><strong>Lịch học:</strong> Tối thứ 4, tối chủ nhật từ 19h-21h30</li>
+                        <li class="note-item"><strong>Thời lượng:</strong> 6 tháng</li>
+                        <li class="note-item"><strong>Học phí:</strong> 8.200.000 VNĐ (có thể đóng 4 đợt)</li>
+                        <li class="note-item"><strong>Đóng 1 đợt:</strong> Giảm Đóng 1 đợt giảm 400.000 VNĐ</li>
+                        <li class="note-item"><strong>Ưu đãi nhóm:</strong> Đăng ký nhóm 2 người giảm 500.000 VNĐ mỗi
+                            người</li>
+                        <li class="note-item"><strong>Học phí đợt đầu:</strong> 2.200.000 VNĐ</li>
+                    </ul>
+                </div>
+                <div class="col-sm-5 ">
+                    <h3 class="note-title m-left color-red">
+                        <i class="fas fa-coins"></i>
+                        Cách đóng học phí
+                    </h3>
+                    <ul class="note-list">
+                        <li class="note-item"><strong>Trực tiếp:</strong> Văn phòng tại 154 Phạm Như Xương</li>
+                        <li class="note-item"><strong>Chuyển khoản Vietcombank Stk:</strong> 004 1000 82 53</li>
+                        <li class="note-item">Chủ khoản: Tran Van Son</li>
+                        <li class="note-item"><strong>Nội dung ck:</strong> ho ten-phone-javaspring</li>
 
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11 " style="text-align: center;">
+                    <a href="Register.html" type="button" class="btn--red">
+                        <i class="fas fa-book-open m-right"></i> Đăng ký</a>
+                    <a href="#" type="button" class="btn--red">
+                        <i class="fas fa-phone m-right"></i>
+                        Gọi điện</a>
+                </div>
+            </div>
         </div>
         <!-- Footer -->
         <footer class="footer-section">

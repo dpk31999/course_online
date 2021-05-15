@@ -94,7 +94,7 @@
 .note-section {
     margin: 32px auto 0 auto;
     width: 111.4rem;
-    height: 42rem;
+    min-height: 42rem;
     background-color: var(--white-color);
 }
 .section-heading {
@@ -117,6 +117,7 @@
     bottom: -4px;
     border-radius: 3px;
 }
+
 .product-list {
     margin: 1rem 2rem;
     display: flex;
