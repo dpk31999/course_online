@@ -20,7 +20,7 @@ class CreateCoursesTable extends Migration
             $table->integer('total_time');
             $table->string('url_image');
             $table->bigInteger('price');
-            $table->string('description');
+            $table->longText('description');
             $table->timestamps();
         });
     }

@@ -8,31 +8,68 @@
         </a>
     </div>
     <hr class="sidebar-divider my-0" style="background-color: #4268D6;">
-    <form action="#" style="font-size: 16px;margin-top: 20px;">
+    <form method="POST" action="{{ route('admin.course.store') }}" enctype="multipart/form-data" style="font-size: 16px;margin-top: 20px;">
+        @csrf
+        <div class="form-group">
+            <label for="name">Tên Khóa học</label>
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name"  value="{{ old('name') }}" required autocomplete="name" required autofocus>
+
+            @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="total_time">Thời gian học:</label>
+            <div class="row">
+                <div class="col-3">
+                    <input type="number" name="total_time" class="form-control @error('total_time') is-invalid @enderror" id="total_time"  value="{{ old('total_time') }}" required autocomplete="total_time" autofocus>
+                </div>
+                <div class="col-9">
+                    <span><strong>Tháng</strong></span>
+                </div>
+            </div>
+
+            @error('total_time')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="url_image">Hình ảnh:</label>
+            <input type="file" name="url_image" class="form-control @error('url_image') is-invalid @enderror" id="imgInp" required>
+            <img id="blah" src="" alt="your image" class="d-none"/>
+
+            @error('url_image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        
+        <div class="form-group">
+            <label for="price">Giá:</label>
+            <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price"  value="{{ old('price') }}" required autocomplete="price" autofocus required>
+
+            @error('price')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
 
         <div class="form-group">
-            <label for="email">Tên Khóa học</label>
-            <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-            <label for="email">Giá:</label>
-            <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-            <label for="email">Lịch Khai giảng:</label>
-            <input type="datetime" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-            <label for="email">Lịch học:</label>
-            <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-            <label for="choose">Hình ảnh:</label>
-            <input type="file" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-            <label for="email">Mô tả:</label>
-            <textarea class="form-control" rows="6" id="comment" name="mô tả"></textarea>
+            <label for="description">Mô tả:</label>
+            <textarea class="form-control @error('description') is-invalid @enderror" rows="6" id="description" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus required>
+            </textarea>
+
+            @error('description')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <button type="submit" class="btn__default btn--add center__btn">Thêm</button>
     </form>

@@ -6,12 +6,14 @@ use App\Course;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CourseController extends Controller
 {
     public function index()
     {
-        return view('admin.courses.index');
+        $courses = Course::all();
+        return view('admin.courses.index', compact('courses'));
     }
 
     public function show(Course $course)
@@ -29,9 +31,7 @@ class CourseController extends Controller
         $data = $request->validate([
             'name' => 'required|unique:courses',
             'total_time' => 'required',
-            'schudule' => 'required',
             'url_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,jfif|max:2048',
-            'start' => 'required',
             'price' => 'required',
             'description' => 'required',
         ]);
@@ -46,19 +46,17 @@ class CourseController extends Controller
             'admin_id' => Auth::guard('admin')->user()->id,
             'name' => $data['name'],
             'total_time' => $data['total_time'],
-            'schudule' => $data['schudule'],
             'url_image' => $image_path,
-            'start' => $data['start'],
             'price' => $data['price'],
             'description' => $data['description'],
         ]);
 
-        return view('admin.course.index');
+        return redirect()->route('admin.course.index');
     }
 
-    public function edit()
+    public function edit(Course $course)
     {
-        return view('admin.courses.edit');
+        return view('admin.courses.edit', compact('course'));
     }
 
     public function update(Request $request,Course $course)
@@ -66,8 +64,6 @@ class CourseController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'total_time' => 'required',
-            'schudule' => 'required',
-            'start' => 'required',
             'price' => 'required',
             'description' => 'required',
         ]);
@@ -94,14 +90,12 @@ class CourseController extends Controller
 
         $course->name = $data['name'];
         $course->total_time = $data['total_time'];
-        $course->schudule = $data['schudule'];
         $course->url_image = $image_path;
-        $course->start = $data['start'];
         $course->price = $data['price'];
         $course->description = $data['description'];
         $course->save();
 
-        return view('admin.courses.index');
+        return redirect()->route('admin.course.index');
     }
 
     public function destroy(Request $request,Course $course)
@@ -113,6 +107,6 @@ class CourseController extends Controller
 
         $course->delete();
 
-        return view('admin.course.index');
+        return redirect()->route('admin.course.index');
     }
 }

@@ -5,7 +5,7 @@
     <div class="course-heading">
         <a href="#" class="info-title" style=" font-size: 20px;">
             <i class="fas fa-graduation-cap fa-lg fa-fw mr-2 text-gray-400"></i>
-            <h5 class="title">Xin Chào: Admin</h5>
+            <h5 class="title">Xin Chào: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
     <div class="icon_sub">
@@ -19,26 +19,26 @@
             <thead class="color__theme">
                 <tr>
                     <th>Tên</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Quyền hạn</th>
+                    <th>Người tạo</th>
+                    <th>Tổng thời gian</th>
+                    <th>Giá</th>
+                    <th>Hình ảnh</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($admins as $admin)
+                @foreach ($courses as $course)
                 <tr>
-                    <td>{{ $admin->fullname }}</td>
-                    <td>{{ $admin->phone }}</td>
-                    <td>{{ $admin->email }}</td>
-                    <td>{{ $admin->role }}</td>
-                    @if ($admin->role != 'Admin')
+                    <td>{{ $course->name }}</td>
+                    <td>{{ $course->admin->fullname }}</td>
+                    <td>{{ $course->total_time }}</td>
+                    <td>{{ $course->price }}</td>
+                    <td><img src="/storage/{{ $course->url_image }}" alt=""></td>
                     <td>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.manager.edit', $admin->id) }}">chỉnh
+                        <a type="button" class="btn btn-warning" href="{{ route('admin.course.edit', $course->id) }}">chỉnh
                             Sửa</a>
-                        <a type="submit" class="btn btn-danger">Xóa</a>
+                        <a type="submit" class="btn btn-danger" href="{{ route('admin.course.delete', $course->id) }}">Xóa</a>
                     </td>
-                    @endif
                 </tr>
                 @endforeach
             </tbody>

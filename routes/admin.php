@@ -33,7 +33,7 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
                 Route::post('/course','CourseController@store')->name('store');
                 Route::post('/course/edit/{course}','CourseController@update')->name('update');
-                Route::post('/course/{course}','CourseController@delete')->name('delete');
+                Route::get('/course/{course}','CourseController@destroy')->name('delete');
             });
         
         });

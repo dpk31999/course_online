@@ -36,7 +36,7 @@
                     <td>
                         <a type="button" class="btn btn-warning" href="{{ route('admin.manager.edit', $admin->id) }}">Chỉnh
                             Sửa</a>
-                        <a type="submit" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger">Xóa</a>
+                        <a type="submit" data-toggle="modal" href="{{ route('admin.manager.delete', $admin->id) }}" class="btn btn-danger">Xóa</a>
                     </td>
                     @else 
                     <td></td>
@@ -47,20 +47,4 @@
         </table>
     </div>
 </div>
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa không ?</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <a href="{{ route('admin.manager.delete', $admin->id) }}"><button type="button" class="btn btn-primary">Delete</button></a>
-        </div>
-      </div>
-    </div>
-  </div>
 @endsection
