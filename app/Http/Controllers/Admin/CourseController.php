@@ -11,17 +11,17 @@ class CourseController extends Controller
 {
     public function index()
     {
-        return view('admin.course.index');
+        return view('admin.courses.index');
     }
 
     public function show(Course $course)
     {
-        return view('admin.course.show',compact($course));
+        return view('admin.courses.show',compact($course));
     }
 
     public function create()
     {
-        return view('admin.course.create');
+        return view('admin.courses.add');
     }
 
     public function store(Request $request)
@@ -58,7 +58,7 @@ class CourseController extends Controller
 
     public function edit()
     {
-        return view('admin.course.edit');
+        return view('admin.courses.edit');
     }
 
     public function update(Request $request,Course $course)
@@ -92,7 +92,16 @@ class CourseController extends Controller
             $image_path = $course->url_image;
         }
 
-        return view('admin.course.index');
+        $course->name = $data['name'];
+        $course->total_time = $data['total_time'];
+        $course->schudule = $data['schudule'];
+        $course->url_image = $image_path;
+        $course->start = $data['start'];
+        $course->price = $data['price'];
+        $course->description = $data['description'];
+        $course->save();
+
+        return view('admin.courses.index');
     }
 
     public function destroy(Request $request,Course $course)

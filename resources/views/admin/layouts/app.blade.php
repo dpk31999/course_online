@@ -35,7 +35,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-green sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.home') }}">
                 <div class="sidebar-brand-text mx-3">
                     Admin </div>
             </a>
@@ -43,24 +43,36 @@
             <!-- Nav Item - Dashboard -->
             @auth
             <li class="nav-item active">
-                <a class="nav-link" href="index.html" style="text-align: center ">
+                <a class="nav-link" href="{{ route('admin.home') }}" style="text-align: center ">
 
                     <span>Dashboard</span></a>
             </li>
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
+            @if(Auth::guard('admin')->user()->role == 'Manager')
             <li class="nav-item">
-                <a class="nav-link collapsed" href="dashboard_admin.html">
+                <a class="nav-link collapsed" href="{{ route('admin.course.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Quản lý Khóa học</span>
                 </a>
 
             </li>
+            @endif
+            <!-- Nav Item - Utilities Collapse Menu -->
+            @if(Auth::guard('admin')->user()->role == 'Admin')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.manager.index') }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý manager</span>
+                </a>
+            </li>
+            @endif
+
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý tài khoản</span>
+                    <span>Quản lý student</span>
                 </a>
 
             </li>
@@ -110,7 +122,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
-                                <a class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#admin-logout-form').submit();" data-toggle="modal" data-target="#logoutModal">
+                                <a style="cursor: pointer" class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#admin-logout-form').submit();" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

@@ -9,7 +9,7 @@ class Admin extends Authenticatable
 {
     protected $guard = 'admin';
 
-    protected $fillable = ['fullname','email','phone','role'];
+    protected $fillable = ['fullname','email','password','phone','role'];
 
     /**
      * Get all of the courses for the Admin
