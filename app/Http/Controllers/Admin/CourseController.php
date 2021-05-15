@@ -1,0 +1,109 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Course;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+class CourseController extends Controller
+{
+    public function index()
+    {
+        return view('admin.course.index');
+    }
+
+    public function show(Course $course)
+    {
+        return view('admin.course.show',compact($course));
+    }
+
+    public function create()
+    {
+        return view('admin.course.create');
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|unique:courses',
+            'total_time' => 'required',
+            'schudule' => 'required',
+            'url_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,jfif|max:2048',
+            'start' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+        ]);
+
+        $image = $request->file('url_image');
+        $image_path = 'uploads/image_course/' . time() . '.' . $image->getClientOriginalExtension();
+        $path = public_path('/storage/uploads/image_course');
+
+        $image->move($path ,$image_path);
+
+        $course = Course::create([
+            'admin_id' => Auth::guard('admin')->user()->id,
+            'name' => $data['name'],
+            'total_time' => $data['total_time'],
+            'schudule' => $data['schudule'],
+            'url_image' => $image_path,
+            'start' => $data['start'],
+            'price' => $data['price'],
+            'description' => $data['description'],
+        ]);
+
+        return view('admin.course.index');
+    }
+
+    public function edit()
+    {
+        return view('admin.course.edit');
+    }
+
+    public function update(Request $request,Course $course)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'total_time' => 'required',
+            'schudule' => 'required',
+            'start' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+        ]);
+
+        if(isset($request->url_image))
+        {
+            // DELETE IMAGE EXIST
+            if(File::exists(public_path('storage/' . $course->url_image))){
+
+                File::delete(public_path('storage/' . $course->url_image));
+            }
+
+            // UPLOAD NEW IMAGE
+            $image = $request->file('url_image');
+            $image_path = 'uploads/image_course/' . time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('/storage/uploads/image_course');
+
+            $image->move($path ,$image_path);
+        }
+        else
+        {
+            $image_path = $course->url_image;
+        }
+
+        return view('admin.course.index');
+    }
+
+    public function destroy(Request $request,Course $course)
+    {
+        if(File::exists(public_path('storage/' . $course->url_image))){
+
+            File::delete(public_path('storage/' . $course->url_image));
+        }
+
+        $course->delete();
+
+        return view('admin.course.index');
+    }
+}
