@@ -33,7 +33,18 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
                 Route::post('/course','CourseController@store')->name('store');
                 Route::post('/course/edit/{course}','CourseController@update')->name('update');
-                Route::get('/course/{course}','CourseController@destroy')->name('delete');
+                Route::get('/course/delete/{course}','CourseController@destroy')->name('delete');
+            });
+
+            Route::name('class.')->group(function(){
+                Route::get('/class','ClassController@index')->name('index');
+                // Route::get('/class/{class}','ClassController@show')->name('show');
+                Route::get('/class/create','ClassController@create')->name('add');
+                Route::get('/class/edit/{class}','ClassController@edit')->name('edit');
+
+                Route::post('/class','ClassController@store')->name('store');
+                Route::post('/class/edit/{class}','ClassController@update')->name('update');
+                Route::get('/class/delete/{class}','ClassController@destroy')->name('delete');
             });
         
         });

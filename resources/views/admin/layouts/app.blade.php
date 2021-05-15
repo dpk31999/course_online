@@ -50,13 +50,23 @@
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
             @if(Auth::guard('admin')->user()->role == 'Manager')
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.course.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý Khóa học</span>
+                    <span>Quản lý khóa học</span>
                 </a>
 
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.class.index') }}">
+                    <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý lớp học</span>
+                </a>
+
+            </li>
+            
             @endif
             <!-- Nav Item - Utilities Collapse Menu -->
             @if(Auth::guard('admin')->user()->role == 'Admin')

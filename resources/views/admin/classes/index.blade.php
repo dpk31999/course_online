@@ -9,7 +9,7 @@
         </a>
     </div>
     <div class="icon_sub">
-        <a href="{{ route('admin.manager.add') }}">
+        <a href="{{ route('admin.class.add') }}">
             <i class="fas fa-plus-circle fa-lg fa-fw mr-2 color__admin "></i>
         </a>
 
@@ -18,29 +18,25 @@
         <table class="table table-st">
             <thead class="color__theme">
                 <tr>
-                    <th>Tên</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Quyền hạn</th>
+                    <th>Khóa học</th>
+                    <th>Lịch học</th>
+                    <th>Thời gian bắt đầu</th>
+                    <th>Số lượng học viên</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($admins as $admin)
-                <tr class="@if($admin->role == 'Admin') bg-danger @endif">
-                    <td>{{ $admin->fullname }}</td>
-                    <td>{{ $admin->phone }}</td>
-                    <td>{{ $admin->email }}</td>
-                    <td>{{ $admin->role }}</td>
-                    @if ($admin->role != 'Admin')
+                @foreach ($classes as $class)
+                <tr>
+                    <td>{{ $class->course->name }}</td>
+                    <td>{{ $class->schedule }}</td>
+                    <td>{{ $class->start }}</td>
+                    <td>{{ $class->users->count() }}</td>
                     <td>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.manager.edit', $admin->id) }}">Chỉnh
+                        <a type="button" class="btn btn-warning" href="{{ route('admin.class.edit', $class->id) }}">Chỉnh
                             Sửa</a>
-                        <a type="submit" href="{{ route('admin.manager.delete', $admin->id) }}" class="btn btn-danger">Xóa</a>
+                        <a type="submit" href="{{ route('admin.class.delete', $class->id) }}" class="btn btn-danger">Xóa</a>
                     </td>
-                    @else 
-                    <td></td>
-                    @endif
                 </tr>
                 @endforeach
             </tbody>
