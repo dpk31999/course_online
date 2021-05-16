@@ -36,6 +36,11 @@
                 @enderror
             </div>
         </div>
+        @if(isset($error))
+            <span>
+                <strong class="text-danger">{{ $error }}</strong>
+            </span>
+        @endif
         <div class="form-button">
             <i class="fas fa-user-circle" id="icon-submit"></i>
             <button type="submit" class="btn btn--success">Đăng nhập</button>
@@ -44,11 +49,6 @@
                 <a href="{{ route('password.request') }}">
                     <button class="btn btn-success ml-3"> {{ __('Forgot Your Password?') }}</button>
                 </a>
-            @endif
-            @if(isset($error))
-                <span>
-                    <strong class="text-danger">{{ $error }}</strong>
-                </span>
             @endif
         </div>
     </form>

@@ -66,19 +66,23 @@
                 </a>
 
             </li>
-            
-            @endif
-            <!-- Nav Item - Utilities Collapse Menu -->
-            @if(Auth::guard('admin')->user()->role == 'Admin')
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.manager.index') }}">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý manager</span>
-                </a>
-            </li>
-            @endif
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="">
+                    <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý thông báo</span>
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="">
+                    <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý đề thi</span>
+                </a>
+
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -86,6 +90,35 @@
                 </a>
 
             </li>
+            
+            @endif
+            <!-- Nav Item - Utilities Collapse Menu -->
+            @if(Auth::guard('admin')->user()->role == 'Admin')
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.manager.index') }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý manager</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.student.index.admin') }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý học viên đăng ký</span>
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.student.index.reset.admin') }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý cấp lại mật khẩu học viên</span>
+                </a>
+
+            </li>
+
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider">

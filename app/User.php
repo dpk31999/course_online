@@ -56,4 +56,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Exam::class, 'exam_id', 'user_id')->withPivot('score');
     }
+
+    /**
+     * The roles that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function classes()
+    {
+        return $this->belongsToMany(ClassRoom::class, 'class_user', 'user_id', 'class_id');
+    }
 }

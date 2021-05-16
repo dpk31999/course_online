@@ -51,6 +51,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'course' => 'required',
+            'class' => 'required',
             'fullname' => 'required|max:255',
             'birthday' => 'required',
             'phone' => 'required',
@@ -64,26 +65,4 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
-
-        $user = User::create([
-            'fullname' => $data['fullname'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'birthday' => $data['birthday'],
-            'url_avatar' => 'https://ui-avatars.com/api/?name=' . $data['fullname'],
-            'password' => '',
-            'status' => '0'
-        ]);
-
-        $user->courses()->attach($data['course']);
-
-        $request->session()->flash('message', 'Đăng ký thành công, tài khoản sẽ được duyệt bởi quản trị viên!');
-    }
-
-    public function showFormRegisterCourse()
-    {
-        return view('registercourse');
-    }
 }

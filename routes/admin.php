@@ -19,7 +19,7 @@ Route::namespace('Admin')->name('admin.')->group(function () {
         Route::post('/login', 'LoginController@login')->name('excute.login');
         Route::post('/logout','LoginController@logout')->name('logout');
     });
-    
+
     Route::middleware('auth:admin')->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
 
@@ -27,7 +27,6 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
             Route::name('course.')->group(function(){
                 Route::get('/courses','CourseController@index')->name('index');
-                // Route::get('/courses/{course}','CourseController@show')->name('show');
                 Route::get('/courses/create','CourseController@create')->name('add');
                 Route::get('/courses/edit/{course}','CourseController@edit')->name('edit');
 
@@ -38,13 +37,17 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
             Route::name('class.')->group(function(){
                 Route::get('/class','ClassController@index')->name('index');
-                // Route::get('/class/{class}','ClassController@show')->name('show');
                 Route::get('/class/create','ClassController@create')->name('add');
                 Route::get('/class/edit/{class}','ClassController@edit')->name('edit');
 
                 Route::post('/class','ClassController@store')->name('store');
                 Route::post('/class/edit/{class}','ClassController@update')->name('update');
                 Route::get('/class/delete/{class}','ClassController@destroy')->name('delete');
+            });
+
+            Route::name('student.')->group(function(){
+                Route::get('/student','StudentController@index')->name('index.manager');
+                Route::get('/student/{user}','StudentController@show')->name('show');
             });
         
         });
@@ -53,13 +56,24 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
             Route::name('manager.')->group(function(){
                 Route::get('/managers','ManageController@index')->name('index');
-                // Route::get('/managers/{admin}','ManageController@show')->name('show');
                 Route::get('/managers/create','ManageController@create')->name('add');
                 Route::get('/managers/edit/{admin}','ManageController@edit')->name('edit');
     
                 Route::post('/manager','ManageController@store')->name('store');
                 Route::post('/manager/edit/{admin}','ManageController@update')->name('update');
                 Route::get('/manager/delete/{admin}','ManageController@destroy')->name('delete');
+            });
+
+            Route::name('student.')->group(function(){
+                Route::get('/studentRegister','StudentController@indexRegister')->name('index.admin');
+        
+                Route::get('/studentRegister/allow/{user}','StudentController@allow')->name('allow');
+                Route::get('/studentRegister/refuse/{user}','StudentController@refuse')->name('refuse');
+
+                Route::get('/resetPassword','StudentController@indexResetPassword')->name('index.reset.admin');
+
+                Route::get('/resetPassword/allow/{user}','StudentController@resetAllow')->name('reset.allow');
+
             });
 
         });

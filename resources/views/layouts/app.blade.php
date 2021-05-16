@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,6 +32,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
         <!-- Header -->
@@ -38,25 +40,35 @@
             <nav class="header__nav">
                 <ul class="navbar-list">
                     <div class="logo-brand">
-                        <img src="/images/logo.png" alt="" class="logo-img">
+                        <a href="{{route('home')}}"><img src="/images/logo.png" alt="" class="logo-img"></a>
                     </div>
                 </ul>
                 <ul class="navbar-list">
-                    <li class="navbar-item navbar-item--separate">
-                        <a href="{{route('home')}}" class="navbar-item-link">Trang chủ </a>
-                    </li>
-                    <li class="navbar-item navbar-item--separate">
-                        <a href="#" class="navbar-item-link">Giới thiệu </a>
-                    </li>
-                    <li class="navbar-item navbar-item--separate">
-                        <a href="#" class="navbar-item-link">Khóa học </a>
-                    </li>
-                    <li class="navbar-item navbar-item--separate">
-                        <a href="#" class="navbar-item-link">Tin tức </a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="#" class="navbar-item-link">Việc làm </a>
-                    </li>
+                    <a href="{{route('home')}}" class="navbar-item-link">
+                        <li class="navbar-item navbar-item--separate">
+                            Trang chủ
+                        </li>
+                    </a>
+                    <a href="" class="navbar-item-link">
+                        <li class="navbar-item navbar-item--separate">
+                            Giới thiệu
+                        </li>
+                    </a>
+                    <a href="" class="navbar-item-link">
+                        <li class="navbar-item navbar-item--separate">
+                            Khóa học
+                        </li>
+                    </a>
+                    <a href="" class="navbar-item-link">
+                        <li class="navbar-item navbar-item--separate">
+                            Tin tức
+                        </li>
+                    </a>
+                    <a href="" class="navbar-item-link">
+                        <li class="navbar-item">
+                            Việc làm
+                        </li>
+                    </a>
 
                 </ul>
                 <ul class="navbar-list">
@@ -67,25 +79,19 @@
                     </li>
                     @else
                     <li class="navbar-item dropdown">
-                        <a
-                        class="nav-link dropdown-toggle text-dark"
-                        href="#"
-                        role="button"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >
-                        <img src="{{ $user->url_avatar }}" class="rounded-circle profile-photo mr-1" />
+                        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ $user->url_avatar }}" class="rounded-circle profile-photo mr-1" />
                         </a>
                         <div class="dropdown-menu">
                             <a href="{{route('profile')}}" class="dropdown-item pl-3">Profiles</a>
 
                             <a href="{{route('setting')}}" class="dropdown-item pl-3">Setting</a>
-              
+
                             <div class="dropdown-divider" />
                             <a class="dropdown-item pl-3 text-decoration-none text-dark" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                              {{ $t("logout") }}
+                                {{ $t("logout") }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
@@ -134,9 +140,9 @@
         </div>
 
         <!-- End Slider -->
-        
+
         <!-- Container -->
-        
+
         <div class="container">
             @yield('content')
         </div>
@@ -184,4 +190,5 @@
         <!-- End Footer -->
     </div>
 </body>
+
 </html>

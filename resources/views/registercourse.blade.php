@@ -8,37 +8,72 @@
             <h3 class="title">Đăng ký khóa học</h3>
         </a>
     </div>
-    <form action="/action_page.php">
+    <form method="POST" action="{{ route('register-course.store',$course->id) }}">
+        @csrf
         <div class="form-group">
-            <label for="email">Chọn khóa học:</label>
+            <label for="course">Chọn khóa học:</label>
 
             <select name="course" id="course" style="margin: auto" class="form-control">
-                <option value="Java và Spring framework">Java và Spring framework</option>
-                <option value="Php và laravel framework">Php và laravel framework</option>
+                <option value="{{ $course->id }}" selected>{{ $course->name }}</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="email">Họ và tên:</label>
-            <input type="email" class="form-control" placeholder="Nhập họ và tên" id="email">
+            <label for="class">Chọn thời gian học và lịch học:</label>
+
+            <select name="class" id="class" style="margin: auto" class="form-control">
+                @foreach ($course->classes as $class)
+                    <option value="{{ $class->id }}">{{ $class->start }} {{ $class->schedule }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
-            <label for="email">Ngày tháng năm sinh:</label>
-            <input type="email" class="form-control" placeholder="Nhập ngày tháng năm sinh" id="email">
+            <label for="fullname">Họ và tên:</label>
+            <input id="fullname" type="text" class="form-control @error('fullname') is-invalid @enderror" name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
+            
+            @error('fullname')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="birthday">Ngày tháng năm sinh:</label>
+            <input id="birthday" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
+            
+            @error('birthday')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" placeholder="Nhập email" id="email">
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="form-group">
             <label for="phone">Số điện thoại:</label>
-            <input type="phone" class="form-control" placeholder="Nhập số điện thoại" id="phone">
-        </div>
-        <div class="form-check">
-            <label class="form-check-label" id="icon-custom"></label>
-            <input class="form-check-input" type="checkbox"> Tôi đã đọc và đồng ý đăng ký
+            <input id="phone" type="tel" placeholder="0123456789" pattern="0[0-9]{9}" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+            
+            @error('phone')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
 
-        <button type="submit" class="btn btn--success " style="margin-top: 20px;">Đăng ký</button>
+        @if(Session::has('message'))
+            <span>
+                <strong class="text-primary">{{ Session::get('message') }}</strong>
+            </span>
+        @endif
+
+        <button type="submit" class="btn btn--success" style="margin-top: 20px;">Đăng ký</button>
     </form>
 </div>
 @endsection

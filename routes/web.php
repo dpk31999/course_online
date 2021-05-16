@@ -19,5 +19,5 @@ Route::get('/','HomeController@index')->name('home');
 Auth::routes();
 
 //register course
-Route::get('/registerCourse','Auth\RegisterController@showFormRegisterCourse')->name('registercourse');
-Route::post('/registerCourse','Auth\RegisterController@create');
+Route::get('/registerCourse/{course}','CourseController@showFormRegisterCourse')->name('register-course');
+Route::post('/registerCourse/{course}','CourseController@create')->name('register-course.store');
