@@ -12,9 +12,6 @@
         <a href="{{ route('admin.course.add') }}">
             <i class="fas fa-plus-circle fa-lg fa-fw mr-2 color__admin "></i>
         </a>
-        <a href="{{ route('admin.mail') }}">
-            <i class="fas fa-cart-circle fa-lg fa-fw mr-2 color__admin "></i>
-        </a>
     </div>
     <div class="info-table-course">
         <table class="table table-st">

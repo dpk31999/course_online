@@ -40,7 +40,7 @@
             <nav class="header__nav">
                 <ul class="navbar-list">
                     <div class="logo-brand">
-                        <a href="{{route('home')}}"><img src="/images/logo.png" alt="" class="logo-img"></a>
+                        <a href=""><img src="/images/logo.png" alt="" class="logo-img"></a>
                     </div>
                 </ul>
                 <ul class="navbar-list">
@@ -79,21 +79,25 @@
                     </li>
                     @else
                     <li class="navbar-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ $user->url_avatar }}" class="rounded-circle profile-photo mr-1" />
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px" class="rounded-circle profile-photo mr-1" />
                         </a>
-                        <div class="dropdown-menu">
-                            <a href="{{route('profile')}}" class="dropdown-item pl-3">Profiles</a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
-                            <a href="{{route('setting')}}" class="dropdown-item pl-3">Setting</a>
-
-                            <div class="dropdown-divider" />
-                            <a class="dropdown-item pl-3 text-decoration-none text-dark" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                                {{ $t("logout") }}
+                            <a style="cursor: pointer" class="dropdown-item" href="">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <a style="cursor: pointer" class="dropdown-item" href="{{ route('setting.edit-profile') }}">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Setting
+                            </a>
+                            <a style="cursor: pointer" class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>
@@ -129,13 +133,6 @@
                 </div> -->
             </div>
 
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
 
         </div>
 
@@ -143,8 +140,8 @@
 
         <!-- Container -->
 
-        <div class="container">
-            @yield('content')
+        <div class="container">        
+                @yield('content')
         </div>
 
         <!-- Footer -->
@@ -189,6 +186,14 @@
         </footer>
         <!-- End Footer -->
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        imgAva.onchange = evt => {
+            console.log('haha')
+        }
+    </script>
 </body>
 
 </html>

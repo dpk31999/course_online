@@ -23,7 +23,6 @@
                     Thời gian: <span class="product-time">{{ $course->total_time }} Tháng</span>
                 </p>
                 <div class="product-desc">
-                    <i class="fas fa-caret-right"></i>
                     <div class="product-descrip">
                         {{ $course->description }}
                     </div>

@@ -73,7 +73,7 @@
             </span>
         @endif
 
-        <button type="submit" class="btn btn--success" style="margin-top: 20px;">Đăng ký</button>
+        <button type="submit" class="btn__default btn--success" style="margin-top: 20px;">Đăng ký</button>
     </form>
 </div>
 @endsection

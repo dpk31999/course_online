@@ -103,8 +103,8 @@
 .job-section,
 .note-section {
     margin: 32px auto 0 auto;
-    width: 111.4rem;
-    height: 42rem;
+    min-width: 119.4rem;
+    min-height: auto;
     background-color: var(--white-color);
 }
 
@@ -131,13 +131,16 @@
 .product-list {
     margin: 1rem 2rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .product-item {
     background-color: #f2f5f8;
-    height: 34.6rem;
+    max-width: 36.2rem;
+    min-height: 34.6rem;
     border-radius: 4px;
+    margin: 10px 0;
 }
 
 .product-item-body {
@@ -397,7 +400,7 @@
 }
 
 .form-control {
-    font-size: 1.4rem;
+    font-size: 1.8rem !important;
 }
 
 
@@ -611,10 +614,12 @@
 }
 
 .product-descrip {
-    display: -webkit-box;
-    line-height: 25px;
+    font-size: 15px;
+    max-width: 35.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
+    line-height: 25px;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
 }
