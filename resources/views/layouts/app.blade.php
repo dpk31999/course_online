@@ -85,13 +85,9 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
-                            <a style="cursor: pointer" class="dropdown-item" href="">
+                            <a style="cursor: pointer" class="dropdown-item" href="{{ route('student.home') }}">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
-                            </a>
-                            <a style="cursor: pointer" class="dropdown-item" href="{{ route('setting.edit-profile') }}">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Setting
                             </a>
                             <a style="cursor: pointer" class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -189,11 +185,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-        imgAva.onchange = evt => {
-            console.log('haha')
-        }
-    </script>
 </body>
 
 </html>

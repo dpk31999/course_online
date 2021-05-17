@@ -1,35 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.board')
 
 @section('content')
-<div class="row">
-<div class="col-md-3">
-    <div class="card settings-card">
-        <div class="card-header">
-            Chỉnh sửa
-        </div>
-        <ul class="nav flex-column nav-pills">
-            <li class="nav-item active">
-            <a href="{{ route('setting.edit-profile') }}">
-                <i></i>
-                Profile
-            </a>
-            </li>
-            <li class="nav-item">
-            <a href="{{ route('setting.edit-password') }}">
-                <i></i>
-                Password
-            </a>
-            </li>
-        </ul>
+<div class="info-container">
+    <div class="info-heading">
+        <a href="#" class="info-title">
+            <i class="fas fa-user-circle" id="icon-padding"></i>
+            <h5 class="title">Thông tin cá nhân</h5>
+        </a>
     </div>
-</div>
-
-<div class="col-md-9">
-    <div class="card">
-        <div class="card-header">
-            Thông tin của bạn
-        </div>
-        <form method="POST" action="{{ route('setting.update-password') }}" enctype="multipart/form-data">
+    <hr class="sidebar-divider my-0" style="background-color: #4268D6;">
+        <form method="POST" action="{{ route('student.account.update-password') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="password">Mật khẩu mới</label>
@@ -61,6 +41,5 @@
             <button type="submit" class="btn__default btn--success" style="margin-top: 20px;">Cập nhật</button>
         </form>
       </div>
-</div>
 </div>
 @endsection

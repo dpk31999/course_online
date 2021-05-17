@@ -10689,10 +10689,6 @@ a:focus {
     position: relative
 }
 
-.sidebar .nav-item:last-child {
-    margin-bottom: 1rem
-}
-
 .sidebar .nav-item .nav-link {
     text-align: center;
     padding: .75rem 1rem;

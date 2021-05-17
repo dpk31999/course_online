@@ -22,10 +22,17 @@ Auth::routes();
 Route::get('/registerCourse/{course}','CourseController@showFormRegisterCourse')->name('register-course');
 Route::post('/registerCourse/{course}','CourseController@create')->name('register-course.store');
 
-Route::name('setting.')->group(function(){
-    Route::get('/setting/profile','SettingController@showFormUpdateProfile')->name('edit-profile');
-    Route::post('/setting/profile','SettingController@updateProfile')->name('update-profile');
+Route::namespace('Student')->prefix('profile')->name('student.')->group(function(){
 
-    Route::get('/setting/password','SettingController@showFormUpdatePassword')->name('edit-password');
-    Route::post('/setting/password','SettingController@updatePassword')->name('update-password');
+    Route::get('/','HomeController@index')->name('home');
+
+    Route::name('account.')->group(function(){
+        Route::get('/account/profile','AccountController@showFormUpdateProfile')->name('edit-profile');
+        Route::post('/account/profile','AccountController@updateProfile')->name('update-profile');
+    
+        Route::get('/account/password','AccountController@showFormUpdatePassword')->name('edit-password');
+        Route::post('/account/password','AccountController@updatePassword')->name('update-password');
+    });
+
 });
+
