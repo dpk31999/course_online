@@ -35,15 +35,14 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('student.home') }}">
                 <div class="sidebar-brand-text mx-3">
                     User Dashboard</div>
             </a>
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="User_course.html" style="text-align: center ">
-
+                <a class="nav-link" href="{{ route('student.home') }}" style="text-align: center ">
                     <span>Học Tập</span></a>
             </li>
             <hr class="sidebar-divider">
@@ -82,29 +81,23 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <li class="nav-item dropdown-submenu">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#account">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Tài Khoản</span></a>
                 </a>
-                <ul class="dropdown-menu bg-info">
-                    <li class="nav-item bg-info">
-                        <a class="nav-link " href="{{ route('student.account.edit-profile') }}">
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            <span>Đổi thông tin tài khoản</span></a>
-                    </li>
-                    <hr class="sidebar-divider">
-                    <li class="nav-item bg-info">
-                        <a class="nav-link " href="{{ route('student.account.edit-password') }}">
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            <span>Đổi mật khẩu</span></a>
-                    </li>
-                </ul>
+                <div id="account" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Đổi thông tin tài khoản</a>
+                        <a href="{{ route('student.account.edit-password') }}" class="collapse-item">Đổi mật khẩu</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link " href="User_notification.html">
+                <a class="nav-link " href="{{ route('student.notification.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
                     <span>Thông báo </span></a>
             </li>

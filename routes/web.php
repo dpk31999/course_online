@@ -34,5 +34,9 @@ Route::namespace('Student')->prefix('profile')->name('student.')->group(function
         Route::post('/account/password','AccountController@updatePassword')->name('update-password');
     });
 
+    Route::name('notification.')->group(function(){
+        Route::get('/notification','NoteController@index')->name('index');
+
+    });
 });
 

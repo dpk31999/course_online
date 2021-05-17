@@ -68,7 +68,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="">
+                <a class="nav-link collapsed" href="{{ route('admin.notification.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
                     <span>Quản lý thông báo</span>
                 </a>
@@ -122,15 +122,10 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Thông báo </span></a>
-            </li>
+
             <li class="nav-item">
 
-                <a class="nav-link " href="#">
+                <a class="nav-link " style="cursor: pointer" onclick="event.preventDefault(); document.querySelector('#admin-logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Đăng Xuất </span></a>
             </li>

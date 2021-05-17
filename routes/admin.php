@@ -49,7 +49,28 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::get('/student','StudentController@index')->name('index.manager');
                 Route::get('/student/{user}','StudentController@show')->name('show');
             });
-        
+
+            Route::namespace('Notification')->name('notification.')->group(function () {
+
+                Route::get('/notifications','HomeController@index')->name('index');
+
+                Route::get('/notifications/private/create','NotePrivateController@create')->name('private.add');
+                Route::get('/notifications/private/edit/{notification}','NotePrivateController@edit')->name('private.edit');
+
+                Route::get('/notifications/general/create','NoteGeneralController@create')->name('general.add');
+                Route::get('/notifications/general/edit/{notification}','NoteGeneralController@edit')->name('general.edit');
+
+                Route::post('/notifications/private/create','NotePrivateController@store')->name('private.store');
+                Route::post('/notifications/private/edit/{notification}','NotePrivateController@update')->name('private.update');
+
+                Route::post('/notifications/general/create','NoteGeneralController@store')->name('general.store');
+                Route::post('/notifications/general/edit/{notification}','NoteGeneralController@update')->name('general.update');
+
+                Route::get('/notifications/general/delete/{notification}','NoteGeneralController@delete')->name('general.delete');
+                Route::get('/notifications/private/delete/{notification}','NotePrivateController@delete')->name('private.delete');
+                
+            });
+
         });
 
         Route::middleware('isAdmin')->group(function () {

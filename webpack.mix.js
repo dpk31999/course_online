@@ -19,4 +19,5 @@ mix.js([
     .styles([
         'resources/css/base.css',
         'resources/css/main.css',
+        'resources/css/dashboard.css',
     ], 'public/css/style.css');
