@@ -20,7 +20,15 @@ html {
 .m-top {
     margin-top: 10rem !important;
 }
-
+.text-align {
+    text-align: center !important;
+    color: #008657;
+}
+.text-align:hover{
+    text-decoration: none;
+    color: #008657;
+    opacity: 0.8;
+}
 body {
     background-color: #f2f5f8;
 }

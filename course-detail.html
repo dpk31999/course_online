@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./assest/css/base.css">
+    <link rel="stylesheet" href="./assest/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./assest/font/fontawesome-free/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .row {
+
+            margin: 40px 0 40px 40px;
+            font-size: 16px;
+        }
+
+        th {
+            padding: 0 10px;
+        }
+
+        .title--separate--md::after {
+            content: "";
+            position: absolute;
+            display: block;
+            border-bottom: 3px solid #008657;
+            width: 20rem;
+            bottom: -4px;
+            border-radius: 3px;
+        }
+
+        th:nth-child(2) {
+            color: rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .m-left {
+            margin-left: 50px !important;
+            margin-bottom: 10px;
+        }
+
+        .color-red {
+            color: #d33;
+        }
+
+        .note-item::marker {
+            color: #d33;
+        }
+
+        strong {
+            font-weight: 500;
+        }
+
+        .btn--red {
+            padding: 4px 20px;
+            color: #d33;
+            background-color: white;
+            text-decoration: none;
+            border: 1px solid #d33;
+            border-radius: 4px;
+        }
+
+        .btn--red:hover {
+            text-decoration: none;
+            background-color: #d33;
+            color: #fff;
+        }
+
+        .m-right {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="headers">
+        <nav class="header__nav">
+            <ul class="navbar-list">
+                <div class="logo-brand">
+                    <img src="./assest/img/logo.png" alt="" class="logo-img">
+                </div>
+            </ul>
+            <ul class="navbar-list">
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">Trang chủ </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">Giới thiệu </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">Khóa học </a>
+                </li>
+                <li class="navbar-item navbar-item--separate">
+                    <a href="#" class="navbar-item-link">Tin tức </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-item-link">Việc làm </a>
+                </li>
+            </ul>
+            <ul class="navbar-list">
+                <li class="navbar-item   ">
+                    <i class="fas fa-user"></i>
+                    <a href="login-pages.html" class="navbar-item-link "> Đăng nhập</a>
+                </li>
+                <li class="navbar-item">
+                    <div class="search-btn">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- End Header -->
+    <!-- Title -->
+    <div class="container-title  " style="margin-top: 30px;">
+        <ul class="title-list">
+            <li class="title-item navbar-item--separate">
+                <i class="fas fa-home"></i>
+                <a href="#" class="title-item-link">
+                    Trang chủ </a>
+            </li>
+            <li class="title-item">
+                <a href="#" class="title-item-link ">
+                    Thông tin khóa học </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End Title -->
+
+
+
+    <div class="Container">
+
+        <div class="note-section">
+            <div class="title-section">
+                <div class="title-heading ">
+                    <a href="" class="title-heading-a text-white">
+                        <i class="fas fa-home icon-padding"></i>
+                    </a>
+                </div>
+                <div class="title-heading ">
+                    <a href="" class="title-heading-a">
+                        <i class="fab fa-vuejs"></i>
+                        Nội Dung
+                    </a>
+                </div>
+
+                <div class="title-heading ">
+                    <a href="" class="title-heading-a">
+                        <i class="fab fa-vuejs"></i>
+                        Học Phí
+                    </a>
+                </div>
+            </div>
+            <div class="notification-success text-align">
+                <div class="alert">
+                    <h3>
+                        <a href="#" class="text-align">
+                            Khóa học Java & Spring framework
+                        </a>
+                    </h3>
+                </div>
+            </div>
+            <div class="intro-course">
+                <div class="desc-main">
+                    <p> <strong> Java – Ngôn ngữ lập trình được sử dụng rộng rãi nhất hiện nay. Tại Đà Nẵng, có đến hơn
+                            1,000 lượt tuyển dụng lập trình viên Java mỗi năm và đang tiếp tục tăng, là cơ hội lớn
+                            cho các bạn yêu thích lập trình. Ngoài ra, Java cũng là ngôn ngữ lập trình cho Android,
+                            nền tảng lập trình di động phổ biến nhất hiện nay.<br></strong>
+                        Khóa học Lập trình Java từ A-Z trang bị đầy đủ kiến thức, kỹ năng về ngôn ngữ lập trình
+                        Java, các công nghệ liên quan, framework, cách xây dựng ứng dụng để giúp học viên trở
+                        thành Lập trình viên Java chuyên nghiệp, có thể bắt tay làm việc ngay tại các công ty
+                        phần mềm.<br>
+                        Đặc biệt, khi tham gia khóa học Lập trình Java từ A-Z bạn sẽ được trang bị kỹ về Spring
+                        Framework, một trong những Framework được các công ty phần mềm yêu cầu nhiều nhất hiện nay.
+
+                        100% học viên tốt nghiệp khóa học này đã tìm được việc làm tại các công ty phần mềm lớn tại Đà
+                        Nẵng như FSOFT, Enclave, DTT, AsianTech, Axon Active … và đã được doanh nghiệp đánh giá cao.
+                    </p>
+                    <div class="img-paner">
+                        <img src="./assest/img/spring.jpeg" alt="" class="img-paner-item">
+                        <p class="text-align">Java: Ngôn ngữ lập trình phổ biến nhất hiện nay</p>
+                    </div>
+                    <div class="title-intro">
+                        <div class="intro-item">
+                            <p class="head head--color"><i>NẾU BẠN LÀ:</i></p>
+                            <p>
+                                - Sinh viên ngành CNTT, ĐTVT và đang lơ ngơ về những dòng code<br>
+                                - Bạn đã học rất nhiều ngôn ngữ lập trình nhưng vẫn chưa làm được dự án hoàn chỉnh nào
+                                thực tế<br>
+                                - Bạn đã học giỏi, điểm cao nhưng nhìn code lại cảm thấy hoa mắt, không code được<br>
+                                - Bạn lập trình được rồi nhưng lại muốn học thật bài bản, nâng cao bằng những dự án có
+                                độ khó cao, phức tạp<br> </p>
+                        </div>
+                        <div class="intro-item">
+                            <p class="head head--color"><i>NẾU BẠN ĐANG:</i></p>
+                            <p>
+                                - Là sinh viên năm 1,2,3,4 và đang tìm một trung tâm đào tạo lập trình uy tín, chất
+                                lượng để theo học<br>
+                                - Là tester, hoặc đang muốn chuyển nghề sang ngành IT<br>
+                                - Học tại nhiều trung tâm rồi mà không hiệu quả<br></p>
+                        </div>
+                        <div class="intro-item text-align">
+                            <p class="head head--note">THÌ ĐÂY LÀ KHÓA HỌC DÀNH CHO BẠN !!!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="row">
+
+            </div>
+
+
+
+        </div>
+
+        <div class="note-section">
+            <div class="section-heading title--separate--md">
+                <i class="fab fa-vuejs"></i>
+                Học Phí & Ưu đãi
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="note-title m-left color-red">
+                        <i class="fas fa-search-dollar"></i>
+                        Học phí & Ưu đãi
+                    </h3>
+                    <ul class="note-list">
+                        <li class="note-item"><strong>Khai giảng:</strong> Thứ 4, ngày 12/5/2021</li>
+                        <li class="note-item"><strong>Lịch học:</strong> Tối thứ 4, tối chủ nhật từ 19h-21h30</li>
+                        <li class="note-item"><strong>Thời lượng:</strong> 6 tháng</li>
+                        <li class="note-item"><strong>Học phí:</strong> 8.200.000 VNĐ (có thể đóng 4 đợt)</li>
+                        <li class="note-item"><strong>Đóng 1 đợt:</strong> Giảm Đóng 1 đợt giảm 400.000 VNĐ</li>
+                        <li class="note-item"><strong>Ưu đãi nhóm:</strong> Đăng ký nhóm 2 người giảm 500.000 VNĐ mỗi
+                            người</li>
+                        <li class="note-item"><strong>Học phí đợt đầu:</strong> 2.200.000 VNĐ</li>
+                    </ul>
+                </div>
+                <div class="col-sm-5 ">
+                    <h3 class="note-title m-left color-red">
+                        <i class="fas fa-coins"></i>
+                        Cách đóng học phí
+                    </h3>
+                    <ul class="note-list">
+                        <li class="note-item"><strong>Trực tiếp:</strong> Văn phòng tại 154 Phạm Như Xương</li>
+                        <li class="note-item"><strong>Chuyển khoản Vietcombank Stk:</strong> 004 1000 82 53</li>
+                        <li class="note-item">Chủ khoản: Tran Van Son</li>
+                        <li class="note-item"><strong>Nội dung ck:</strong> ho ten-phone-javaspring</li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11 " style="text-align: center;">
+                    <a href="Register.html" type="button" class="btn--red">
+                        <i class="fas fa-book-open m-right"></i> Đăng ký</a>
+                    <a href="#" type="button" class="btn--red">
+                        <i class="fas fa-phone m-right"></i>
+                        Gọi điện</a>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer-section">
+            <div class="footer-list">
+                <div class="footer-item">
+                    <img src="./assest/img/logo.png" alt="" class="footer-img">
+                    <ul class="footer-item-body">
+                        <li class="footer-sub">Mã số thế: 04016231</li>
+                        <li class="footer-sub">Trụ sở: 154 Phạm Như Xương, Đà Nẵng</li>
+                        <li class="footer-sub">Cơ sở: 263 Tiểu La, Đà Nẵng</li>
+                        <li class="footer-sub">Cơ sở: 52 Trần Phú, Huế</li>
+                        <li class="footer-sub">Hotline: 0777710005</li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-title footer-title--separate">Khóa học</div>
+                    <ul class="footer-item-body">
+
+                        <li class="footer-sub-class">Java và spring framework</li>
+                        <li class="footer-sub-class">PHP và laravel framwork</li>
+                        <li class="footer-sub-class">C#</li>
+                        <li class="footer-sub-class">Python</li>
+
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-title footer-title--separate">Liên hệ</div>
+                    <ul class="footer-item-icon">
+                        <li class="footer-sub-icon"><i class="fab fa-facebook"></i></li>
+                        <li class="footer-sub-icon"><i class="fab fa-instagram"></i></li>
+                        <li class="footer-sub-icon"><i class="far fa-envelope"></i></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center p-3" style="background-color: #008657; font-size: 1.5rem; color: #fff;">
+                © 2021 Copyright:
+                <a class="footer-link" href="#" style="color: #fff;">HDTC Team</a>
+            </div>
+        </footer>
+        <!-- End Footer -->
+    </div>
+    </div>
+</body>
+
+</html>

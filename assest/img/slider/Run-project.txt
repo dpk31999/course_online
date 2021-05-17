@@ -1,0 +1,11 @@
+cài nodejs
+cài composer
+cài php version 7.4
+cài mysql
+---
+1. CLONE PROJECT IN GITHUB
+2. OPEN IT IN VS CODE
+3. OPEN TERMINAL AND RUN cp .env.example .env , CHANGE YOUR INFO IN .ENV (DB_DATABASE,DB_USERNAME,DB_PASSWORD-
+4. Run composer install AND RUN npm install
+5. RUN php artisan migrate
+6. RUN php artisan db:seed AND RUN php artisan serve AND npm run dev

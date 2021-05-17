@@ -88,11 +88,15 @@
     
 }
 /* Product */
+.product-section{
+    min-width: 111.4rem;
+    min-height: auto;
+}
 .product-section,
 .new-section,
 .job-section,
 .note-section {
-    margin: 32px auto 0 auto;
+    margin: 32px auto 10px auto;
     width: 111.4rem;
     min-height: 42rem;
     background-color: var(--white-color);
@@ -121,12 +125,14 @@
 .product-list {
     margin: 1rem 2rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .product-item {
   background-color: #f2f5f8;
-  height: 34.6rem;
+  min-height: 34.6rem;
   border-radius: 4px;
+  margin: 10px 0;
 }
 .product-item-body {
   padding: 1rem 0 1rem 1rem;
@@ -157,6 +163,7 @@
 }
 .product-desc {
 font-size: 15px;
+max-width: 35.2rem;
 }
 .product-time {
 
@@ -338,6 +345,7 @@ color: #008657;
 }
 .title {
     padding-left: 10px;
+    text-align: center;
 }
 
 /* -----------Register-Pages------------- */
@@ -357,7 +365,79 @@ color: #008657;
 .alert {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-grow: 1;
     font-size: 1.6rem;
     height: 5rem;
     margin-top: 25px;
+}
+input{
+    font-size: 20px;
+}
+
+/* -----------Course-detail--------------- */
+.title-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly ;
+    border-bottom: 3px solid #f2f5f8;   
+    padding: 1rem 0px;
+    font-size: 1.6rem;
+    background-color: rgba(0,0, 0, 0.04);
+       
+}
+
+.title-heading:nth-child(1){
+    background-color: #008657;
+    padding: 0 4rem;
+}
+
+
+.text-white{
+    color: #fff !important  ;
+}
+.title-heading-a{
+    color: #008657;
+}
+.title-heading-a:hover{
+    text-decoration: none;
+    cursor: pointer;
+    color: #008657;
+}
+.alert{
+    border: 1px solid #008657;
+}
+.icon-padding{
+    padding: 10px 0 10px 0px;
+}
+.desc-main{
+    word-wrap: break-word;
+    padding: 0 40px;
+    text-align: justify;
+}
+.intro-course{
+    font-size: 16px;
+    
+}
+.img-paner{
+    text-align: center;
+}
+.img-paner-item{
+    width: auto;
+}
+.title-intro {
+    padding: 20px;
+}
+.intro-item {
+
+}
+.head {
+font-weight: 700;
+}
+.head--color{
+    color: #008657;
+}
+.head--note{
+    color: #d13131;
 }
