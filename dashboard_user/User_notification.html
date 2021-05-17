@@ -156,6 +156,7 @@
                                 <i class="far fa-envelope" id="icon-padding"></i>
                                 <h5 class="title">Thông Báo</h5>
                             </a>
+
                         </div>
                         <hr class="sidebar-divider my-0" style="background-color: #4268D6;">
                         <div class="note-msg">
@@ -165,11 +166,11 @@
                                 </div>
                                 <div class="toast__body">
                                     <p class="toast__msg">
-                                        <a href="#" class="toast__msg-title">
+                                        <a href="#" class="toast__msg-title" data-toggle="modal"
+                                            data-target="#modalCart-msg-private">
                                             Thông báo cá nhân
                                         </a>
                                     </p>
-
                                 </div>
                             </div>
                             <div class="toast--success border-warn">
@@ -178,7 +179,8 @@
                                 </div>
                                 <div class="toast__body">
                                     <p class="toast__msg">
-                                        <a href="#" class="toast__msg-title">
+                                        <a href="#" class="toast__msg-title" data-toggle="modal"
+                                            data-target="#modal-msg-public">
                                             Thông báo chung
                                         </a>
                                     </p>
@@ -187,29 +189,127 @@
 
                             </div>
 
-                        </div>
+                            <!-- --------------------------------------- -->
 
+
+                            <!-- Modal: modalCart -->
+                            <div class="modal fade  " id="modalCart-msg-private" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <!--Header-->
+                                        <div class="modal-header head-color--pri">
+                                            <h4 class="modal-title" id="myModalLabel">Thông báo cá nhân</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" style="color: #fff;">×</span>
+                                            </button>
+                                        </div>
+                                        <!--Body-->
+                                        <div class="modal-body">
+
+                                            <div class="container-fluid">
+                                                <div class="row curs">
+                                                    <div class="col-sm-10">Xin chào! Học cho ngon không thì đi bụi với
+                                                        admin đấy</div>
+                                                    <div class="col-sm-2">
+                                                        <i class="far fa-bell"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="row curs">
+                                                    <div class="col-sm-10">Xin chào! Học cho ngon không thì đi bụi với
+                                                        admin đấy</div>
+                                                    <div class="col-sm-2">
+                                                        <i class="far fa-bell"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="row curs">
+                                                    <div class="col-sm-10">Xin chào! Học cho ngon không thì đi bụi với
+                                                        admin đấy</div>
+                                                    <div class="col-sm-2">
+                                                        <i class="far fa-bell"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="row curs">
+                                                    <div class="col-sm-10">Xin chào! Học cho ngon không thì đi bụi với
+                                                        admin đấy</div>
+                                                    <div class="col-sm-2">
+                                                        <i class="far fa-bell"></i>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                        <!--Footer-->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-success"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade " id="modal-msg-public" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <!--Header-->
+                                        <div class="modal-header head-color--pub">
+                                            <h4 class="modal-title" id="myModalLabel">Thông báo Chung</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true" style="color: #fff;">×</span>
+                                            </button>
+                                        </div>
+                                        <!--Body-->
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                                <div class="row curs-public">
+                                                    <div class="col-sm-10">Xin chào! </div>
+                                                    <div class="col-sm-2">
+                                                        <i class="far fa-bell"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="row curs-public">
+                                                    <div class="col-sm-10">Xin chào!</div>
+                                                    <div class="col-sm-2">
+                                                        <i class="far fa-bell"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--Footer-->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-primary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal: modalCart -->
+
+                            </div>
+
+                        </div>
                     </div>
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; Your Website 2021</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
                 </div>
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2021</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
+                <!-- End of Content Wrapper -->
+
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Page Wrapper -->
 
-        </div>
-        <!-- End of Page Wrapper -->
-
-        <!-- Bootstrap core JavaScript-->
-        <script src="../assest/js/jquery/jquery.min.js"></script>
-        <script src="../assest/js/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../assest/js/admin.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="../assest/js/jquery/jquery.min.js"></script>
+            <script src="../assest/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <script src="../assest/js/admin.min.js"></script>
 
 
 

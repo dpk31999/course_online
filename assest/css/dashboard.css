@@ -122,6 +122,76 @@ color: #4268D6;
     border-left: 4px solid #2f86eb ;
 }
 
+
+
+/* --------Form-Login----------- */
+.form-title-link{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #4e73df;
+    text-decoration: none;
+}
+.form-title-link:hover {
+    text-decoration: none;
+    color: #4e73df;
+}
+.note-msg{
+    margin-left: 25%;
+}
+/* ----------Notification--------------- */
+.row {
+    padding: 20px 0px;
+    cursor: pointer;
+}
+.row:nth-child(2):hover {
+    border-color: #ccc;
+}
+.collapse-item::marker {
+    color: #47d764 !important ;
+}
+.collapse-list{
+    max-width: 454px;
+    margin-top: 10px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+    
+}
+.cur-hov:hover {
+    cursor: pointer;
+    border: 1px solid #47d764 ;
+}
+.cur-hov-public:hover{
+    cursor: pointer;
+    border: 1px solid #2f86eb;
+}
+/* ---------Modal------- */
+.head-color--pub{
+    background-color: #2f86eb ;
+    color: #fff;
+}
+.head-color--pri{
+    background-color: #47d764 ;
+    color: #fff;
+}
+.curs {
+    border-bottom: 1px solid #47d764;
+}
+.curs-public{
+    border-bottom: 1px solid #2f86eb;
+}
+/* -------------- */
+.pd-10px{
+    padding: 20px 0;
+}
+.item-public::marker {
+    color: #2f86eb !important;
+}
+.item-hov:hover{
+    border-bottom: 1px #47d764;
+}
+.exam-container{
+    margin: 20px 0;
+}
 .toast__msg-title,
 .toast__msg-title:hover{
     text-decoration: none;
@@ -167,34 +237,14 @@ color: #4268D6;
 .toast__close:hover {
     opacity: 0.7;
   } 
-
-/* --------Form-Login----------- */
-.form-title-link{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    color: #4e73df;
-    text-decoration: none;
-}
-.form-title-link:hover {
-    text-decoration: none;
-    color: #4e73df;
-}
-.note-msg{
-    margin-left: 25%;
-}
-/* ----------Notification--------------- */
-.row {
-    padding: 20px 0px;
-    cursor: pointer;
-}
-.row:nth-child(2):hover {
-    border-color: #ccc;
-}
-
-.exam-container{
-    margin: 20px 0;
-}
+  /* .collapse-item{
+      padding:.5rem 1rem;
+      margin:0 .5rem;
+      display:block;
+      color:#3a3b45;
+      text-decoration:none;
+      border-radius:.35rem;
+      white-space:nowrap;} */
 /* ---------user-exam-online-------- */
 table{
     cursor: pointer;
