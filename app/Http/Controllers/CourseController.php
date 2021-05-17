@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
+
     public function create(Request $request,Course $course)
     {
         $data = $request->validate([
@@ -38,6 +40,53 @@ class CourseController extends Controller
 
     public function showFormRegisterCourse(Course $course)
     {
-        return view('registercourse',compact('course'));
+        return view('courses.register-course',compact('course'));
+    }
+
+    public function showCourse(Course $course)
+    {
+        return view('courses.show-course',compact('course'));
+    }
+
+    public function showFormRegisterCourseForMember(Course $course)
+    {
+        if(!Auth::guard('web')->check())
+        {
+            return redirect()->route('register-course',$course->id);
+        }   
+
+        return view('courses.register-course-member',compact('course'));
+    }
+
+    public function createForMember(Request $request,Course $course)
+    {
+        if(!Auth::guard('web')->check())
+        {
+            return redirect()->route('register-course',$course->id);
+        }   
+
+        $data = $request->validate([
+            'course' => 'required',
+            'class' => 'required',
+        ]);
+        
+        $classStudents = Auth::guard('web')->user()->classes;
+
+
+        foreach($classStudents as $class)
+        {
+            if($class->id == $data['class'])
+            {
+                $request->session()->flash('message', 'Bạn đã đăng ký khóa học này rồi, Vui lòng chọn khóa học khác');
+
+                return redirect()->route('register-course-member',$course->id);
+            }
+        }
+
+        Auth::guard('web')->user()->classes()->attach($data['class']);
+
+        $request->session()->flash('message', 'Đăng ký thành công');
+
+        return redirect()->route('register-course-member',$course->id);
     }
 }

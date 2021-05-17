@@ -68,9 +68,9 @@
         </div>
 
         @if(Session::has('message'))
-            <span>
+            <div>
                 <strong class="text-primary">{{ Session::get('message') }}</strong>
-            </span>
+            </div>
         @endif
 
         <button type="submit" class="btn__default btn--success" style="margin-top: 20px;">Đăng ký</button>

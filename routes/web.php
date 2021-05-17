@@ -18,9 +18,20 @@ Route::get('/','HomeController@index')->name('home');
 //auth
 Auth::routes();
 
-//register course
-Route::get('/registerCourse/{course}','CourseController@showFormRegisterCourse')->name('register-course');
-Route::post('/registerCourse/{course}','CourseController@create')->name('register-course.store');
+Route::middleware(['guest'])->group(function () {
+    //register course when guest
+    Route::get('/courses/register/{course}','CourseController@showFormRegisterCourse')->name('register-course');
+    Route::post('/courses/register/{course}','CourseController@create')->name('register-course.store');
+});
+
+Route::get('/courses/register/member/{course}','CourseController@showFormRegisterCourseForMember')->name('register-course-member');
+Route::post('/courses/register/member/{course}','CourseController@createForMember')->name('register-course-member.store');
+
+Route::get('/course/{course}','CourseController@showCourse')->name('course.show');
+
+// register when authen
+Route::get('/courses/register/member/{course}','CourseController@showFormRegisterCourseForMember')->name('register-course-member');
+Route::post('/courses/register/member/{course}','CourseController@createForMember')->name('register-course-member.store');
 
 Route::namespace('Student')->prefix('profile')->name('student.')->group(function(){
 

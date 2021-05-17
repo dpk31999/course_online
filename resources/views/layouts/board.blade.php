@@ -35,9 +35,8 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('student.home') }}">
-                <div class="sidebar-brand-text mx-3">
-                    User Dashboard</div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
+                <div class="sidebar-brand-text mx-3">Go to home</div>
             </a>
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->

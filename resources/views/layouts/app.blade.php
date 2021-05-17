@@ -31,6 +31,68 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .row {
+
+            margin: 40px 0 40px 40px;
+            font-size: 16px;
+        }
+
+        th {
+            padding: 0 10px;
+        }
+
+        .title--separate--md::after {
+            content: "";
+            position: absolute;
+            display: block;
+            border-bottom: 3px solid #008657;
+            width: 20rem;
+            bottom: -4px;
+            border-radius: 3px;
+        }
+
+        th:nth-child(2) {
+            color: rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .m-left {
+            margin-left: 50px !important;
+            margin-bottom: 10px;
+        }
+
+        .color-red {
+            color: #d33;
+        }
+
+        .note-item::marker {
+            color: #d33;
+        }
+
+        strong {
+            font-weight: 500;
+        }
+
+        .btn--red {
+            padding: 4px 20px;
+            color: #d33;
+            background-color: white;
+            text-decoration: none;
+            border: 1px solid #d33;
+            border-radius: 4px;
+        }
+
+        .btn--red:hover {
+            text-decoration: none;
+            background-color: #d33;
+            color: #fff;
+        }
+
+        .m-right {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -80,16 +142,20 @@
                     @else
                     <li class="navbar-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px" class="rounded-circle profile-photo mr-1" />
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px"
+                                class="rounded-circle profile-photo mr-1" />
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
 
                             <a style="cursor: pointer" class="dropdown-item" href="{{ route('student.home') }}">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
-                            <a style="cursor: pointer" class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();" data-toggle="modal" data-target="#logoutModal">
+                            <a style="cursor: pointer" class="dropdown-item"
+                                onclick="event.preventDefault(); document.querySelector('#logout-form').submit();"
+                                data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -136,8 +202,8 @@
 
         <!-- Container -->
 
-        <div class="container">        
-                @yield('content')
+        <div class="container">
+            @yield('content')
         </div>
 
         <!-- Footer -->
@@ -183,7 +249,9 @@
         <!-- End Footer -->
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
