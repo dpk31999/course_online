@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exam;
 use App\Course;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -49,6 +50,18 @@ class CourseController extends Controller
             'url_image' => $image_path,
             'price' => $data['price'],
             'description' => $data['description'],
+        ]);
+
+        Exam::create([
+            'course_id' => $course->id,
+            'name' => 'Kiểm tra giữa khóa',
+            'total_time' => '20',
+        ]);
+
+        Exam::create([
+            'course_id' => $course->id,
+            'name' => 'Kiểm tra cuối khóa',
+            'total_time' => '20',
         ]);
 
         return redirect()->route('admin.course.index');

@@ -18,7 +18,6 @@ class CreateExamsTable extends Migration
             $table->foreignId('course_id')->constrained('courses');
             $table->string('name');
             $table->integer('total_time');
-            $table->dateTime('start_time');
             $table->timestamps();
         });
     }

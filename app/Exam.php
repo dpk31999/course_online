@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model
 {
-    protected $fillable = ['course_id','name','total_time','start_time'];
+    protected $fillable = ['course_id','name','total_time'];
 
     /**
      * Get the course that owns the Exam
