@@ -16,7 +16,12 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('exam_id')->constrained('exams');
-            $table->string('name');
+            $table->mediumText('name');
+            $table->mediumText('answer_1');
+            $table->mediumText('answer_2');
+            $table->mediumText('answer_3');
+            $table->mediumText('answer_4');
+            $table->mediumText('answer_right');
             $table->string('level');
             $table->timestamps();
         });

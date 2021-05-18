@@ -30,24 +30,34 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::get('/courses/create','CourseController@create')->name('add');
                 Route::get('/courses/edit/{course}','CourseController@edit')->name('edit');
 
-                Route::post('/course','CourseController@store')->name('store');
-                Route::post('/course/edit/{course}','CourseController@update')->name('update');
-                Route::get('/course/delete/{course}','CourseController@destroy')->name('delete');
+                Route::post('/courses','CourseController@store')->name('store');
+                Route::post('/courses/edit/{course}','CourseController@update')->name('update');
+                Route::get('/courses/delete/{course}','CourseController@destroy')->name('delete');
             });
 
             Route::name('class.')->group(function(){
-                Route::get('/class','ClassController@index')->name('index');
-                Route::get('/class/create','ClassController@create')->name('add');
-                Route::get('/class/edit/{class}','ClassController@edit')->name('edit');
+                Route::get('/classes','ClassController@index')->name('index');
+                Route::get('/classes/create','ClassController@create')->name('add');
+                Route::get('/classes/edit/{class}','ClassController@edit')->name('edit');
 
-                Route::post('/class','ClassController@store')->name('store');
-                Route::post('/class/edit/{class}','ClassController@update')->name('update');
-                Route::get('/class/delete/{class}','ClassController@destroy')->name('delete');
+                Route::post('/classes','ClassController@store')->name('store');
+                Route::post('/classes/edit/{class}','ClassController@update')->name('update');
+                Route::get('/classes/delete/{class}','ClassController@destroy')->name('delete');
+            });
+
+            Route::name('question.')->group(function(){
+                Route::get('/questions','QuestionController@index')->name('index');
+                Route::get('/questions/create','QuestionController@create')->name('add');
+                Route::get('/questions/edit/{question}','QuestionController@edit')->name('edit');
+
+                Route::post('/questions','QuestionController@store')->name('store');
+                Route::post('/questions/edit/{question}','QuestionController@update')->name('update');
+                Route::get('/questions/delete/{question}','QuestionController@destroy')->name('delete');
             });
 
             Route::name('student.')->group(function(){
-                Route::get('/student','StudentController@index')->name('index.manager');
-                Route::get('/student/{user}','StudentController@show')->name('show');
+                Route::get('/students','StudentController@index')->name('index.manager');
+                Route::get('/students/{user}','StudentController@show')->name('show');
             });
         
         });

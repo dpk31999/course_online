@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = ['exam_id','name','level'];
+    protected $fillable = ['exam_id','name','answer_1','answer_2','answer_3','answer_4','answer_right','level'];
 
     /**
      * Get the exam that owns the Question
@@ -18,13 +18,4 @@ class Question extends Model
         return $this->belongsTo(Exam::class);
     }
 
-    /**
-     * Get all of the questionChoices for the Question
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function questionChoices()
-    {
-        return $this->hasMany(QuestionChoice::class);
-    }
 }
