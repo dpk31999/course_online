@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Exam;
+use App\Course;
+use App\Question;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
     public function index()
     {
+        $courses = Course::all();
 
-        return view('admin.questions.index');
+        return view('admin.questions.index',compact('courses'));
+    }
+
+    public function showExam(Exam $exam)
+    {
+        return view('admin.questions.show-exam',compact('exam'));
     }
 
     public function create()
@@ -37,7 +46,7 @@ class QuestionController extends Controller
         $exam = Exam::where([
             'course_id' => $data['course'],
             'name' => $data['exam']
-        ])->get();
+        ])->first();
 
         Question::create([
             'exam_id' => $exam->id,
@@ -55,7 +64,9 @@ class QuestionController extends Controller
 
     public function edit(Question $question)
     {
-        return view('admin.questions.edit');
+        $courses = Course::all();
+
+        return view('admin.questions.edit',compact('question','courses'));
     }
 
     public function update(Request $request,Question $question)
@@ -75,7 +86,7 @@ class QuestionController extends Controller
         $exam = Exam::where([
             'course_id' => $data['course'],
             'name' => $data['exam']
-        ])->get();
+        ])->first();
 
         $question->exam_id = $exam->id;
         $question->name = $data['name'];
@@ -85,14 +96,15 @@ class QuestionController extends Controller
         $question->answer_4 = $data['answer_4'];
         $question->answer_right = $data['answer_right'];
         $question->level = $data['level'];
+        $question->save();
 
-        return redirect()->route('admin.question.index');
+        return redirect()->route('admin.question.show.exam',$question->exam->id);
     }
 
     public function destroy(Question $question)
     {
         $question->delete();
 
-        return redirect()->route('admin.question.index');
+        return redirect()->route('admin.question.show.exam',$question->exam->id);
     }
 }

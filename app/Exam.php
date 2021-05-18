@@ -9,16 +9,6 @@ class Exam extends Model
     protected $fillable = ['course_id','name','total_time'];
 
     /**
-     * Get the course that owns the Exam
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
-
-    /**
      * The scores that belong to the Exam
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

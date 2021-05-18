@@ -8,7 +8,7 @@
         </a>
     </div>
     <hr class="sidebar-divider my-0" style="background-color: #4268D6;">
-    <form method="POST" action="{{ route('admin.question.update') }}" style="font-size: 16px;margin-top: 20px;">
+    <form method="POST" action="{{ route('admin.question.update',$question->id) }}" style="font-size: 16px;margin-top: 20px;">
         @csrf
         <div class="form-group">
             <label for="name">Câu hỏi: </label>
@@ -74,7 +74,7 @@
             <label for="course">Chọn khóa học: </label>
             <select name="course" id="course" style="margin: auto" class="form-control">
                 @foreach ($courses as $course)
-                    <option value="{{ $course->id }}" {{ $exam->course->id == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
+                    <option value="{{ $course->id }}" {{ $question->exam->course->id == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -83,6 +83,14 @@
             <select name="exam" id="exam" style="margin: auto" class="form-control">
                 <option value="Kiểm tra giữa khóa" {{ $question->exam->name == 'Kiểm tra giữa khóa' ? 'selected' : '' }}>Kiểm tra giữa khóa</option>
                 <option value="Kiểm tra cuối khóa" {{ $question->exam->name == 'Kiểm tra cuối khóa' ? 'selected' : '' }}>Kiểm tra cuối khóa</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="level">Loại câu hỏi: </label>
+            <select name="level" id="level" style="margin: auto" class="form-control">
+                <option value="Easy" {{ $question->level == 'Easy' ? 'selected' : '' }}>Dễ</option>
+                <option value="Medium" {{ $question->level == 'Medium' ? 'selected' : '' }}>Trung bình</option>
+                <option value="Hard" {{ $question->level == 'Hard' ? 'selected' : '' }}>Khó</option>
             </select>
         </div>
         <button type="submit" class="btn__default btn--add center__btn">Sửa</button>

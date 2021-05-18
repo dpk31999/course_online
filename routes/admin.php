@@ -47,6 +47,7 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
             Route::name('question.')->group(function(){
                 Route::get('/questions','QuestionController@index')->name('index');
+                Route::get('/questions/show/exam/{exam}','QuestionController@showExam')->name('show.exam');
                 Route::get('/questions/create','QuestionController@create')->name('add');
                 Route::get('/questions/edit/{question}','QuestionController@edit')->name('edit');
 

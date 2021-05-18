@@ -85,6 +85,14 @@
                 <option value="Kiểm tra cuối khóa">Kiểm tra cuối khóa</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="level">Loại câu hỏi: </label>
+            <select name="level" id="level" style="margin: auto" class="form-control">
+                <option value="Easy">Dễ</option>
+                <option value="Medium">Trung bình</option>
+                <option value="Hard">Khó</option>
+            </select>
+        </div>
         <button type="submit" class="btn__default btn--add center__btn">Thêm</button>
     </form>
 </div>

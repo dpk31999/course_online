@@ -9,38 +9,39 @@
         </a>
     </div>
     <div class="icon_sub">
-        <a href="{{ route('admin.class.add') }}">
+        <a href="{{ route('admin.question.add') }}">
             <i class="fas fa-plus-circle fa-lg fa-fw mr-2 color__admin "></i>
         </a>
 
     </div>
-    {{-- <div class="info-table-course">
+    @foreach ($courses as $course)
+    <div><p class="text-primary">{{$course->name}}</p></div>
+    <div class="info-table-course">
         <table class="table table-st">
             <thead class="color__theme">
                 <tr>
-                    <th>Khóa học</th>
-                    <th>Lịch học</th>
-                    <th>Thời gian bắt đầu</th>
-                    <th>Số lượng học viên</th>
+                    <th>Loại bài kiểm tra</th>
+                    <th>Số câu hỏi dễ</th>
+                    <th>Số câu hỏi trung bình</th>
+                    <th>Số câu hỏi khó</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($classes as $class)
+                @foreach ($course->exams as $exam)
                 <tr>
-                    <td>{{ $class->course->name }}</td>
-                    <td>{{ $class->schedule }}</td>
-                    <td>{{ $class->start }}</td>
-                    <td>{{ $class->users->count() }}</td>
+                    <td>{{ $exam->name }}</td>
+                    <td>{{ $exam->questions()->where('level','Easy')->get()->count() }}</td>
+                    <td>{{ $exam->questions()->where('level','Medium')->get()->count() }}</td>
+                    <td>{{ $exam->questions()->where('level','Hard')->get()->count() }}</td>
                     <td>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.class.edit', $class->id) }}">Chỉnh
-                            Sửa</a>
-                        <a type="submit" href="{{ route('admin.class.delete', $class->id) }}" class="btn btn-danger">Xóa</a>
+                        <a type="button" class="btn btn-warning" href="{{ route('admin.question.show.exam',$exam->id) }}">Xem chi tiết</a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    </div> --}}
+    </div>
+    @endforeach
 </div>
 @endsection
