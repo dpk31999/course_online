@@ -49,5 +49,10 @@ Route::namespace('Student')->prefix('profile')->name('student.')->group(function
         Route::get('/notification','NoteController@index')->name('index');
 
     });
+
+    Route::name('class.')->group(function(){
+        Route::get('/class','ClassController@index')->name('index');
+        Route::get('/class/{class}','ClassController@show')->name('show');
+    });
 });
 

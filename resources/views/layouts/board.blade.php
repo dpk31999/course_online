@@ -47,18 +47,9 @@
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo">
-                    <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Lớp Học</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="User_course_detail.html">Java</a>
-                        <a class="collapse-item" href="cards.html">C#</a>
-                        <a class="collapse-item" href="buttons.html">PHP</a>
-                        <a class="collapse-item" href="cards.html">Python</a>
-                    </div>
-                </div>
+                <a class="nav-link " href="{{ route('student.class.index') }}">
+                    <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
+                    <span>Lớp học</span></a>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">

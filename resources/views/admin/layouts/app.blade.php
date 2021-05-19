@@ -84,7 +84,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('admin.student.index.manager') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Quản lý student</span>
                 </a>
@@ -160,7 +160,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
-                                <a style="cursor: pointer" class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#admin-logout-form').submit();" data-toggle="modal" data-target="#logoutModal">
+                                <a style="cursor: pointer" class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#admin-logout-form').submit();">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

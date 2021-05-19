@@ -15,7 +15,7 @@ class Exam extends Model
      */
     public function scores()
     {
-        return $this->belongsToMany(User::class, 'user_id', 'exam_id')->withPivot('score');
+        return $this->belongsToMany(User::class,'scores', 'exam_id', 'user_id')->withPivot('score');
     }
 
     /**

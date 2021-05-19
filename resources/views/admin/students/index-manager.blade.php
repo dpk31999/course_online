@@ -8,9 +8,6 @@
             <h5 class="title">Xin Chào: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
-    <div>
-        <button type="button" class="btn btn-primary">Xem danh sách học viên</button>
-    </div>
     <div class="info-table-course">
         <table class="table table-st">
             <thead class="color__theme">
@@ -30,7 +27,7 @@
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->classes->count() }}</td>
                     <td>
-                        <a type="submit" class="btn btn-primary" href="">Chi tiết</a>
+                        <a type="submit" class="btn btn-primary" href="{{ route('admin.student.show',$user->id) }}">Chi tiết</a>
                     </td>
                 </tr>
                 @endforeach
