@@ -24,6 +24,7 @@
             <tr>
                 <td>{{ $exam->name }}</td>
                 @php
+                    $score = 0;
                     foreach($exam->scores as $score)
                     {
                         if($score->id == Auth::guard('web')->user()->id)
@@ -32,7 +33,7 @@
                         }
                     }
                 @endphp
-                <td>{{ $score ?? 'Chưa có' }}</td>
+                <td>{{ $score }}</td>
                 <td>0</td>
             </tr>
             @endforeach

@@ -108,5 +108,5 @@
     </div>
     <!-- Modal: modalCart -->
 
-</div>+
+</div>
 @endsection

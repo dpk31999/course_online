@@ -54,5 +54,12 @@ Route::namespace('Student')->prefix('profile')->name('student.')->group(function
         Route::get('/class','ClassController@index')->name('index');
         Route::get('/class/{class}','ClassController@show')->name('show');
     });
+
+    Route::name('exam.')->group(function(){
+        Route::get('/exam','ExamController@index')->name('index');
+        Route::get('/exam/{exam}','ExamController@quiz')->name('quiz');
+        Route::get('/exam/questions/{exam}','ExamController@getQuestion');
+        Route::post('/exam/{exam}','ExamController@checkQuiz')->name('quiz.check');
+    });
 });
 

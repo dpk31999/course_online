@@ -11,6 +11,8 @@
 
     <title>User - Dashboard</title>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -53,19 +55,9 @@
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities">
-                    <i class="fas fa-graduation-cap fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Bài Tập</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item">Bài tập 1</a>
-                        <a class="collapse-item">Bài tập 2</a>
-                        <a class="collapse-item">Bài tập 3</a>
-                        <a class="collapse-item">Bài tập 4</a>
-                    </div>
-                </div>
+                <a class="nav-link " href="{{ route('student.exam.index') }}">
+                    <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
+                    <span>Bài kiểm tra</span></a>
             </li>
 
             <!-- Divider -->
@@ -76,10 +68,10 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Tài Khoản</span></a>
                 </a>
-                <div id="account" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
+                <div id="account" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Đổi thông tin tài khoản</a>
+                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Đổi thông tin tài
+                            khoản</a>
                         <a href="{{ route('student.account.edit-password') }}" class="collapse-item">Đổi mật khẩu</a>
                     </div>
                 </div>
@@ -93,7 +85,8 @@
             </li>
             <li class="nav-item">
 
-                <a class="nav-link " style="cursor: pointer" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
+                <a class="nav-link " style="cursor: pointer"
+                    onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Đăng Xuất </span></a>
             </li>
@@ -137,16 +130,19 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle" src="{{ Auth::guard('web')->user()->url_avatar }}">
+                                <img class="img-profile rounded-circle"
+                                    src="{{ Auth::guard('web')->user()->url_avatar }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
 
-                                <a style="cursor: pointer" class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
+                                <a style="cursor: pointer" class="dropdown-item"
+                                    onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
-                                <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{route('logout')}}" method="POST"
+                                    style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -174,9 +170,49 @@
         <!-- End of Page Wrapper -->
 
         <!-- Bootstrap core JavaScript-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script type="text/javascript">
+            const questions = [];
+            $(document).ready(function(){
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $("body").on("click", ".answer" , function () {
+                    let question_Id = $(this).attr('name');
+                    let answer = $(this).val();
+                    var check = false;
+
+                    questions.forEach(question => {
+                        if (question.question_Id == question_Id) {
+                            question.answer = answer;
+                            check = true;
+                        }
+                    }) // =))))
+                    
+                    if (check == false) questions.push({'question_Id': question_Id, 'answer': answer})
+
+                })
+
+                // $('#formQuiz').on('submit', function(e){
+                //     e.preventDefault()
+                //     var exam_id = $('#btn-start').data('id')
+                //     $.ajax({
+                //     type: 'POST',
+                //     url: '/profile/exam/' + exam_id,
+                //     data: $(this).serialize(),
+                //     success: function(data){
+                //        console.log("ok");
+                //     }
+                // });
+
+            });
+
             imgInp.onchange = evt => {
                 const [file] = imgInp.files
                 if (file) {
@@ -184,7 +220,96 @@
                 }
                 document.getElementById('blah').classList.remove('d-none');
             }
+
+            function startQuiz()
+            {
+                
+                var countDownDate = new Date();
+                countDownDate.setMinutes(countDownDate.getMinutes() + parseInt(document.getElementById('minute').innerHTML));
+
+                var exam_id = $('#btn-start').data('id')
+
+                $.ajax({
+                    method: 'get',
+                    url: '/profile/exam/questions/' + exam_id,
+                    data: '',
+                    cache: false,
+                    success: function(data){
+                        Object.keys(data).forEach(key => {
+                            $('#questions').append('<div class="multiple-question-item">' +
+                                '<div class="question-box">' +
+                                    '<div class="multiple-question__text">' +
+                                        '<div class="row">' +
+                                            '<div class="col-sm-2">Câu '+ (parseInt(key) + parseInt(1)) +':</div>' +
+                                            '<div class="col-sm-10">'+ data[key].name +'</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="option-box"></div>' +
+                                '<div class="multiple-choice">' +
+                                    '<div class="container-choice">' +
+                                        '<div class="row m-right">' +
+                                            '<div class="col-sm-6 ">' +
+                                                '<label class="radio-inline ">' +
+                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_1 + ' class="check-box">' +
+                                                    '<span>A: '+ data[key].answer_1 +'</span></label>' +
+                                            '</div>' +
+                                            '<div class="col-sm-6 ">' +
+                                                '<label class="radio-inline ">' +
+                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_2 + ' class="check-box">' +
+                                                    '<span>B: '+ data[key].answer_2 +'</span></label>' +
+                                            '</div>' +
+                                        '</div>' +
+                                        '<div class="row m-right">' +
+                                            '<div class="col-sm-6 ">' +
+                                                '<label class="radio-inline ">' +
+                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_3 + ' class="check-box">' +
+                                                    '<span>C: '+ data[key].answer_3 +'</span></label>' +
+                                            '</div>' +
+                                            '<div class="col-sm-6 ">' +
+                                                '<label class="radio-inline ">' +
+                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_4 + ' class="check-box">' +
+                                                    '<span>D: '+ data[key].answer_4 +'</span></label>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>');
+                        })
+                        $('#questions').append('<button type="submit" id="btn_submit_exam" data-id="'+ exam_id +'" class="btn__default btn--success" style="margin-top: 20px;">Cập nhật</button>');
+                    }
+                
+                });
+
+                
+                // sao ngoai console thi lai dc, 
+                // hinh nhu m bo nham roi :))
+
+                // Update the count down every 1 second
+                setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+                    
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+                    
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                // Output the result in an element with id="time"
+                document.getElementById("time").innerHTML =minutes + "m " + seconds + "s ";
+                    
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    
+                    $('#btn_submit_exam').click()
+                }
+                }, 1000);
+            }
         </script>
 
 </body>
+
 </html>
