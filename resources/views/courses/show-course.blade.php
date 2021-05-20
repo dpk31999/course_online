@@ -10,13 +10,13 @@
         </div>
         
         <div class="title-heading ">
-            <a href="@auth {{ route('register-course-member',$course->id) }} @else {{ route('register-course',$course->id) }} @endauth" type="button" class="btn--red">
-                <i class="fas fa-book-open m-right"></i> Đăng ký ngay</a>
+            <a href="@auth {{ route('register-course-member',$course->id) }} @else {{ route('register-course',$course->id) }} @endauth" class="title-heading-a " >
+                <i class="fas fa-book-open m-right fa-sm fa-fw mr-2 text-gray-400"></i> Đăng ký ngay</a>
         </div>
 
         <div class="title-heading ">
-            <a href="#" type="button" class="btn--red">
-                <i class="fas fa-phone m-right"></i>
+            <a href="#" type="button" class="title-heading-a">
+                <i class="fas fa-phone m-right fa-sm fa-fw mr-2 text-gray-400"></i>
                 Gọi điện</a>
         </div>
 
@@ -27,10 +27,11 @@
             </a>
         </div>
     </div>
+ 
     <div class="notification-success text-align">
-        <div class="alert">
+        <div class="alert-noti">
             <h3>
-                <a href="#" class="text-align">
+                <a href="#" class="alert-title">
                     {{ $course->name }}
                 </a>
             </h3>
@@ -116,14 +117,6 @@
             </ul>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-11 " style="text-align: center;">
-            <a href="Register.html" type="button" class="btn--red">
-                <i class="fas fa-book-open m-right"></i> Đăng ký</a>
-            <a href="#" type="button" class="btn--red">
-                <i class="fas fa-phone m-right"></i>
-                Gọi điện</a>
-        </div>
-    </div>
+ 
 </div>
 @endsection

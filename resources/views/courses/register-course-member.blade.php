@@ -13,14 +13,14 @@
         <div class="form-group">
             <label for="course">Chọn khóa học:</label>
 
-            <select name="course" id="course" style="margin: auto" class="form-control">
+            <select name="course" id="course" style="margin: auto" class="form__input">
                 <option value="{{ $course->id }}" selected>{{ $course->name }}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="class">Chọn thời gian học và lịch học:</label>
 
-            <select name="class" id="class" style="margin: auto" class="form-control">
+            <select name="class" id="class" style="margin: auto" class="form__input">
                 @foreach ($course->classes as $class)
                     <option value="{{ $class->id }}">{{ $class->start }} {{ $class->schedule }}</option>
                 @endforeach

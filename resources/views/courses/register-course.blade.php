@@ -13,14 +13,14 @@
         <div class="form-group">
             <label for="course">Chọn khóa học:</label>
 
-            <select name="course" id="course" style="margin: auto" class="form-control">
+            <select name="course" id="course" style="margin: auto" class="form__input">
                 <option value="{{ $course->id }}" selected>{{ $course->name }}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="class">Chọn thời gian học và lịch học:</label>
 
-            <select name="class" id="class" style="margin: auto" class="form-control">
+            <select name="class" id="class" style="margin: auto" class="form__input">
                 @foreach ($course->classes as $class)
                     <option value="{{ $class->id }}">{{ $class->start }} {{ $class->schedule }}</option>
                 @endforeach
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <label for="fullname">Họ và tên:</label>
-            <input id="fullname" type="text" class="form-control @error('fullname') is-invalid @enderror" name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
+            <input id="fullname" type="text" class="form__input @error('fullname') is-invalid @enderror" name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
             
             @error('fullname')
                 <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
         </div>
         <div class="form-group">
             <label for="birthday">Ngày tháng năm sinh:</label>
-            <input id="birthday" type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
+            <input id="birthday" type="date" class="form__input @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
             
             @error('birthday')
                 <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            <input id="email" type="email" class="form__input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
             
             @error('email')
                 <span class="invalid-feedback" role="alert">

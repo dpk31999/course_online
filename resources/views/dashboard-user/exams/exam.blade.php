@@ -15,7 +15,6 @@
         <div class="row ">
             <div class="col-sm-6 btn-center mt-30">
                 <a href="{{ route('student.class.index') }}" class="btn btn-primary ">
-                    <i class="fas fa-backward"></i>
                     Quay lại
                 </a>
             </div>

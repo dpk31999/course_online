@@ -52,7 +52,7 @@
 
                 <div class="container-fluid">
                     @foreach ($note_privates as $note)
-                        <div class="row curs-public">
+                        <div class="row curs">
                             <div class="col-sm-10">
                                 <h3>{{ $note->title }}</h3>
                                 <p>{{ $note->content }}</p>
@@ -88,7 +88,7 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     @foreach ($note_generals as $note)
-                        <div class="row curs">
+                        <div class="row curs-public">
                             <div class="col-sm-10">
                                 <p>{{ $note->class->course->name }}</p>
                                 <h3>{{ $note->title }}</h3>

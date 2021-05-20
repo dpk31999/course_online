@@ -86,6 +86,7 @@ body {
     display: flex;
     flex: 1;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .navbar-item {
@@ -174,7 +175,7 @@ body {
 }
 
 .product-list {
-    margin: 1rem 2rem;
+    margin: 1rem 3.2rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -335,6 +336,12 @@ body {
     margin: 5rem auto 5rem auto;
     font-size: 1.6rem;
 }
+.form-container-admin {
+    max-width: 72rem;
+    background-color: #fff;
+    padding: 3.2rem;
+    margin: 5rem auto 5rem auto;
+}
 
 .container-title {
     display: inline-block;
@@ -382,27 +389,46 @@ body {
 }
 
 .btn__default {
-    text-decoration: none;
-    background-color: transparent;
-    border: 1px solid var(--black-color);
+    text-align: center;
+    text-decoration: none;  
     outline: none;
-    font-size: 16px;
-    padding: 8px 8px;
+    font-size: 14px;
+    padding: 8px 0;
     color: var(--white-color);
-    width: 9rem;
+    min-width: 7rem;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
-
-.btn--success {
+.btn-default{
+    min-width: 142px;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0 8px;
+    outline: none;
+    cursor: pointer;
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-default:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+.btn--success { 
     background-color: #008657;
 }
 
 .btn--warn {
+    opacity: 0.9;
     background-color: #ffb702;
 }
 
 .btn__default:hover {
+    text-decoration: none;
     color: var(--white-color);
     opacity: 0.8;
 }
@@ -411,6 +437,7 @@ body {
     margin-top: 30px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 #icon-submit {
@@ -444,11 +471,6 @@ body {
     align-items: center;
 }
 
-.form-control {
-    font-size: 1.8rem !important;
-}
-
-
 /* -----------Notification---------------- */
 
 .notification-success {
@@ -456,14 +478,29 @@ body {
     width: 111.4rem;
 }
 
-.alert {
+.alert-noti{
     display: flex;
+    justify-content: center;
     align-items: center;
     font-size: 1.6rem;
     height: 5rem;
-    margin-top: 25px;
+    border: 2px solid #008657;
+    border-radius: 2px;
 }
-
+.text-align{
+    justify-content: center;
+}
+.alert-title{
+    text-align: center;
+    color: #008657;
+    margin-top: 10px;
+}
+.alert-title:hover {
+    cursor: default;
+    text-decoration: none;
+    color: #008657;
+}
+/* ------------------------------ */
 :root {
     --white-color: #fff;
     --black-color: #000;
@@ -714,6 +751,7 @@ body {
 }
 
 .intro-course {
+    margin-top: 25px;
     font-size: 16px;
 }
 
@@ -722,7 +760,8 @@ body {
 }
 
 .img-paner-item {
-    width: auto;
+    min-width: 400px;
+    max-height: 300px ;
 }
 
 .title-intro {
@@ -827,10 +866,10 @@ table {
     position: absolute;
     width: 0;
     height: 0;
-    border-top: 10px solid transparent;
-    border-left: 20px solid #2f86eb;
-    border-bottom: 10px solid transparent;
-    right: -3.65rem;
+    border-top: 14px solid transparent;
+    border-left: 26px solid #2f86eb;
+    border-bottom: 14px solid transparent;
+    right: -3.5rem;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -859,7 +898,17 @@ table {
     background-color: #2f86eb;
     color: #fff !important;
 }
-
+.exam-title-color-class {
+    border: 3px solid #2f86eb;
+    border-radius: 3px;
+}
+.exam-title-class{
+    color: #2f86eb !important;
+}
+.exam-title-class:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
 .exam-title-body {
     font-size: 20px;
     color: #fff;
@@ -869,6 +918,25 @@ table {
 .exam-title-body:hover {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
+}
+.form__input{
+    width: 100%;
+    height: 40px;
+    margin-top: 16px;
+    padding: 0 12px;
+    font-size: 1.4rem;
+    border: 1px solid #bdbdbd;
+    border-radius: 2px;
+    outline: none;
+}
+.form__control{
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 1.4rem;
+    border: 1px solid #bdbdbd;
+    border-radius: 2px;
+    outline: none;
 }
 :root {
     --white-color: #fff;
@@ -1109,4 +1177,17 @@ table {
 .row {
     padding: 20px 0px;
     cursor: pointer;
+}
+.reset-container{
+    margin-top: 20px;
+}
+.course-heading-title{
+    
+    max-width: 918px;
+    margin: 40px 15px -10px 15px;
+}
+.star-quiz-btn{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }

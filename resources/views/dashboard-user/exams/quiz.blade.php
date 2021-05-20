@@ -28,6 +28,7 @@
             </tbody>
         </table>
     </div>
+    <div class="star-quiz-btn">
     <button class="btn btn-primary" id="btn-start" data-id="{{ $exam->id }}" onclick="startQuiz()">Start</button>
     <form id="formQuiz" method="POST" action="{{ route('student.exam.quiz.check',$exam->id) }}">
         @csrf
@@ -35,5 +36,7 @@
             
         </div>
     </form>
+    </div>
+   
 </div>
 @endsection

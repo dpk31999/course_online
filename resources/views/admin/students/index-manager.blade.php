@@ -8,7 +8,7 @@
             <h5 class="title">Xin Chào: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
-    <div>Học viên đang học</div>
+    <div>Học viên đang học 123</div>
     <div class="info-table-course">
         <table class="table table-st">
             <thead class="color__theme">

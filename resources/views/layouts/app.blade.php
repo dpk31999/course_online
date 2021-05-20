@@ -140,20 +140,18 @@
                         <a href="{{route('login')}}" class="navbar-item-link "> Đăng nhập</a>
                     </li>
                     @else
-                    <li class="navbar-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="navbar-item navbar-item--has-nav dropdown">
+                        <a class="nav-link">
                             <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px"
                                 class="rounded-circle profile-photo mr-1" />
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="userDropdown">
-
-                            <a style="cursor: pointer" class="dropdown-item" href="{{ route('student.home') }}">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <div class="dropdown-menu-user">
+                            <a style="cursor: pointer" class="dropdown-item-user" href="{{ route('student.home') }}">
+                                <i class="far fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                
                                 Profile
                             </a>
-                            <a style="cursor: pointer" class="dropdown-item"
+                            <a style="cursor: pointer" class="dropdown-item-user"
                                 onclick="event.preventDefault(); document.querySelector('#logout-form').submit();"
                                 data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -41,6 +41,7 @@
     display: flex;
     flex: 1;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .navbar-item {
@@ -338,22 +339,22 @@
 
 .btn__default {
     text-decoration: none;
-    background-color: transparent;
-    border: 1px solid var(--black-color);
+    
     outline: none;
     font-size: 16px;
     padding: 8px 8px;
     color: var(--white-color);
     width: 9rem;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
-.btn--success {
+.btn--success { 
     background-color: #008657;
 }
 
 .btn--warn {
+    opacity: 0.9;
     background-color: #ffb702;
 }
 
@@ -399,9 +400,7 @@
     align-items: center;
 }
 
-.form-control {
-    font-size: 1.8rem !important;
-}
+
 
 
 /* -----------Notification---------------- */
@@ -824,4 +823,14 @@ table {
 .exam-title-body:hover {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
+}
+.form__input{
+    width: 100%;
+    height: 40px;
+    margin-top: 16px;
+    padding: 0 12px;
+    font-size: 1.4rem;
+    border: 1px solid #bdbdbd;
+    border-radius: 2px;
+    outline: none;
 }
