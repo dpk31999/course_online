@@ -10,6 +10,18 @@
         <h5 class="title">Khóa học: {{ $class->course->name }}</h5>
     </a>
 </div>
+<div class="learn-btn">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-sm-6 btn-center mt-30">
+                <a href="{{ route('student.class.index') }}" class="btn btn-primary ">
+                    <i class="fas fa-backward"></i>
+                    Quay lại
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="info-table-course">
     <table class="table table-st">
         <thead style="background-color: #4268D6; color: #fff;">
@@ -23,20 +35,11 @@
             @foreach ($class->course->exams as $exam)
             <tr>
                 <td>{{ $exam->name }}</td>
-                @php
-                    foreach($exam->scores as $score)
-                    {
-                        if($score->id == Auth::guard('web')->user()->id)
-                        {
-                            $score = $score->pivot->score;
-                        }
-                    }
-                @endphp
-                <td>{{ $score ?? 'Chưa có' }}</td>
+                <td>{{$exam->scores->where('id',Auth::guard('web')->user()->id)->first()->pivot->score ?? 'Chưa có'}}</td>
                 <td>0</td>
             </tr>
             @endforeach
         </tbody>
     </table>
-</div>  
+</div>
 @endsection

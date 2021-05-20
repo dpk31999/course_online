@@ -68,6 +68,14 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.lesson.index') }}">
+                    <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý bài học</span>
+                </a>
+
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.notification.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
                     <span>Quản lý thông báo</span>

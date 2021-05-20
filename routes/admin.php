@@ -45,6 +45,17 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::get('/classes/delete/{class}','ClassController@destroy')->name('delete');
             });
 
+            Route::name('lesson.')->group(function(){
+                Route::get('/lessons','LessonController@index')->name('index');
+                Route::get('/lessons/create','LessonController@create')->name('add');
+                Route::get('/lessons/show/{lesson}','LessonController@show')->name('show');
+                Route::get('/lessons/edit/{lesson}','LessonController@edit')->name('edit');
+
+                Route::post('/lessons','LessonController@store')->name('store');
+                Route::post('/lessons/edit/{lesson}','LessonController@update')->name('update');
+                Route::get('/lessons/delete/{lesson}','LessonController@destroy')->name('delete');
+            });
+
             Route::name('question.')->group(function(){
                 Route::get('/questions','QuestionController@index')->name('index');
                 Route::get('/questions/show/exam/{exam}','QuestionController@showExam')->name('show.exam');

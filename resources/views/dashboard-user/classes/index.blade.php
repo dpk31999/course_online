@@ -24,6 +24,7 @@
                 <td>{{ $class->schedule }}</td>
                 <td>{{ $class->start }}</td>
                 <td>
+                    <a type="submit" class="btn btn-primary" href="{{ route('student.lesson.show',$class->course->id) }}">Xem Bài Học</a>
                     <a type="submit" class="btn btn-primary" href="{{ route('student.class.show',$class->id) }}">Xem Điểm</a>
                 </td>
             </tr>

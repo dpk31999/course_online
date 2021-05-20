@@ -797,6 +797,79 @@ body {
     font-size: 18px !important;
     cursor: pointer;
 }
+
+.exam-container {
+    margin: 20px 0;
+}
+
+table {
+    cursor: pointer;
+}
+
+.exam-item {
+    position: relative;
+}
+
+.exam-item--separate::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-left: 3px solid #2f86eb;
+    height: 6.5rem;
+    right: -3em;
+    top: 30%;
+    transform: translateY(-40%);
+}
+
+.icon--separate::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 20px solid #2f86eb;
+    border-bottom: 10px solid transparent;
+    right: -3.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn--exam {
+    color: #2f86eb;
+    text-decoration: none;
+    border: 1px solid #2f86eb;
+    padding: 10px 10px;
+}
+
+.btn--exam:hover {
+    text-decoration: none;
+    background-color: #2f86eb;
+    color: #ffF;
+    border: 1px solid #888;
+}
+
+.exam-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.exam-title-color {
+    background-color: #2f86eb;
+    color: #fff !important;
+}
+
+.exam-title-body {
+    font-size: 20px;
+    color: #fff;
+}
+
+.exam-title:hover,
+.exam-title-body:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
 :root {
     --white-color: #fff;
     --black-color: #000;

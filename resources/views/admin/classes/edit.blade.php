@@ -35,7 +35,7 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn__default btn--add center__btn">Thêm</button>
+        <button type="submit" class="btn__default btn--add center__btn">Sửa</button>
     </form>
 </div>
 @endsection

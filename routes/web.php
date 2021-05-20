@@ -56,6 +56,11 @@ Route::namespace('Student')->prefix('profile')->name('student.')->middleware('au
         Route::get('/class/{class}','ClassController@show')->name('show');
     });
 
+    Route::name('lesson.')->group(function(){
+        Route::get('/lesson/{course}','LessonController@show')->name('show');
+        Route::get('/lesson/show/{lesson}','LessonController@showLesson')->name('show-lesson');
+    });
+
     Route::name('exam.')->group(function(){
         Route::get('/exam','ExamController@index')->name('index');
         Route::get('/exam/{exam}','ExamController@quiz')->name('quiz');

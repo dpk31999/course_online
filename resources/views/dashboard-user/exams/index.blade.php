@@ -22,24 +22,12 @@
                 @foreach ($class->course->exams as $exam)
                 <tr>
                     <td>{{ $exam->name }}</td>  
-                    @php
-                        foreach($exam->scores as $score)
-                        {
-                            if($score->id == Auth::guard('web')->user()->id)
-                            {
-                                $score = $score->pivot->score;
-                            }
-                        }
-                    @endphp
-                    <td>{{ $score ?? 'Chưa có' }}</td>
+                    <td>{{$exam->scores->where('id',Auth::guard('web')->user()->id)->first()->pivot->score ?? 'Chưa có'}}</td>
                     <td>
-                        @if (!isset($score))
+                        @if (!isset($exam->scores->where('id',Auth::guard('web')->user()->id)->first()->pivot->score))
                         <a type="submit" class="btn btn-primary" href="{{ route('student.exam.quiz',$exam->id) }}">Làm bài thi</a>
                         @endif
                     </td>
-                    @php
-                        unset($score)
-                    @endphp
                 </tr>
                 @endforeach
             </tbody>
