@@ -33,8 +33,8 @@ class AccountController extends Controller
 
             // UPLOAD NEW IMAGE
             $image = $request->file('url_avatar');
-            $image_path = '/storage/uploads/image_course/' . time() . '.' . $image->getClientOriginalExtension();
-            $path = public_path('/storage/uploads/image_course');
+            $image_path = '/storage/uploads/image_avatar/' . time() . '.' . $image->getClientOriginalExtension();
+            $path = public_path('/storage/uploads/image_avatar');
 
             $image->move($path ,$image_path);
         }
