@@ -13,7 +13,7 @@
             <a href="{{ route('course.show',$course->id) }}"><img src="/storage/{{$course->url_image}}" alt="" class="product-img-style"></a>
             <div class="product-item-body">
                 <h3 class="product-heading">
-                    <a href="{{ route('register-course', $course->id) }}" class="product-heading-link">
+                    <a href="{{ route('course.show',$course->id) }}" class="product-heading-link">
                         {{ $course->name }}
                     </a>
                 </h3>

@@ -110,14 +110,6 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.student.index.reset.admin') }}">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý cấp lại mật khẩu học viên</span>
-                </a>
-
-            </li>
-
             @endif
 
             <!-- Divider -->

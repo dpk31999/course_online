@@ -111,14 +111,6 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::get('/manager/delete/{admin}','ManageController@destroy')->name('delete');
             });
 
-            Route::name('student.')->group(function(){
-
-                Route::get('/resetPassword','StudentController@indexResetPassword')->name('index.reset.admin');
-
-                Route::get('/resetPassword/allow/{user}','StudentController@resetAllow')->name('reset.allow');
-
-            });
-
         });
 
     });

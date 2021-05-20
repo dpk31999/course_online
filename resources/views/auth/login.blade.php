@@ -44,13 +44,12 @@
         <div class="form-button">
             <i class="fas fa-user-circle" id="icon-submit"></i>
             <button type="submit" class="btn btn--success">Đăng nhập</button>
-
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}">
-                    <button class="btn btn-success ml-3"> {{ __('Forgot Your Password?') }}</button>
-                </a>
-            @endif
         </div>
     </form>
+    @if (Route::has('password.request'))
+        <a href="{{ route('password.request') }}">
+            <button class="btn btn-success ml-3"> {{ __('Forgot Your Password?') }}</button>
+        </a>
+    @endif
 </div>
 @endsection
