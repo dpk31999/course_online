@@ -62,13 +62,12 @@
         </div>
         <div class="form-group">
             <label for="answer_right">Câu trả lời đúng: </label>
-            <input type="text" name="answer_right" class="form-control @error('answer_right') is-invalid @enderror" id="answer_right"  value="{{ $question->answer_right }}" required autocomplete="answer_right" required autofocus>
-
-            @error('answer_right')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <select name="answer_right" id="answer_right" style="margin: auto" class="form-control">
+                <option value="answer_1" {{ $question->answer_right == $question->answer_1 ? 'selected' : '' }}>Câu trả lời 1</option>
+                <option value="answer_2" {{ $question->answer_right == $question->answer_2 ? 'selected' : '' }}>Câu trả lời 2</option>
+                <option value="answer_3" {{ $question->answer_right == $question->answer_3 ? 'selected' : '' }}>Câu trả lời 3</option>
+                <option value="answer_4" {{ $question->answer_right == $question->answer_4 ? 'selected' : '' }}>Câu trả lời 4</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="course">Chọn khóa học: </label>

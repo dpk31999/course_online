@@ -10,6 +10,7 @@
     </div>
     <div>Tên: {{ $user->fullname }}</div>
     <div>Email: {{ $user->email }}</div>
+    <div>Số điện thoại: {{ $user->phone }}</div>
 
     <hr>
 

@@ -55,7 +55,7 @@ class QuestionController extends Controller
             'answer_2' => $data['answer_2'],
             'answer_3' => $data['answer_3'],
             'answer_4' => $data['answer_4'],
-            'answer_right' => $data['answer_right'],
+            'answer_right' => $data[$data['answer_right']],
             'level' => $data['level'],
         ]);
 
@@ -94,7 +94,7 @@ class QuestionController extends Controller
         $question->answer_2 = $data['answer_2'];
         $question->answer_3 = $data['answer_3'];
         $question->answer_4 = $data['answer_4'];
-        $question->answer_right = $data['answer_right'];
+        $question->answer_right = $data[$data['answer_right']];
         $question->level = $data['level'];
         $question->save();
 

@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\SendPasswordReset;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Mail\SendRequestRegisCourse;
 use Illuminate\Support\Facades\Hash;
@@ -17,19 +18,14 @@ class StudentController extends Controller
     {
         $users = User::where('status','Active')->get();
 
-        return view('admin.students.index-manager',compact('users'));
+        $userRegisters = User::where('status','Waiting')->get();
+
+        return view('admin.students.index-manager',compact('users','userRegisters'));
     }
 
     public function show(User $user)
     {
         return view('admin.students.show-detail',compact('user'));
-    }
-
-    public function indexRegister()
-    {
-        $users = User::where('status','Waiting')->get();
-
-        return view('admin.students.index-admin',compact('users'));
     }
 
     public function allow(User $user)
@@ -46,7 +42,7 @@ class StudentController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.student.index.admin');
+        return redirect()->route('admin.student.index.manager');
     }
 
     public function refuse(User $user)
@@ -59,7 +55,7 @@ class StudentController extends Controller
 
         $user->delete();
 
-        return redirect()->route('admin.student.index.admin');
+        return redirect()->route('admin.student.index.manager');
     }
 
     public function indexResetPassword()
@@ -81,7 +77,20 @@ class StudentController extends Controller
             'user' => $user,
         ]));
 
-        return redirect()->route('admin.student.index.admin');
+        return redirect()->route('admin.student.index.manager');
+    }
+
+    public function destroy(User $user)
+    {
+        DB::table('scores')->where('user_id', $user->id)->delete();
+
+        DB::table('class_user')->where('user_id', $user->id)->delete();
+
+        DB::table('note_privates')->where('user_id', $user->id)->delete();
+
+        $user->delete();
+
+        return redirect()->route('admin.student.index.manager');
     }
 
 }

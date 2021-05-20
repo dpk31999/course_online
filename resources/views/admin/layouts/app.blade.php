@@ -86,7 +86,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.student.index.manager') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý student</span>
+                    <span>Quản lý học viên</span>
                 </a>
 
             </li>
@@ -100,14 +100,6 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Quản lý manager</span>
                 </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.student.index.admin') }}">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý học viên đăng ký</span>
-                </a>
-
             </li>
 
             <li class="nav-item">

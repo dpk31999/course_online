@@ -30,12 +30,13 @@ Route::post('/courses/register/member/{course}','CourseController@createForMembe
 Route::get('/course/{course}','CourseController@showCourse')->name('course.show');
 
 // register when authen
-Route::get('/courses/register/member/{course}','CourseController@showFormRegisterCourseForMember')->name('register-course-member');
-Route::post('/courses/register/member/{course}','CourseController@createForMember')->name('register-course-member.store');
 
-Route::namespace('Student')->prefix('profile')->name('student.')->group(function(){
+Route::namespace('Student')->prefix('profile')->name('student.')->middleware('auth')->group(function(){
 
     Route::get('/','HomeController@index')->name('home');
+
+    Route::get('/courses/register/member/{course}','CourseController@showFormRegisterCourseForMember')->name('register-course-member');
+    Route::post('/courses/register/member/{course}','CourseController@createForMember')->name('register-course-member.store');
 
     Route::name('account.')->group(function(){
         Route::get('/account/profile','AccountController@showFormUpdateProfile')->name('edit-profile');

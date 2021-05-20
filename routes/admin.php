@@ -59,6 +59,10 @@ Route::namespace('Admin')->name('admin.')->group(function () {
             Route::name('student.')->group(function(){
                 Route::get('/students','StudentController@index')->name('index.manager');
                 Route::get('/students/{user}','StudentController@show')->name('show');
+                Route::get('/students/delete/{user}' , 'StudentController@destroy')->name('destroy');
+
+                Route::get('/studentRegister/allow/{user}','StudentController@allow')->name('allow');
+                Route::get('/studentRegister/refuse/{user}','StudentController@refuse')->name('refuse');
             });
 
             Route::namespace('Notification')->name('notification.')->group(function () {
@@ -97,10 +101,6 @@ Route::namespace('Admin')->name('admin.')->group(function () {
             });
 
             Route::name('student.')->group(function(){
-                Route::get('/studentRegister','StudentController@indexRegister')->name('index.admin');
-        
-                Route::get('/studentRegister/allow/{user}','StudentController@allow')->name('allow');
-                Route::get('/studentRegister/refuse/{user}','StudentController@refuse')->name('refuse');
 
                 Route::get('/resetPassword','StudentController@indexResetPassword')->name('index.reset.admin');
 
