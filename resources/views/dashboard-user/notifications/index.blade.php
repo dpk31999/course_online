@@ -90,6 +90,7 @@
                     @foreach ($note_generals as $note)
                         <div class="row curs">
                             <div class="col-sm-10">
+                                <p>{{ $note->class->course->name }}</p>
                                 <h3>{{ $note->title }}</h3>
                                 <p>{{ $note->content }}</p>
                             </div>

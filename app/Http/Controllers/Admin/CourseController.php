@@ -118,6 +118,11 @@ class CourseController extends Controller
             File::delete(public_path('storage/' . $course->url_image));
         }
 
+        foreach($course->exams as $exam)
+        {
+            $exam->delete();
+        }
+
         $course->delete();
 
         return redirect()->route('admin.course.index');
