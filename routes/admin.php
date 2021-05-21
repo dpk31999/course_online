@@ -76,6 +76,15 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::get('/studentRegister/refuse/{user}','StudentController@refuse')->name('refuse');
             });
 
+            Route::name('exam.')->group(function(){
+                Route::get('/exams','ExamController@index')->name('index');
+                Route::get('/exams/edit/{exam}','ExamController@edit')->name('edit');
+
+                Route::get('/exams/changeStatus/{exam}','ExamController@changeStatus')->name('update.status');
+
+                Route::post('/exams/edit/{exam}','ExamController@update')->name('update');
+            });
+
             Route::namespace('Notification')->name('notification.')->group(function () {
 
                 Route::get('/notifications','HomeController@index')->name('index');

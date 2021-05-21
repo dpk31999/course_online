@@ -84,6 +84,14 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.exam.index') }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Quản lý bài thi</span>
+                </a>
+
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.question.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Quản lý đề thi</span>

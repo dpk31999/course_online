@@ -24,7 +24,7 @@
                     <td>{{ $exam->name }}</td>  
                     <td>{{$exam->scores->where('id',Auth::guard('web')->user()->id)->first()->pivot->score ?? 'Chưa có'}}</td>
                     <td>
-                        @if (!isset($exam->scores->where('id',Auth::guard('web')->user()->id)->first()->pivot->score))
+                        @if (!isset($exam->scores->where('id',Auth::guard('web')->user()->id)->first()->pivot->score) && $exam->status == 'UnLock')
                         <a type="submit" class="btn btn-primary" href="{{ route('student.exam.quiz',$exam->id) }}">Làm bài thi</a>
                         @endif
                     </td>
