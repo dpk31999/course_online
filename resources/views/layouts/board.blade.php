@@ -276,7 +276,7 @@
                                 '</div>' +
                             '</div>');
                         })
-                        $('#questions').append('<button type="submit" id="btn_submit_exam" data-id="'+ exam_id +'" class="btn__default btn--success" style="margin-top: 20px;">Cập nhật</button>');
+                        $('#questions').append('<button type="submit" id="btn_submit_exam" data-id="'+ exam_id +'" class="btn__default btn--success" style="margin-top: 20px;">Submit</button>');
                     }
                 
                 });
