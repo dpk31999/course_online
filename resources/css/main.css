@@ -326,7 +326,6 @@
 .form-input {
     display: flex;
     align-items: center;
-    
 }
 
 #icon-custom {
@@ -439,6 +438,10 @@
 
 .center__btn {
     margin-left: 40%;
+}
+.center__btn-admin {
+    display: flex;
+    justify-content: center;
 }
 
 .color_warn {
@@ -965,4 +968,14 @@ table {
     display: flex;
     justify-content: center;
     margin-left: -15px;
+}
+.form-container-admin {
+
+    max-width: 800px;
+    background-color: #fff;
+    padding: 3.2rem;
+    margin: 5rem auto 5rem auto;
+}
+.container-admin{
+    
 }
