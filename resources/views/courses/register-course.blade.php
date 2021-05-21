@@ -58,7 +58,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Số điện thoại:</label>
-            <input id="phone" type="tel" placeholder="0123456789" pattern="0[0-9]{9}" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+            <input id="phone" type="tel" placeholder="0123456789" pattern="0[0-9]{9}" class="form__input @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
             
             @error('phone')
                 <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
             </div>
         @endif
 
-        <button type="submit" class="btn__default btn--success" style="margin-top: 20px;">Đăng ký</button>
+        <a type="submit" class="btn__default btn--success center__btn" style="margin-top: 20px;">Đăng ký</a>
     </form>
 </div>
 @endsection

@@ -104,7 +104,7 @@
 .job-section,
 .note-section {
     margin: 32px auto 0 auto;
-    min-width: 119.4rem;
+    min-width: 114.4rem;
     min-height: auto;
     background-color: var(--white-color);
 }
@@ -326,6 +326,7 @@
 .form-input {
     display: flex;
     align-items: center;
+    
 }
 
 #icon-custom {
@@ -339,12 +340,12 @@
 
 .btn__default {
     text-decoration: none;
-    
+    text-align: center;
     outline: none;
     font-size: 16px;
     padding: 8px 8px;
     color: var(--white-color);
-    width: 9rem;
+    min-width: 6rem;
     cursor: pointer;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
@@ -359,6 +360,7 @@
 }
 
 .btn__default:hover {
+    text-decoration: none;
     color: var(--white-color);
     opacity: 0.8;
 }
@@ -367,6 +369,7 @@
     margin-top: 30px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 #icon-submit {
@@ -668,6 +671,7 @@
 }
 
 .intro-course {
+    margin-top: 20px;
     font-size: 16px;
 }
 
@@ -676,7 +680,9 @@
 }
 
 .img-paner-item {
-    width: auto;
+    max-width: 400px;
+    max-height: 200px;
+    width: 100%;
 }
 
 .title-intro {
@@ -784,7 +790,7 @@ table {
     border-top: 10px solid transparent;
     border-left: 20px solid #2f86eb;
     border-bottom: 10px solid transparent;
-    right: -3.65rem;
+    right: -3.3rem;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -833,4 +839,130 @@ table {
     border: 1px solid #bdbdbd;
     border-radius: 2px;
     outline: none;
+}
+/* Fix UI */
+.dropdown-menu-user {
+    position: absolute;
+    top: 118%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 170px;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 0.9rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+  }
+  .dropdown-menu-user::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 0;
+    width:200px;
+    height: 20px;
+  }
+  .navbar-item--has-nav:hover .dropdown-menu-user{
+      display: block;
+  }
+  
+.dropdown-item-user {
+    display: block;
+    width: 100%;
+    padding:1.25rem 2.8rem 1.25rem 1.5rem;
+    clear: both;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    text-transform: none;
+}
+
+.dropdown-item-user:hover
+ {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #e9ecef;
+}
+
+.btn-default{
+    min-width: 142px;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0 8px;
+    outline: none;
+    cursor: pointer;
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-default:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+.alert-noti{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    height: 5rem;
+    border: 2px solid #008657;
+    border-radius: 2px;
+}
+.text-align{
+    justify-content: center;
+}
+.alert-title{
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    color: #008657;
+}
+.alert-title:hover {
+    cursor: default;
+    text-decoration: none;
+    color: #008657;
+}
+.form__label{
+    margin-top: 20px;
+}
+.form--group{
+    padding: 10px;
+}
+.exam-title-color-class {
+    border: 3px solid #2f86eb;
+    border-radius: 3px;
+}
+
+.course-heading-title{
+    max-width: 918px;
+    margin: 40px 15px -10px 15px;
+}
+.exam-title-class{
+    color: #2f86eb ;
+}
+.exam-title-class:hover {
+    opacity: 0.8;
+    text-decoration: none;
+
+}
+.product-btn{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    margin-left: -15px;
 }

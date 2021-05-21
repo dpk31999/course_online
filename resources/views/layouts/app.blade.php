@@ -141,14 +141,13 @@
                     </li>
                     @else
                     <li class="navbar-item navbar-item--has-nav dropdown">
-                        <a class="nav-link">
+                        <a class="nav-link ">
                             <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px"
                                 class="rounded-circle profile-photo mr-1" />
                         </a>
                         <div class="dropdown-menu-user">
                             <a style="cursor: pointer" class="dropdown-item-user" href="{{ route('student.home') }}">
-                                <i class="far fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                
+                                <i class="far fa-user fa-sm fa-fw mr-2 text-gray-400"></i>    
                                 Profile
                             </a>
                             <a style="cursor: pointer" class="dropdown-item-user"

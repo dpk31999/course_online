@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="product-section">
     <div class="section-heading title--separate">
         <i class="fab fa-vuejs"></i>
@@ -27,10 +28,12 @@
                         {{ $course->description }}
                     </div>
                 </div>
+                <div class="product-btn">
+                    <button class="btn-default btn--success">Đăng ký</button>
+                </div>
             </div>
         </div>
         @endforeach
-
     </div>
 </div>
 {{-- <div class="new-section">
@@ -43,7 +46,7 @@
             <img src="/images/spring.jpeg" alt="" class="product-img-style">
             <div class="product-item-body">
                 <h3 class="product-heading">Lập trình java và spring framework</h3>
-                <p class="product-price">6000000</p>
+               <p class="product-price">6000000</p>
                 <p class="product-desc">Khai giang: <span class="product-time">12-12-2021</span></p>
                 <p class="product-desc">Lich hoc: <span>T2-T4-T6</span></p>
             </div>
@@ -52,7 +55,6 @@
             <img src="/images/php.jpeg" alt="" class="product-img-style">
             <div class="product-item-body">
                 <h3 class="product-heading">lập trình php và laravel framework</h3>
-                <p class="product-price">6000000</p>
                 <p class="product-desc">Khai giang: <span class="product-time">12-12-2021</span></p>
                 <p class="product-desc">Lich hoc: <span>T2-T4-T6</span></p>
             </div>
@@ -61,7 +63,6 @@
             <img src="/images/python.jpg" alt="" class="product-img-style">
             <div class="product-item-body">
                 <h3 class="product-heading">Lập trình python và django</h3>
-                <p class="product-price">6000000</p>
                 <p class="product-desc">Khai giang: <span class="product-time">12-12-2021</span></p>
                 <p class="product-desc">Lich hoc: <span>T2-T4-T6</span></p>
             </div>
@@ -78,7 +79,6 @@
             <img src="/images/spring.jpeg" alt="" class="product-img-style">
             <div class="product-item-body">
                 <h3 class="product-heading">Lập trình java và spring framework</h3>
-                <p class="product-price">6000000</p>
                 <p class="product-desc">Khai giang: <span class="product-time">12-12-2021</span></p>
                 <p class="product-desc">Lich hoc: <span>T2-T4-T6</span></p>
             </div>
@@ -87,7 +87,6 @@
             <img src="/images/php.jpeg" alt="" class="product-img-style">
             <div class="product-item-body">
                 <h3 class="product-heading">lập trình php và laravel framework</h3>
-                <p class="product-price">6000000</p>
                 <p class="product-desc">Khai giang: <span class="product-time">12-12-2021</span></p>
                 <p class="product-desc">Lich hoc: <span>T2-T4-T6</span></p>
             </div>
@@ -96,7 +95,6 @@
             <img src="/images/python.jpg" alt="" class="product-img-style">
             <div class="product-item-body">
                 <h3 class="product-heading">Lập trình python và django</h3>
-                <p class="product-price">6000000</p>
                 <p class="product-desc">Khai giang: <span class="product-time">12-12-2021</span></p>
                 <p class="product-desc">Lich hoc: <span>T2-T4-T6</span></p>
             </div>
