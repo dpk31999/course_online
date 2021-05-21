@@ -15,6 +15,10 @@
             <select name="schedule" id="schedule" style="margin: auto" class="form-control">
                 <option value="Tối 2-4-6" {{ $class->schedule == 'Tối 2-4-6' ? 'selected' : '' }}>Tối 2-4-6</option>
                 <option value="Tối 3-5-7" {{ $class->schedule == 'Tối 3-5-7' ? 'selected' : '' }}>Tối 3-5-7</option>
+                <option value="Sáng 2-4-6" {{ $class->schedule == 'Sáng 2-4-6' ? 'selected' : '' }}>Sáng 2-4-6</option>
+                <option value="Sáng 3-5-7" {{ $class->schedule == 'Sáng 3-5-7' ? 'selected' : '' }}>Sáng 3-5-7</option>
+                <option value="Chiều 2-4-6" {{ $class->schedule == 'Chiều 2-4-6' ? 'selected' : '' }}>Chiều 2-4-6</option>
+                <option value="Chiều 3-5-7" {{ $class->schedule == 'Chiều 3-5-7' ? 'selected' : '' }}>Chiều 3-5-7</option>
             </select>
         </div>
         <div class="form-group">

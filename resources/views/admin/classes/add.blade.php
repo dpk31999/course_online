@@ -15,6 +15,10 @@
             <select name="schedule" id="schedule" style="margin: auto" class="form-control">
                 <option value="Tối 2-4-6">Tối 2-4-6</option>
                 <option value="Tối 3-5-7" selected="selected">Tối 3-5-7</option>
+                <option value="Sáng 2-4-6">Sáng 2-4-6</option>
+                <option value="Sáng 3-5-7">Sáng 3-5-7</option>
+                <option value="Chiều 2-4-6">Chiều 2-4-6</option>
+                <option value="Chiều 3-5-7">Chiều 3-5-7</option>
             </select>
         </div>
         <div class="form-group">
