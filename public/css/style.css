@@ -1086,6 +1086,11 @@ table {
 .question-title--tryhard{
     border-bottom: 4px solid #fa8577;
 }
+.star-quiz-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
 
 
 :root {

@@ -39,7 +39,7 @@
             @endif
 
 
-            <a type="submit" class="btn__default bg-gradient-primary center__btn" style="margin-top: 20px;">Cập nhật</a>
+            <button type="submit" class="btn__default bg-gradient-primary center__btn" style="margin-top: 20px;">Cập nhật</button>
         </form>
       </div>
 </div>

@@ -33,7 +33,7 @@
             </div>
         @endif
 
-        <a type="submit" class="btn__default btn--success center__btn" style="margin-top: 20px;">Đăng ký</a>
+        <button type="submit" class="btn-default btn--success center__btn" style="margin-top: 20px;">Đăng ký</button>
     </form>
 </div>
 @endsection

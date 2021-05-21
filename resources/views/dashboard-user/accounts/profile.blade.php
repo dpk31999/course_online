@@ -60,8 +60,8 @@
             </span>
         @endif
 
-        <a type="submit" class="btn__default btn--warn center__btn" style="margin-top: 20px;">Chỉnh
-            sửa</a>
+        <button type="submit" class="btn__default btn--warn center__btn" style="margin-top: 20px;">Chỉnh
+            sửa</button>
     </form>
 </div>
 

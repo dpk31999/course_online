@@ -81,7 +81,7 @@
                                     <td>{{ $note->user->email }}</td>
                                     <td>{{ $note->title }}</td>
                                     <td>
-                                        <a type="button" class="btn btn-warning" href="{{ route('admin.notification.private.edit', $note->id) }}">Chỉnh
+                                        <a type="submit" class="btn btn-warning" href="{{ route('admin.notification.private.edit', $note->id) }}">Chỉnh
                                             Sửa</a>
                                         <a type="submit" href="{{ route('admin.notification.private.delete', $note->id) }}" class="btn btn-danger">Xóa</a>
                                     </td>
