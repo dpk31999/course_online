@@ -20,7 +20,7 @@ class ExamController extends Controller
     {
         foreach(Auth::guard('web')->user()->classes as $class)
         {
-            if($class->course == $exam->course)
+            if($class->course == $exam->course && $exam->status == 'UnLock')
             {
                 return view('dashboard-user.exams.quiz',compact('exam'));
             }

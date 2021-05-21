@@ -286,7 +286,7 @@
                 // hinh nhu m bo nham roi :))
 
                 // Update the count down every 1 second
-                setInterval(function() {
+                x = setInterval(function() {
 
                 // Get today's date and time
                 var now = new Date().getTime();
