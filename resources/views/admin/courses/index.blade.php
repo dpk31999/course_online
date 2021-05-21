@@ -32,9 +32,9 @@
                     <td>{{ $course->admin->fullname }}</td>
                     <td>{{ $course->total_time }}</td>
                     <td>{{ $course->price }}</td>
-                    <td><img width="150px" height="150px" src="/storage/{{ $course->url_image }}" alt=""></td>
+                    <td><img width="120px" height="120px" src="/storage/{{ $course->url_image }}" alt=""></td>
                     <td>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.course.edit', $course->id) }}">chỉnh
+                        <a type="button" class="btn btn-warning" href="{{ route('admin.course.edit', $course->id) }}">Chỉnh
                             Sửa</a>
                         <a type="submit" class="btn btn-danger" href="{{ route('admin.course.delete', $course->id) }}">Xóa</a>
                     </td>

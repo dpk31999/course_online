@@ -8,8 +8,15 @@
             <h5 class="title">Xin Chào: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
-    <div>Học viên đang học 123</div>
-    <div class="info-table-course">
+    <div class="course-heading-title">
+        <div class="row exam-title-color-class">
+            <div class="container">
+                <div class="col-sm-12 " style="text-align: center" ;>
+                    <a href="" class="exam-title-class">
+                        <i class="fab fa-vuejs"></i>
+                        Học viên đang học</a>
+                </div>
+                <div class="info-table-course">
         <table class="table table-st">
             <thead class="color__theme">
                 <tr>
@@ -36,8 +43,18 @@
             </tbody>
         </table>
     </div>
-
-    <div>Học viên đăng ký</div>
+            </div>
+        </div>  
+    </div>
+    
+    <div class="course-heading-title">
+        <div class="row exam-title-color-class">
+            <div class="container">
+                <div class="col-sm-12 " style="text-align: center" ;>
+                    <a href="" class="exam-title-class">
+                        <i class="fab fa-vuejs"></i>
+                        Học viên đăng ký</a>
+                </div>
     <div class="info-table-course">
         <table class="table table-st">
             <thead class="color__theme">
@@ -63,5 +80,9 @@
             </tbody>
         </table>
     </div>
+            </div>
+        </div>  
+    </div>
+    
 </div>
 @endsection

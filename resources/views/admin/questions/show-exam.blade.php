@@ -11,42 +11,50 @@
     <div>{{ $exam->name }} | {{ $exam->course->name }}</div>
 
     <hr>
-
-    <span>Mức độ dễ</span>
-    @foreach ($exam->questions()->where('level','Easy')->get() as $question)
-        <div class="row">
-            <div class="col-8">
-                Câu hỏi: {{ $question->name }}
-            </div>
-            <div class="col-4">
-                <a href="{{ route('admin.question.edit',$question->id) }}"><button class="btn btn-primary">Sửa</button></a>
-                <a href="{{ route('admin.question.delete',$question->id) }}"><button class="btn btn-danger">Xóa</button></a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-8">
+    <div class="question-list">
+        <div class="question-item--easy">
+            <span class="question-title--easy">Mức độ dễ</span>
+            
+            @foreach ($exam->questions()->where('level','Easy')->get() as $question)
                 <div class="row">
-                    <div class="col-6">A: {{ $question->answer_1 }}</div>
-                    <div class="col-6">B: {{ $question->answer_2 }}</div>
+                    <div class="col-sm-8">
+                        <div class="question-text">
+                       <strong> Câu hỏi:</strong> {{ $question->name }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="{{ route('admin.question.edit',$question->id) }}"><button class="btn btn-primary">Sửa</button></a>
+                        <a href="{{ route('admin.question.delete',$question->id) }}"><button class="btn btn-danger">Xóa</button></a>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">C: {{ $question->answer_3 }}</div>
-                    <div class="col-6">D: {{ $question->answer_4 }}</div>
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-6">A: {{ $question->answer_1 }}</div>
+                            <div class="col-6">B: {{ $question->answer_2 }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">C: {{ $question->answer_3 }}</div>
+                            <div class="col-6">D: {{ $question->answer_4 }}</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <strong>Câu trả lời đúng:</strong>  {{ $question->answer_right }}
+                    </div>
                 </div>
-            </div>
-            <div class="col-4">
-                Câu trả lời đúng: {{ $question->answer_right }}
-            </div>
+                <hr class="sidebar-divider my-0 easy">
+            @endforeach
         </div>
-    @endforeach
+    </div>
 
     <hr>
-
-    <span>Mức độ trung bình</span>
+    <div class="question-list">
+        <div class="question-item--hard">
+    <span class="question-title--hard">Mức độ trung bình</span>
     @foreach ($exam->questions()->where('level','Medium')->get() as $question)
         <div class="row">
             <div class="col-8">
-                Câu hỏi: {{ $question->name }}
+               <strong> Câu hỏi:</strong> {{ $question->name }}
             </div>
             <div class="col-4">
                 <a href="{{ route('admin.question.edit',$question->id) }}"><button class="btn btn-primary">Sửa</button></a>
@@ -65,18 +73,21 @@
                 </div>
             </div>
             <div class="col-4">
-                Câu trả lời đúng: {{ $question->answer_right }}
+                <strong>Câu trả lời đúng:</strong>  {{ $question->answer_right }}
             </div>
         </div>
+        <hr class="sidebar-divider my-0 hard">
     @endforeach
-
+        </div>
+    </div>
     <hr>
-
-    <span>Mức độ khó</span>
+    <div class="question-list">
+        <div class="question-item--tryhard">
+    <span class="question-title--tryhard">Mức độ khó</span>
     @foreach ($exam->questions()->where('level','Hard')->get() as $question)
         <div class="row">
             <div class="col-8">
-                Câu hỏi: {{ $question->name }}
+               <strong> Câu hỏi:</strong> {{ $question->name }}
             </div>
             <div class="col-4">
                 <a href="{{ route('admin.question.edit',$question->id) }}"><button class="btn btn-primary">Sửa</button></a>
@@ -95,9 +106,12 @@
                 </div>
             </div>
             <div class="col-4">
-                Câu trả lời đúng: {{ $question->answer_right }}
+                <strong>Câu trả lời đúng:</strong>  {{ $question->answer_right }}
             </div>
         </div>
+        <hr class="sidebar-divider my-0 tryhard">
     @endforeach
+        </div>
+    </div>
 </div>
 @endsection

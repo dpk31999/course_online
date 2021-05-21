@@ -15,7 +15,17 @@
 
     </div>
     @foreach ($courses as $course)
-    <div><p class="text-primary">{{$course->name}}</p></div>
+    <div class="course-heading-title">
+        <div class="row exam-title-color-class">
+            <div class="container">
+                <div class="col-sm-12 " style="text-align: center" ;>
+                    <a href="" class="exam-title-class">
+                        <i class="fab fa-vuejs"></i>
+                        {{$course->name}}</a>
+                </div>
+            </div>
+        </div>  
+    </div>
     <div class="info-table-course">
         <table class="table table-st">
             <thead class="color__theme">

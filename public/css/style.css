@@ -995,6 +995,10 @@ table {
     border: 3px solid #2f86eb;
     border-radius: 3px;
 }
+.exam-title-color-notify {
+    border: 3px solid #47d764;
+    border-radius: 3px;
+}
 
 .course-heading-title{
     max-width: 918px;
@@ -1002,6 +1006,14 @@ table {
 }
 .exam-title-class{
     color: #2f86eb ;
+}
+.title-color-notify{
+    color: #47d764;
+}
+.title-color-notify:hover{
+    color: #47d764;
+    opacity: 0.8;
+    text-decoration: none;
 }
 .exam-title-class:hover {
     opacity: 0.8;
@@ -1024,6 +1036,57 @@ table {
 .container-admin{
     
 }
+.info-table-course-private {
+    margin-top: 30px;
+    border: 1px solid #47d764;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.color__theme-private
+ {
+    background-image: linear-gradient(180deg, #47d764 10%, #48f006 100%);
+    color: #fff;
+}
+.justify-between{
+    display: flex;
+    justify-content: space-between;
+}
+.question-list{
+   
+}
+.question-item--easy{
+    border: 4px solid #47d764;
+    padding: 20px; 
+}
+.easy{
+    background-color: #47d764;
+}
+.hard {
+    background-color: #4e73df;
+}
+.tryhard{
+    background-color: #fa8577;
+}
+.question-item--hard{
+    border: 4px solid #4e73df;
+    padding: 20px; 
+}
+.question-item--tryhard{
+    border: 4px solid #fa8577;
+    padding: 20px; 
+}
+
+.question-title--easy{
+    border-bottom: 4px solid #47d764;
+}
+.question-title--hard{
+    border-bottom: 4px solid #4e73df;
+}
+.question-title--tryhard{
+    border-bottom: 4px solid #fa8577;
+}
+
 
 :root {
     --white-color: #fff;
