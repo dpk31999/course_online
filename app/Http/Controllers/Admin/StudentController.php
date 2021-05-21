@@ -48,7 +48,8 @@ class StudentController extends Controller
     public function refuse(User $user)
     {
         Mail::to($user->email)->send(new SendRequestRegisCourse([
-            'status' => 'refuse'
+            'status' => 'refuse',
+            'user' => $user
         ]));
 
         $user->classes()->detach($user->classes->first()->id);
