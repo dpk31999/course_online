@@ -281,26 +281,26 @@
                             $('#questions').append('<button type="submit" id="btn_submit_exam" data-id="'+ exam_id +'" class="btn__default btn--success" style="margin-top: 20px;">Submit</button>');
 
                             // Update the count down every 1 second
-                            x = setInterval(function() {
+                        x = setInterval(function() {
 
-                                // Get today's date and time
-                                var now = new Date().getTime();
-                                    
-                                // Find the distance between now and the count down date
-                                var distance = countDownDate - now;
-                                    
-                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                                    
-                                // Output the result in an element with id="time"
-                                document.getElementById("time").innerHTML =minutes + "m " + seconds + "s ";
-                                    
-                                // If the count down is over, write some text 
-                                if (distance < 0) {
-                                    clearInterval(x);
-                                    
-                                    $('#btn_submit_exam').click()
-                                }
+                            // Get today's date and time
+                            var now = new Date().getTime();
+                                
+                            // Find the distance between now and the count down date
+                            var distance = countDownDate - now;
+                                
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                
+                            // Output the result in an element with id="time"
+                            document.getElementById("time").innerHTML =minutes + "m " + seconds + "s ";
+                                
+                            // If the count down is over, write some text 
+                            if (distance < 0) {
+                                clearInterval(x);
+                                
+                                $('#btn_submit_exam').click()
+                            }
                             }, 1000);
                         }
                     }

@@ -23,6 +23,14 @@ Route::namespace('Admin')->name('admin.')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
 
+        Route::name('account.')->group(function(){
+            Route::get('/account/profile','AccountController@showFormUpdateProfile')->name('edit-profile');
+            Route::post('/account/profile','AccountController@updateProfile')->name('update-profile');
+        
+            Route::get('/account/password','AccountController@showFormUpdatePassword')->name('edit-password');
+            Route::post('/account/password','AccountController@updatePassword')->name('update-password');
+        });
+
         Route::middleware('isManager')->group(function () {
 
             Route::name('course.')->group(function(){

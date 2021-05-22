@@ -41,7 +41,7 @@
             </a>
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
-            @auth
+            @auth('admin')
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('admin.home') }}" style="text-align: center ">
 
@@ -124,6 +124,20 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#account">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Tài Khoản</span></a>
+                </a>
+                <div id="account" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a href="{{ route('admin.account.edit-profile') }}" class="collapse-item">Đổi thông tin tài
+                            khoản</a>
+                        <a href="{{ route('admin.account.edit-password') }}" class="collapse-item">Đổi mật khẩu</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
 
                 <a class="nav-link " style="cursor: pointer" onclick="event.preventDefault(); document.querySelector('#admin-logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -151,7 +165,7 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        @auth
+                        @auth('admin')
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
