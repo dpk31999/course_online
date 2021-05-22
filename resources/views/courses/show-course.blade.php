@@ -23,7 +23,7 @@
         <div class="title-heading ">
             <a href="" class="title-heading-a">
                 <i class="fab fa-vuejs"></i>
-                Học Phí : {{ $course->price }}
+                Học Phí : {{ number_format($course->price, 2) }} $
             </a>
         </div>
     </div>
@@ -42,7 +42,6 @@
             <p>{{ $course->description }}</p>
             <div class="img-paner">
                 <img src="/storage/{{ $course->url_image }}" alt="" class="img-paner-item">
-                <p class="text-align">Java: Ngôn ngữ lập trình phổ biến nhất hiện nay</p>
             </div>
             <div class="title-intro">
                 <div class="intro-item">

@@ -30,8 +30,14 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <p>Mô tả: {{ $lesson->description }}</p>
+    <div class="notification-success text-align">
+        <div class="alert-noti">
+            <h3>
+                <a class="alert-title">
+                    {{ $lesson->description }}
+                </a>
+            </h3>
+        </div>
     </div>
     <div class="info-table-course">
         {!! $lesson->link_video !!}

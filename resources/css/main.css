@@ -349,7 +349,7 @@
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
-.btn--success { 
+.btn--success {
     background-color: #008657;
 }
 
@@ -403,13 +403,10 @@
 }
 
 
-
-
 /* -----------Notification---------------- */
 
 .notification-success {
     margin: 32px auto 0 auto;
-    width: 111.4rem;
 }
 
 .alert {
@@ -439,6 +436,7 @@
 .center__btn {
     margin-left: 40%;
 }
+
 .center__btn-admin {
     display: flex;
     justify-content: center;
@@ -833,7 +831,8 @@ table {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
 }
-.form__input{
+
+.form__input {
     width: 100%;
     height: 40px;
     margin-top: 16px;
@@ -843,7 +842,10 @@ table {
     border-radius: 2px;
     outline: none;
 }
+
+
 /* Fix UI */
+
 .dropdown-menu-user {
     position: absolute;
     top: 118%;
@@ -862,23 +864,25 @@ table {
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
-  }
-  .dropdown-menu-user::before {
+}
+
+.dropdown-menu-user::before {
     content: "";
     position: absolute;
     top: -14px;
     left: 0;
-    width:200px;
+    width: 200px;
     height: 20px;
-  }
-  .navbar-item--has-nav:hover .dropdown-menu-user{
-      display: block;
-  }
-  
+}
+
+.navbar-item--has-nav:hover .dropdown-menu-user {
+    display: block;
+}
+
 .dropdown-item-user {
     display: block;
     width: 100%;
-    padding:1.25rem 2.8rem 1.25rem 1.5rem;
+    padding: 1.25rem 2.8rem 1.25rem 1.5rem;
     clear: both;
     font-size: 14px;
     text-decoration: none;
@@ -891,14 +895,13 @@ table {
     text-transform: none;
 }
 
-.dropdown-item-user:hover
- {
-  color: #16181b;
-  text-decoration: none;
-  background-color: #e9ecef;
+.dropdown-item-user:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #e9ecef;
 }
 
-.btn-default{
+.btn-default {
     min-width: 142px;
     height: 34px;
     text-decoration: none;
@@ -913,11 +916,13 @@ table {
     justify-content: center;
     align-items: center;
 }
+
 .btn-default:hover {
     text-decoration: none;
     opacity: 0.8;
 }
-.alert-noti{
+
+.alert-noti {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -926,71 +931,82 @@ table {
     border: 2px solid #008657;
     border-radius: 2px;
 }
-.text-align{
+
+.text-align {
     justify-content: center;
 }
-.alert-title{
+
+.alert-title {
     display: block;
     text-align: center;
     padding-top: 10px;
     color: #008657;
 }
+
 .alert-title:hover {
     cursor: default;
     text-decoration: none;
     color: #008657;
 }
-.form__label{
+
+.form__label {
     margin-top: 20px;
 }
-.form--group{
+
+.form--group {
     padding: 10px;
 }
+
 .exam-title-color-class {
     border: 3px solid #2f86eb;
     border-radius: 3px;
 }
+
 .exam-title-color-notify {
     border: 3px solid #47d764;
     border-radius: 3px;
 }
 
-.course-heading-title{
+.course-heading-title {
     max-width: 918px;
     margin: 40px 15px -10px 15px;
 }
-.exam-title-class{
-    color: #2f86eb ;
+
+.exam-title-class {
+    color: #2f86eb;
 }
-.title-color-notify{
+
+.title-color-notify {
     color: #47d764;
 }
-.title-color-notify:hover{
+
+.title-color-notify:hover {
     color: #47d764;
     opacity: 0.8;
     text-decoration: none;
 }
+
 .exam-title-class:hover {
     opacity: 0.8;
     text-decoration: none;
-
 }
-.product-btn{
+
+.product-btn {
     padding: 10px;
     display: flex;
     justify-content: center;
     margin-left: -15px;
 }
-.form-container-admin {
 
+.form-container-admin {
     max-width: 800px;
     background-color: #fff;
     padding: 3.2rem;
     margin: 5rem auto 5rem auto;
 }
-.container-admin{
-    
-}
+
+.container-admin {}
+
 .info-table-course-private {
     margin-top: 30px;
     border: 1px solid #47d764;
@@ -998,52 +1014,60 @@ table {
     flex-direction: column;
     justify-content: space-between;
 }
-.color__theme-private
- {
+
+.color__theme-private {
     background-image: linear-gradient(180deg, #47d764 10%, #48f006 100%);
     color: #fff;
 }
-.justify-between{
+
+.justify-between {
     display: flex;
     justify-content: space-between;
 }
-.question-list{
-   
-}
-.question-item--easy{
+
+.question-list {}
+
+.question-item--easy {
     border: 4px solid #47d764;
-    padding: 20px; 
+    padding: 20px;
 }
-.easy{
+
+.easy {
     background-color: #47d764;
 }
+
 .hard {
     background-color: #4e73df;
 }
-.tryhard{
+
+.tryhard {
     background-color: #fa8577;
 }
-.question-item--hard{
+
+.question-item--hard {
     border: 4px solid #4e73df;
-    padding: 20px; 
-}
-.question-item--tryhard{
-    border: 4px solid #fa8577;
-    padding: 20px; 
+    padding: 20px;
 }
 
-.question-title--easy{
+.question-item--tryhard {
+    border: 4px solid #fa8577;
+    padding: 20px;
+}
+
+.question-title--easy {
     border-bottom: 4px solid #47d764;
 }
-.question-title--hard{
+
+.question-title--hard {
     border-bottom: 4px solid #4e73df;
 }
-.question-title--tryhard{
+
+.question-title--tryhard {
     border-bottom: 4px solid #fa8577;
 }
+
 .star-quiz-btn {
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
-
