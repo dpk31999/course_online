@@ -13,6 +13,16 @@
         <form method="POST" action="{{ route('student.account.update-password') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label for="old_password">Mật khẩu cũ</label>
+                <input id="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password" required autocomplete="old_password" autofocus>
+                
+                @error('old_password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="password">Mật khẩu mới</label>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password" autofocus>
                 
@@ -35,6 +45,12 @@
             @if(Session::has('message'))
                 <span>
                     <strong class="text-primary">{{ Session::get('message') }}</strong>
+                </span>
+            @endif
+
+            @if(Session::has('error'))
+                <span>
+                    <strong class="text-danger">{{ Session::get('error') }}</strong>
                 </span>
             @endif
 
