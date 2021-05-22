@@ -31,7 +31,7 @@
                     <td>{{ $course->name }}</td>
                     <td>{{ $course->admin->fullname }}</td>
                     <td>{{ $course->total_time }}</td>
-                    <td>{{ $course->price }}</td>
+                    <td>{{ number_format($course->price, 2) }} $</td>
                     <td><img width="120px" height="120px" src="/storage/{{ $course->url_image }}" alt=""></td>
                     <td>
                         <a type="button" class="btn btn-warning" href="{{ route('admin.course.edit', $course->id) }}">Chỉnh

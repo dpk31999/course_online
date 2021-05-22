@@ -51,7 +51,7 @@
         
         <div class="form-group">
             <label for="price">Giá:</label>
-            <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price"  value="{{ $course->price }}" required autocomplete="price" autofocus required>
+            <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price"  value="{{ number_format($course->price, 2) }}" required autocomplete="price" autofocus required>
 
             @error('price')
                 <span class="invalid-feedback" role="alert">

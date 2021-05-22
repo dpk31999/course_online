@@ -18,7 +18,7 @@
                         {{ $course->name }}
                     </a>
                 </h3>
-                <p class="product-price">{{ $course->price }} đ</p>
+                <p class="product-price">{{ number_format($course->price, 2) }} $</p>
                 <p class="product-desc">
                     <i class="fas fa-caret-right"></i>
                     Thời gian: <span class="product-time">{{ $course->total_time }} Tháng</span>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="product-btn">
-                    <button class="btn-default btn--success">Đăng ký</button>
+                    <a href="@auth {{ route('register-course-member',$course->id) }} @else {{ route('register-course',$course->id) }} @endauth"><button class="btn-default btn--success">Đăng ký</button></a>
                 </div>
             </div>
         </div>

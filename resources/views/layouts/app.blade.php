@@ -102,7 +102,7 @@
             <nav class="header__nav">
                 <ul class="navbar-list">
                     <div class="logo-brand">
-                        <a href=""><img src="/images/logo.png" alt="" class="logo-img"></a>
+                        <a href="{{route('home')}}"><img src="/images/logo.png" alt="" class="logo-img"></a>
                     </div>
                 </ul>
                 <ul class="navbar-list">
@@ -147,7 +147,7 @@
                         </a>
                         <div class="dropdown-menu-user">
                             <a style="cursor: pointer" class="dropdown-item-user" href="{{ route('student.home') }}">
-                                <i class="far fa-user fa-sm fa-fw mr-2 text-gray-400"></i>    
+                                <i class="far fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
                             <a style="cursor: pointer" class="dropdown-item-user"
@@ -250,6 +250,17 @@
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+
+        function formatCurrency(money)
+        {
+            return (money).toLocaleString('en', {
+                style: 'currency',
+                currency: 'USD'
+            })
+        }
+
+    </script>
 </body>
 
 </html>

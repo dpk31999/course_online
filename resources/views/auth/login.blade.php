@@ -45,9 +45,9 @@
             <button  class="btn-default btn--success">Đăng nhập</button>
             
             @if (Route::has('password.request'))
-             <button href="{{ route('password.request') }}" class="btn-default btn--success ml-3">
+             <a href="{{ route('password.request') }}" class="btn-default btn--success ml-3 text-light">
                 {{ __('Forgot Your Password?') }}
-             </button>
+             </a>
             @endif
         </div>
         
