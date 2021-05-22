@@ -223,11 +223,10 @@
 
             function startQuiz()
             {
+                var exam_id = $('#btn-start').data('id')
                 
                 var countDownDate = new Date();
                 countDownDate.setMinutes(countDownDate.getMinutes() + parseInt(document.getElementById('minute').innerHTML));
-
-                var exam_id = $('#btn-start').data('id')
 
                 $.ajax({
                     method: 'get',
@@ -235,50 +234,53 @@
                     data: '',
                     cache: false,
                     success: function(data){
-                        Object.keys(data).forEach(key => {
-                            $('#questions').append('<div class="multiple-question-item">' +
-                                '<div class="question-box">' +
-                                    '<div class="multiple-question__text">' +
-                                        '<div class="row">' +
-                                            '<div class="col-sm-2">Câu '+ (parseInt(key) + parseInt(1)) +':</div>' +
-                                            '<div class="col-sm-10">'+ data[key].name +'</div>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="option-box"></div>' +
-                                '<div class="multiple-choice">' +
-                                    '<div class="container-choice">' +
-                                        '<div class="row m-right">' +
-                                            '<div class="col-sm-6 ">' +
-                                                '<label class="radio-inline ">' +
-                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_1 + ' class="check-box">' +
-                                                    '<span>A: '+ data[key].answer_1 +'</span></label>' +
-                                            '</div>' +
-                                            '<div class="col-sm-6 ">' +
-                                                '<label class="radio-inline ">' +
-                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_2 + ' class="check-box">' +
-                                                    '<span>B: '+ data[key].answer_2 +'</span></label>' +
-                                            '</div>' +
-                                        '</div>' +
-                                        '<div class="row m-right">' +
-                                            '<div class="col-sm-6 ">' +
-                                                '<label class="radio-inline ">' +
-                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_3 + ' class="check-box">' +
-                                                    '<span>C: '+ data[key].answer_3 +'</span></label>' +
-                                            '</div>' +
-                                            '<div class="col-sm-6 ">' +
-                                                '<label class="radio-inline ">' +
-                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_4 + ' class="check-box">' +
-                                                    '<span>D: '+ data[key].answer_4 +'</span></label>' +
+                        $('#btn-start').remove();
+                        if(Object.keys(data).length == 10)
+                        {
+                            Object.keys(data).forEach(key => {
+                                $('#questions').append('<div class="multiple-question-item">' +
+                                    '<div class="question-box">' +
+                                        '<div class="multiple-question__text">' +
+                                            '<div class="row">' +
+                                                '<div class="col-sm-2">Câu '+ (parseInt(key) + parseInt(1)) +':</div>' +
+                                                '<div class="col-sm-10">'+ data[key].name +'</div>' +
                                             '</div>' +
                                         '</div>' +
                                     '</div>' +
-                                '</div>' +
-                            '</div>');
-                        })
-                        $('#questions').append('<button type="submit" id="btn_submit_exam" data-id="'+ exam_id +'" class="btn__default btn--success" style="margin-top: 20px;">Submit</button>');
+                                    '<div class="option-box"></div>' +
+                                    '<div class="multiple-choice">' +
+                                        '<div class="container-choice">' +
+                                            '<div class="row m-right">' +
+                                                '<div class="col-sm-6 ">' +
+                                                    '<label class="radio-inline ">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_1 + ' class="check-box">' +
+                                                        '<span>A: '+ data[key].answer_1 +'</span></label>' +
+                                                '</div>' +
+                                                '<div class="col-sm-6 ">' +
+                                                    '<label class="radio-inline ">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_2 + ' class="check-box">' +
+                                                        '<span>B: '+ data[key].answer_2 +'</span></label>' +
+                                                '</div>' +
+                                            '</div>' +
+                                            '<div class="row m-right">' +
+                                                '<div class="col-sm-6 ">' +
+                                                    '<label class="radio-inline ">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_3 + ' class="check-box">' +
+                                                        '<span>C: '+ data[key].answer_3 +'</span></label>' +
+                                                '</div>' +
+                                                '<div class="col-sm-6 ">' +
+                                                    '<label class="radio-inline ">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_4 + ' class="check-box">' +
+                                                        '<span>D: '+ data[key].answer_4 +'</span></label>' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>');
+                            })
+                            $('#questions').append('<button type="submit" id="btn_submit_exam" data-id="'+ exam_id +'" class="btn__default btn--success" style="margin-top: 20px;">Submit</button>');
+                        }
                     }
-                
                 });
 
                 
