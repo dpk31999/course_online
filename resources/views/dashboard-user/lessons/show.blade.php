@@ -4,7 +4,7 @@
 <div class="course-heading">
     <a href="#" class="info-title" style=" font-size: 20px;">
         <i class="fas fa-graduation-cap fa-lg fa-fw mr-2 text-gray-400"></i>
-        <h5 class="title">Hello: {{ Auth::guard('web')->user()->fullname }}</h5>
+        <h5 class="title">Xin Chào: {{ Auth::guard('web')->user()->fullname }}</h5>
     </a>
 </div>
 <div class="course-container">
@@ -14,7 +14,7 @@
                 <div class="col-sm-6 btn-center mt-30">
                     <a href="{{ route('student.class.index') }}" class="btn btn-primary ">
                         <i class="fas fa-backward"></i>
-                        Back
+                        Quay lại
                     </a>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                                     <a href="{{ route('student.lesson.show-lesson',$lesson->id) }}"
                                         class=" btn--exam exam-item exam-item--separate icon--separate">
                                         <i class="far fa-play-circle"></i>
-                                        Lesson {{ $loop->index + 1 }}
+                                        Bài {{ $loop->index + 1 }}
                                     </a>
                                 </div>
                                 <div class="col-sm-6">{{ $lesson->title }}</div>

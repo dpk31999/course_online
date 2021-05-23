@@ -5,7 +5,7 @@
     <div class="course-heading">
         <a href="#" class="info-title" style=" font-size: 20px;">
             <i class="fas fa-graduation-cap fa-lg fa-fw mr-2 text-gray-400"></i>
-            <h5 class="title">Hello: {{ Auth::guard('admin')->user()->fullname }}</h5>
+            <h5 class="title">Xin Chào: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
 
@@ -16,8 +16,8 @@
         <table class="table table-st">
             <thead class="color__theme">
                 <tr>
-                    <th>Exam name</th>
-                    <th>Exam status</th>
+                    <th>Loại bài kiểm tra</th>
+                    <th>Trạng thái</th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,8 +27,8 @@
                     <td>{{ $exam->name }}</td>
                     <td>{{ $exam->status }}</td>
                     <td>
-                        <a type="button" class="btn btn-primary" href="{{ route('admin.exam.update',$exam->id) }}">Edit</a>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.exam.update.status',$exam->id) }}">@if($exam->status == 'UnLock') Lock @else UnLock @endif</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('admin.exam.update',$exam->id) }}">Chỉnh sửa</a>
+                        <a type="button" class="btn btn-warning" href="{{ route('admin.exam.update.status',$exam->id) }}">@if($exam->status == 'UnLock') Khóa @else Mở khóa @endif</a>
                     </td>
                 </tr>
                 @endforeach

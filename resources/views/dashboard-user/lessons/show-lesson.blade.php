@@ -8,7 +8,7 @@
                 <div class="col-sm-6 btn-center mt-30">
                     <a href="{{ route('student.lesson.show',$lesson->course->id) }}" class="btn btn-primary ">
                         <i class="fas fa-backward"></i>
-                        Back
+                        Quay lại
                     </a>
                 </div>
             </div>
@@ -18,8 +18,8 @@
         <table class="table table-st">
             <thead style="background-color: #4268D6; color: #fff;">
                 <tr>
-                    <th>Course name</th>
-                    <th>Lesson</th>
+                    <th>Môn học</th>
+                    <th>Bài học</th>
                 </tr>
             </thead>
             <tbody>

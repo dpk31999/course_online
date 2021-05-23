@@ -5,20 +5,20 @@
     <div class="form-heading">
         <a href="#" class="title-link">
             <i class="fas fa-user-plus"></i>
-            <h3 class="title">Register the course</h3>
+            <h3 class="title">Đăng ký khóa học</h3>
         </a>
     </div>
     <form method="POST" action="{{ route('register-course.store',$course->id) }}">
         @csrf
         <div class="form-group">
-            <label for="course">Select course:</label>
+            <label for="course">Chọn khóa học:</label>
 
             <select name="course" id="course" style="margin: auto" class="form__input">
                 <option value="{{ $course->id }}" selected>{{ $course->name }}</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="class">Select start time and schedule:</label>
+            <label for="class">Chọn thời gian học và lịch học:</label>
 
             <select name="class" id="class" style="margin: auto" class="form__input">
                 @foreach ($course->classes as $class)
@@ -27,7 +27,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="fullname">Fullname:</label>
+            <label for="fullname">Họ và tên:</label>
             <input id="fullname" type="text" class="form__input @error('fullname') is-invalid @enderror" name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
             
             @error('fullname')
@@ -37,7 +37,7 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="birthday">Birthday:</label>
+            <label for="birthday">Ngày tháng năm sinh:</label>
             <input id="birthday" type="date" class="form__input @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" autofocus>
             
             @error('birthday')
@@ -57,7 +57,7 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="phone">Phone number:</label>
+            <label for="phone">Số điện thoại:</label>
             <input id="phone" type="tel" placeholder="0123456789" pattern="0[0-9]{9}" class="form__input @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
             
             @error('phone')
@@ -73,7 +73,7 @@
             </div>
         @endif
 
-        <button type="submit" class="btn__default btn--success center__btn" style="margin-top: 20px;">Register</button>
+        <button type="submit" class="btn__default btn--success center__btn" style="margin-top: 20px;">Đăng ký</button>
     </form>
 </div>
 @endsection

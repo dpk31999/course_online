@@ -5,7 +5,7 @@
     <div class="course-heading">
         <a href="#" class="info-title " style="margin-bottom: 10px;">
             <i class="far fa-envelope" id="icon-padding"></i>
-            <h5 class="title">Notification</h5>
+            <h5 class="title">Thông Báo</h5>
         </a>
     </div>
     <hr class="sidebar-divider my-0" style="background-color: #4268D6;">
@@ -17,7 +17,7 @@
             <div class="toast__body">
                 <div class="toast__msg">
                     <p class="toast__msg-title">
-                        Private Notification
+                        Thông báo cá nhân
                     </p>
                 </div>
             </div>
@@ -29,7 +29,7 @@
             <div class="toast__body">
                 <div class="toast__msg">
                     <p class="toast__msg-title">
-                        Genera Notification
+                        Thông báo chung
                     </p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
         <div class="modal-content">
             <!--Header-->
             <div class="modal-header head-color--pri">
-                <h4 class="modal-title" id="myModalLabel">Private Notification</h4>
+                <h4 class="modal-title" id="myModalLabel">Thông báo cá nhân</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" style="color: #fff;">×</span>
                 </button>
@@ -79,7 +79,7 @@
         <div class="modal-content">
             <!--Header-->
             <div class="modal-header head-color--pub">
-                <h4 class="modal-title" id="myModalLabel">General Notification</h4>
+                <h4 class="modal-title" id="myModalLabel">Thông báo Chung</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" style="color: #fff;">×</span>
                 </button>

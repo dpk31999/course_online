@@ -54,13 +54,13 @@ class CourseController extends Controller
 
         Exam::create([
             'course_id' => $course->id,
-            'name' => 'Mid-term test',
+            'name' => 'Kiểm tra giữa khóa',
             'total_time' => '20',
         ]);
 
         Exam::create([
             'course_id' => $course->id,
-            'name' => 'Final exam test',
+            'name' => 'Kiểm tra cuối khóa',
             'total_time' => '20',
         ]);
 

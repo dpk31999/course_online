@@ -44,20 +44,20 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('student.home') }}" style="text-align: center ">
-                    <span>Study</span></a>
+                    <span>Học Tập</span></a>
             </li>
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('student.class.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Classes</span></a>
+                    <span>Lớp học</span></a>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('student.exam.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Exams</span></a>
+                    <span>Bài kiểm tra</span></a>
             </li>
 
             <!-- Divider -->
@@ -66,12 +66,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#account">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Account</span></a>
+                    <span>Tài Khoản</span></a>
                 </a>
                 <div id="account" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Change your infomation</a>
-                        <a href="{{ route('student.account.edit-password') }}" class="collapse-item">Change your password</a>
+                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Đổi thông tin tài
+                            khoản</a>
+                        <a href="{{ route('student.account.edit-password') }}" class="collapse-item">Đổi mật khẩu</a>
                     </div>
                 </div>
             </li>
@@ -80,14 +81,14 @@
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('student.notification.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Notifications </span></a>
+                    <span>Thông báo </span></a>
             </li>
             <li class="nav-item">
 
                 <a class="nav-link " style="cursor: pointer"
                     onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Logout </span></a>
+                    <span>Đăng Xuất </span></a>
             </li>
 
             <!-- Divider -->
@@ -111,6 +112,19 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow">

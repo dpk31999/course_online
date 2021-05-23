@@ -108,27 +108,27 @@
                 <ul class="navbar-list">
                     <a href="{{route('home')}}" class="navbar-item-link">
                         <li class="navbar-item navbar-item--separate">
-                            Home
+                            Trang chủ
                         </li>
                     </a>
                     <a href="" class="navbar-item-link">
                         <li class="navbar-item navbar-item--separate">
-                            About Us
+                            Giới thiệu
                         </li>
                     </a>
                     <a href="" class="navbar-item-link">
                         <li class="navbar-item navbar-item--separate">
-                            Course
+                            Khóa học
                         </li>
                     </a>
                     <a href="" class="navbar-item-link">
                         <li class="navbar-item navbar-item--separate">
-                            News
+                            Tin tức
                         </li>
                     </a>
                     <a href="" class="navbar-item-link">
                         <li class="navbar-item">
-                            Careers
+                            Việc làm
                         </li>
                     </a>
 
@@ -137,7 +137,7 @@
                     @guest
                     <li class="navbar-item">
                         <i class="fas fa-user"></i>
-                        <a href="{{route('login')}}" class="navbar-item-link "> Login</a>
+                        <a href="{{route('login')}}" class="navbar-item-link "> Đăng nhập</a>
                     </li>
                     @else
                     <li class="navbar-item navbar-item--has-nav dropdown">
@@ -162,6 +162,11 @@
                         </div>
                     </li>
                     @endguest
+                    <li class="navbar-item">
+                        <div class="search-btn">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -205,15 +210,26 @@
                 <div class="footer-item">
                     <img src="/images//logo.png" alt="" class="footer-img">
                     <ul class="footer-item-body">
-                        <li class="footer-sub">Tax number: 04016231</li>
-                        <li class="footer-sub">Office: 154 Pham Nhu Xuong, Da Nang</li>
-                        <li class="footer-sub">Center: 263 Tieu La, Da Nang</li>
-                        <li class="footer-sub">Center: 52 Tran Phu, Hue</li>
+                        <li class="footer-sub">Mã số thế: 04016231</li>
+                        <li class="footer-sub">Trụ sở: 154 Phạm Như Xương, Đà Nẵng</li>
+                        <li class="footer-sub">Cơ sở: 263 Tiểu La, Đà Nẵng</li>
+                        <li class="footer-sub">Cơ sở: 52 Trần Phú, Huế</li>
                         <li class="footer-sub">Hotline: 0777710005</li>
                     </ul>
                 </div>
                 <div class="footer-item">
-                    <div class="footer-item-title footer-title--separate">Contact</div>
+                    <div class="footer-item-title footer-title--separate">Khóa học</div>
+                    <ul class="footer-item-body">
+
+                        <li class="footer-sub-class">Java và spring framework</li>
+                        <li class="footer-sub-class">PHP và laravel framwork</li>
+                        <li class="footer-sub-class">C#</li>
+                        <li class="footer-sub-class">Python</li>
+
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-item-title footer-title--separate">Liên hệ</div>
                     <ul class="footer-item-icon">
                         <li class="footer-sub-icon"><i class="fab fa-facebook"></i></li>
                         <li class="footer-sub-icon"><i class="fab fa-instagram"></i></li>

@@ -4,7 +4,7 @@
 <div class="info-container ">
     <div class="info-heading">
         <a href="#" class="info-title" style="color: #ffb702;">
-            <h5 class="title">Edit class</h5>
+            <h5 class="title">Sửa Lớp</h5>
         </a>
     </div>
     <hr class="sidebar-divider my-0" style="background-color: #ffb702;">
@@ -13,16 +13,16 @@
         <div class="form-group">
             <label for="schedule">Lịch học</label>
             <select name="schedule" id="schedule" style="margin: auto" class="form-control">
-                <option value="Evening 2-4-6" {{ $class->schedule == 'Evening 2-4-6' ? 'selected' : '' }}>Evening 2-4-6</option>
-                <option value="Evening 3-5-7" {{ $class->schedule == 'Evening 3-5-7' ? 'selected' : '' }}>Evening 3-5-7</option>
-                <option value="Morning 2-4-6" {{ $class->schedule == 'Morning 2-4-6' ? 'selected' : '' }}>Morning 2-4-6</option>
-                <option value="Morning 3-5-7" {{ $class->schedule == 'Morning 3-5-7' ? 'selected' : '' }}>Morning 3-5-7</option>
-                <option value="Afternoon 2-4-6" {{ $class->schedule == 'Afternoon 2-4-6' ? 'selected' : '' }}>Afternoon 2-4-6</option>
-                <option value="Afternoon 3-5-7" {{ $class->schedule == 'Afternoon 3-5-7' ? 'selected' : '' }}>Afternoon 3-5-7</option>
+                <option value="Tối 2-4-6" {{ $class->schedule == 'Tối 2-4-6' ? 'selected' : '' }}>Tối 2-4-6</option>
+                <option value="Tối 3-5-7" {{ $class->schedule == 'Tối 3-5-7' ? 'selected' : '' }}>Tối 3-5-7</option>
+                <option value="Sáng 2-4-6" {{ $class->schedule == 'Sáng 2-4-6' ? 'selected' : '' }}>Sáng 2-4-6</option>
+                <option value="Sáng 3-5-7" {{ $class->schedule == 'Sáng 3-5-7' ? 'selected' : '' }}>Sáng 3-5-7</option>
+                <option value="Chiều 2-4-6" {{ $class->schedule == 'Chiều 2-4-6' ? 'selected' : '' }}>Chiều 2-4-6</option>
+                <option value="Chiều 3-5-7" {{ $class->schedule == 'Chiều 3-5-7' ? 'selected' : '' }}>Chiều 3-5-7</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="start">Start course :</label>
+            <label for="start">Thời gian bắt đầu:</label>
             <input type="date" name="start" class="form-control @error('start') is-invalid @enderror" id="start"  value="{{ $class->start }}" required autocomplete="start" autofocus>
 
             @error('start')
@@ -32,14 +32,14 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="course">Select course :</label>
+            <label for="course">Chọn khóa học: </label>
             <select name="course" id="course" style="margin: auto" class="form-control">
                 @foreach ($courses as $course)
                     <option value="{{ $course->id }}" {{ $class->course->id == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn__default btn--add center__btn">Update</button>
+        <button type="submit" class="btn__default btn--add center__btn">Sửa</button>
     </form>
 </div>
 @endsection

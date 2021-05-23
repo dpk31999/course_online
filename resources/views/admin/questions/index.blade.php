@@ -5,7 +5,7 @@
     <div class="course-heading">
         <a href="#" class="info-title" style=" font-size: 20px;">
             <i class="fas fa-graduation-cap fa-lg fa-fw mr-2 text-gray-400"></i>
-            <h5 class="title">Hello: {{ Auth::guard('admin')->user()->fullname }}</h5>
+            <h5 class="title">Xin Chào: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
     <div class="icon_sub">
@@ -30,10 +30,10 @@
         <table class="table table-st">
             <thead class="color__theme">
                 <tr>
-                    <th>Exam name</th>
-                    <th>Number of easy question</th>
-                    <th>Number of medium question</th>
-                    <th>Number of hard question</th>
+                    <th>Loại bài kiểm tra</th>
+                    <th>Số câu hỏi dễ</th>
+                    <th>Số câu hỏi trung bình</th>
+                    <th>Số câu hỏi khó</th>
                     <th></th>
                 </tr>
             </thead>
@@ -45,7 +45,7 @@
                     <td>{{ $exam->questions()->where('level','Medium')->get()->count() }}</td>
                     <td>{{ $exam->questions()->where('level','Hard')->get()->count() }}</td>
                     <td>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.question.show.exam',$exam->id) }}">Detail</a>
+                        <a type="button" class="btn btn-warning" href="{{ route('admin.question.show.exam',$exam->id) }}">Xem chi tiết</a>
                     </td>
                 </tr>
                 @endforeach
