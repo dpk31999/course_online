@@ -8,7 +8,7 @@
                 <div class="col-sm-6 btn-center mt-30">
                     <a href="{{ route('admin.lesson.index') }}" class="btn btn-primary ">
                         <i class="fas fa-backward"></i>
-                        Quay lại
+                        Back
                     </a>
                 </div>
             </div>
@@ -18,8 +18,8 @@
         <table class="table table-st">
             <thead style="background-color: #4268D6; color: #fff;">
                 <tr>
-                    <th>Môn học</th>
-                    <th>Bài học</th>
+                    <th>Course name</th>
+                    <th>Lesson title</th>
                 </tr>
             </thead>
             <tbody>

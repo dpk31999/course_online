@@ -54,7 +54,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.course.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý khóa học</span>
+                    <span>Course Management</span>
                 </a>
 
             </li>
@@ -62,7 +62,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.class.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý lớp học</span>
+                    <span>Class Management</span>
                 </a>
 
             </li>
@@ -70,7 +70,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.lesson.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý bài học</span>
+                    <span>Lesson Management</span>
                 </a>
 
             </li>
@@ -78,7 +78,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.notification.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý thông báo</span>
+                    <span>Notification Management</span>
                 </a>
 
             </li>
@@ -86,7 +86,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.exam.index') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý bài thi</span>
+                    <span>Exam Management</span>
                 </a>
 
             </li>
@@ -94,7 +94,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.question.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý đề thi</span>
+                    <span>Question Management</span>
                 </a>
 
             </li>
@@ -102,7 +102,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.student.index.manager') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý học viên</span>
+                    <span>Student Management</span>
                 </a>
 
             </li>
@@ -114,7 +114,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.manager.index') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý manager</span>
+                    <span>Admin Management</span>
                 </a>
             </li>
 
@@ -126,13 +126,12 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#account">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Tài Khoản</span></a>
+                    <span>Account</span></a>
                 </a>
                 <div id="account" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="{{ route('admin.account.edit-profile') }}" class="collapse-item">Đổi thông tin tài
-                            khoản</a>
-                        <a href="{{ route('admin.account.edit-password') }}" class="collapse-item">Đổi mật khẩu</a>
+                        <a href="{{ route('admin.account.edit-profile') }}" class="collapse-item">Change Your Infomation</a>
+                        <a href="{{ route('admin.account.edit-password') }}" class="collapse-item">Change Your Password</a>
                     </div>
                 </div>
             </li>
@@ -141,7 +140,7 @@
 
                 <a class="nav-link " style="cursor: pointer" onclick="event.preventDefault(); document.querySelector('#admin-logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Đăng Xuất </span></a>
+                    <span>Logout</span></a>
             </li>
             @endauth
 

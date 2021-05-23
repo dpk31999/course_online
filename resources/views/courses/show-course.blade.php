@@ -11,19 +11,19 @@
         
         <div class="title-heading ">
             <a href="@auth {{ route('register-course-member',$course->id) }} @else {{ route('register-course',$course->id) }} @endauth" class="title-heading-a " >
-                <i class="fas fa-book-open m-right fa-sm fa-fw mr-2 text-gray-400"></i> Đăng ký ngay</a>
+                <i class="fas fa-book-open m-right fa-sm fa-fw mr-2 text-gray-400"></i> Register now</a>
         </div>
 
         <div class="title-heading ">
             <a href="#" type="button" class="title-heading-a">
                 <i class="fas fa-phone m-right fa-sm fa-fw mr-2 text-gray-400"></i>
-                Gọi điện</a>
+                Support</a>
         </div>
 
         <div class="title-heading ">
             <a href="" class="title-heading-a">
                 <i class="fab fa-vuejs"></i>
-                Học Phí : {{ number_format($course->price, 2) }} $
+                Course price : {{ number_format($course->price, 2) }} $
             </a>
         </div>
     </div>
@@ -45,25 +45,22 @@
             </div>
             <div class="title-intro">
                 <div class="intro-item">
-                    <p class="head head--color"><i>NẾU BẠN LÀ:</i></p>
+                    <p class="head head--color"><i>IF YOU ARE:</i></p>
                     <p>
-                        - Sinh viên ngành CNTT, ĐTVT và đang lơ ngơ về những dòng code<br>
-                        - Bạn đã học rất nhiều ngôn ngữ lập trình nhưng vẫn chưa làm được dự án hoàn chỉnh nào
-                        thực tế<br>
-                        - Bạn đã học giỏi, điểm cao nhưng nhìn code lại cảm thấy hoa mắt, không code được<br>
-                        - Bạn lập trình được rồi nhưng lại muốn học thật bài bản, nâng cao bằng những dự án có
-                        độ khó cao, phức tạp<br> </p>
+                        - Students majoring in IT, Telecom and are ignoring the lines of code<br>
+                        - You have learned a lot of programming languages ​​but still haven't made any real projects<br>
+                        - You studied well, got high marks, but looking at the code, you feel dizzy and can't code<br>
+                        - You can program but want to learn it methodically and improve it with high difficulty and complex projects<br> </p>
                 </div>
                 <div class="intro-item">
-                    <p class="head head--color"><i>NẾU BẠN ĐANG:</i></p>
+                    <p class="head head--color"><i>IF YOU ARE:</i></p>
                     <p>
-                        - Là sinh viên năm 1,2,3,4 và đang tìm một trung tâm đào tạo lập trình uy tín, chất
-                        lượng để theo học<br>
-                        - Là tester, hoặc đang muốn chuyển nghề sang ngành IT<br>
-                        - Học tại nhiều trung tâm rồi mà không hiệu quả<br></p>
+                        - Students looking for a reputable and quality programming training center to study?<br>
+                        - Are you a tester, or want to change your career to IT?<br>
+                        - Studied at many centers but not effective<br></p>
                 </div>
                 <div class="intro-item text-align">
-                    <p class="head head--note">THÌ ĐÂY LÀ KHÓA HỌC DÀNH CHO BẠN !!!</p>
+                    <p class="head head--note">THEN THIS IS THE COURSE FOR YOU !!!</p>
                 </div>
             </div>
         </div>
@@ -83,35 +80,18 @@
 <div class="note-section">
     <div class="section-heading title--separate--md">
         <i class="fab fa-vuejs"></i>
-        Học Phí & Ưu đãi
+        Course price and offers
     </div>
     <div class="row">
-        <div class="col-sm-6">
-            <h3 class="note-title m-left color-red">
-                <i class="fas fa-search-dollar"></i>
-                Học phí & Ưu đãi
-            </h3>
-            <ul class="note-list">
-                <li class="note-item"><strong>Khai giảng:</strong> Thứ 4, ngày 12/5/2021</li>
-                <li class="note-item"><strong>Lịch học:</strong> Tối thứ 4, tối chủ nhật từ 19h-21h30</li>
-                <li class="note-item"><strong>Thời lượng:</strong> 6 tháng</li>
-                <li class="note-item"><strong>Học phí:</strong> 8.200.000 VNĐ (có thể đóng 4 đợt)</li>
-                <li class="note-item"><strong>Đóng 1 đợt:</strong> Giảm Đóng 1 đợt giảm 400.000 VNĐ</li>
-                <li class="note-item"><strong>Ưu đãi nhóm:</strong> Đăng ký nhóm 2 người giảm 500.000 VNĐ mỗi
-                    người</li>
-                <li class="note-item"><strong>Học phí đợt đầu:</strong> 2.200.000 VNĐ</li>
-            </ul>
-        </div>
         <div class="col-sm-5 ">
             <h3 class="note-title m-left color-red">
                 <i class="fas fa-coins"></i>
-                Cách đóng học phí
+                How to pay course price?
             </h3>
             <ul class="note-list">
-                <li class="note-item"><strong>Trực tiếp:</strong> Văn phòng tại 154 Phạm Như Xương</li>
-                <li class="note-item"><strong>Chuyển khoản Vietcombank Stk:</strong> 004 1000 82 53</li>
-                <li class="note-item">Chủ khoản: Tran Van Son</li>
-                <li class="note-item"><strong>Nội dung ck:</strong> ho ten-phone-javaspring</li>
+                <li class="note-item"><strong>Direct:</strong> Office at 154 Pham Nhu Xuong</li>
+                <li class="note-item"><strong>Bank Transfer to Vietcombank:</strong> 004 1000 82 53</li>
+                <li class="note-item"><strong>Transition content:</strong> yourname-phone-{{ $course->name }}</li>
 
             </ul>
         </div>

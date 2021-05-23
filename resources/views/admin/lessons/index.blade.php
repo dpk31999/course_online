@@ -5,7 +5,7 @@
     <div class="course-heading">
         <a href="#" class="info-title" style=" font-size: 20px;">
             <i class="fas fa-graduation-cap fa-lg fa-fw mr-2 text-gray-400"></i>
-            <h5 class="title">Xin Chào: {{ Auth::guard('admin')->user()->fullname }}</h5>
+            <h5 class="title">Hello: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
     <div class="icon_sub">
@@ -18,8 +18,8 @@
         <table class="table table-st">
             <thead class="color__theme">
                 <tr>
-                    <th>Khóa học</th>
-                    <th>Tiêu đề</th>
+                    <th>Course name</th>
+                    <th>Title</th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,10 +29,9 @@
                     <td>{{ $lesson->course->name }}</td>
                     <td>{{ $lesson->title }}</td>
                     <td>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.lesson.edit', $lesson->id) }}">Chỉnh
-                            Sửa</a>
-                        <a type="button" class="btn btn-primary" href="{{ route('admin.lesson.show', $lesson->id) }}">Chi tiết</a>
-                        <a type="submit" href="{{ route('admin.lesson.delete', $lesson->id) }}" class="btn btn-danger">Xóa</a>
+                        <a type="button" class="btn btn-warning" href="{{ route('admin.lesson.edit', $lesson->id) }}">Edit</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('admin.lesson.show', $lesson->id) }}">Detail</a>
+                        <a type="submit" href="{{ route('admin.lesson.delete', $lesson->id) }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach
