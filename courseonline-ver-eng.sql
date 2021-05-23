@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: localhost    Database: courseonline
+-- Host: localhost    Database: coffeeshop
 -- ------------------------------------------------------
 -- Server version	8.0.21
 
@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `admin_role`
+--
+
+DROP TABLE IF EXISTS `admin_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admin_role` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `admin_id` bigint unsigned NOT NULL,
+  `role_id` bigint unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin_role`
+--
+
+LOCK TABLES `admin_role` WRITE;
+/*!40000 ALTER TABLE `admin_role` DISABLE KEYS */;
+INSERT INTO `admin_role` VALUES (1,1,1,NULL,NULL),(2,2,2,NULL,NULL),(3,3,3,NULL,NULL);
+/*!40000 ALTER TABLE `admin_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `admins`
 --
 
@@ -24,15 +51,16 @@ DROP TABLE IF EXISTS `admins`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admins` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `admins_username_unique` (`username`),
+  UNIQUE KEY `admins_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,191 +69,211 @@ CREATE TABLE `admins` (
 
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (3,'Huynh Van Dong','d01295306466@gmail.com','$2y$10$2epCB13o/qLRs1XYze2oDOjMFz8Me1Vi367XQwJy6AJvK4c628roS','0839243436','Admin','2021-05-14 20:43:16','2021-05-21 23:38:56'),(5,'Tran Minh Thuan','thuanvn@gmail.com','$2y$10$4jhLfnfkpJzUgmtzSVnRd.YTNJyt3eEVI/6z0Kq3033qvItFs1zRO','0915897375','Manager','2021-05-15 00:06:26','2021-05-21 23:48:16'),(7,'dsadsadsa','hvd.03.12.99@gmail.com','$2y$10$9g1W0d6XawRmHYcE1M1Ff.2UIw15hFtK/PfUbEh27FFosTE6SQQCW','0916510664','Manager','2021-05-15 02:03:36','2021-05-15 02:03:36'),(8,'jhgjhgjh','0839243436@gmail.com','$2y$10$UN4SBiyum0M3Eg1IXJwbAO43vYfOxgRfWz55MsKdTBFFNG4KmZv1.','0915897375','Manager','2021-05-19 07:54:33','2021-05-19 07:54:33');
+INSERT INTO `admins` VALUES (1,'Huynh Dong','huynhdong123','$2y$10$Cnsgzmroy3N58OSXi.CL8ez.UMr0RJ1ET0Kj0qYq3lIXCoa60fJHa','d0129530646@gmail.com','2020-05-10 03:47:38','2020-05-10 03:47:38'),(2,'huynh dong','huynhdong','$2y$10$kR/VW5.QmHDJxQ3feHJy7en8o7UmjnkfX8sR5a/AqXF/BDj4jPLlS','3120217020@ued.udn.vn','2020-05-26 01:50:28','2020-05-26 01:50:28'),(3,'huynh dong','dongprokuto3','$2y$10$kUQraUTZso22T.9HDT1B5.FJIpWkeqoARAio.zdQIxd8YOfuTCHWK','d01295306466@gmail.com','2020-05-26 01:51:44','2020-05-26 01:51:44');
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `class_rooms`
+-- Table structure for table `bookings`
 --
 
-DROP TABLE IF EXISTS `class_rooms`;
+DROP TABLE IF EXISTS `bookings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `class_rooms` (
+CREATE TABLE `bookings` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `course_id` bigint unsigned NOT NULL,
-  `schedule` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `start` date NOT NULL,
+  `firstname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `message` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `class_rooms_course_id_foreign` (`course_id`),
-  CONSTRAINT `class_rooms_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `class_rooms`
+-- Dumping data for table `bookings`
 --
 
-LOCK TABLES `class_rooms` WRITE;
-/*!40000 ALTER TABLE `class_rooms` DISABLE KEYS */;
-INSERT INTO `class_rooms` VALUES (1,1,'Evening 3-5-7','2021-03-06','2021-05-15 06:04:25','2021-05-15 06:12:54'),(3,3,'Evening 2-4-6','2021-03-06','2021-05-15 06:05:22','2021-05-15 06:05:22'),(4,4,'Evening 3-5-7','2021-03-06','2021-05-15 06:05:43','2021-05-15 06:05:43'),(5,2,'Evening 2-4-6','2021-03-08','2021-05-15 06:05:58','2021-05-15 06:05:58'),(6,3,'Afternoon 2-4-6','2021-07-07','2021-05-19 07:42:45','2021-05-21 02:29:51'),(7,2,'Morning 2-4-6','2021-05-06','2021-05-22 23:10:25','2021-05-22 23:10:25');
-/*!40000 ALTER TABLE `class_rooms` ENABLE KEYS */;
+LOCK TABLES `bookings` WRITE;
+/*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
+INSERT INTO `bookings` VALUES (1,'Huynh','Dong','6/3/2020','12:00am','01233122332','asdsdasdsad','1','2020-06-01 22:12:59','2020-06-01 23:39:39'),(2,'dasdas','dsadasdsa','6/6/2020','12:00am','01233122332','dsadsadsa','1','2020-06-01 23:19:53','2020-06-01 23:40:27'),(3,'john','honson','6/12/2020','1:30am','01233122332','dsadasdsadsa','2','2020-06-01 23:27:16','2020-06-01 23:41:11'),(4,'qweqwe','qweqwe','6/12/2020','1:00am','01233122332','asddasdsadsa','0','2020-06-05 00:00:51','2020-06-05 00:00:51'),(5,'hello','cu','10/7/2020','12:00am','01233122332','alo alo 123','2','2020-06-12 02:49:55','2020-06-12 02:55:58'),(6,'asd','qwe','7/6/2020','12:00am','01233122332','ok chua do','0','2020-06-18 10:09:46','2020-06-18 10:09:46');
+/*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `class_user`
+-- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `class_user`;
+DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `class_user` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `class_id` bigint unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `class_user_user_id_foreign` (`user_id`),
-  KEY `class_user_class_id_foreign` (`class_id`),
-  CONSTRAINT `class_user_class_id_foreign` FOREIGN KEY (`class_id`) REFERENCES `class_rooms` (`id`),
-  CONSTRAINT `class_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `class_user`
---
-
-LOCK TABLES `class_user` WRITE;
-/*!40000 ALTER TABLE `class_user` DISABLE KEYS */;
-INSERT INTO `class_user` VALUES (3,6,1,NULL,NULL),(4,6,5,NULL,NULL),(5,6,4,NULL,NULL),(7,8,3,NULL,NULL),(8,8,1,NULL,NULL);
-/*!40000 ALTER TABLE `class_user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `courses`
---
-
-DROP TABLE IF EXISTS `courses`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `courses` (
+CREATE TABLE `category` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `admin_id` bigint unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_time` int NOT NULL,
-  `url_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` bigint NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `courses_admin_id_foreign` (`admin_id`),
-  CONSTRAINT `courses_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `courses`
---
-
-LOCK TABLES `courses` WRITE;
-/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,5,'New Front-End Programming',4,'uploads/image_course/1621079723.png',399,'Front end Programming course aims to train professional Front end programmers, meeting the work needs of today\'s software companies. Front end programmers are people who use languages ​​such as HTML, CSS, and JavaScript to create Web application interfaces that meet the increasing requirements of user interaction.','2021-05-15 03:02:40','2021-05-19 07:34:42'),(2,5,'IOS – Swift Programming',5,'uploads/image_course/1621074992.jpg',349,'The iOS Programming course equips you with the knowledge and skills to become a professional programmer on the basis of Apple devices such as iPhone, iPad, iWatch, Macbook... software companies today.','2021-05-15 03:36:32','2021-05-17 23:49:03'),(3,5,'Android -Kotlin Programming',5,'uploads/image_course/1621075040.jpg',299,'The Android Programming course equips you with knowledge, skills in programming languages, how to build applications, and working methods to help you become a professional Android Developer ready to work at software companies. ','2021-05-15 03:37:20','2021-05-17 23:49:17'),(4,5,'Software Testing',4,'uploads/image_course/1621075269.jpg',299,'Professional Software Testing course aims to help students approach software testing quickly and effectively. The course will not only help you get a job but also develop a good career later.','2021-05-15 03:41:09','2021-05-17 23:49:25');
-/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `exams`
---
-
-DROP TABLE IF EXISTS `exams`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `exams` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `course_id` bigint unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_time` int NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `exams_course_id_foreign` (`course_id`),
-  CONSTRAINT `exams_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `exams`
---
-
-LOCK TABLES `exams` WRITE;
-/*!40000 ALTER TABLE `exams` DISABLE KEYS */;
-INSERT INTO `exams` VALUES (1,1,'Mid-term test',2,'UnLock','2021-05-17 23:48:44','2021-05-20 21:59:28'),(2,1,'Final exam test',20,'Lock','2021-05-17 23:48:44','2021-05-20 21:21:21'),(3,2,'Mid-term test',20,'UnLock','2021-05-17 23:49:03','2021-05-17 23:49:03'),(4,2,'Final exam test',20,'Lock','2021-05-17 23:49:03','2021-05-20 21:57:02'),(5,3,'Mid-term test',20,'UnLock','2021-05-17 23:49:17','2021-05-17 23:49:17'),(6,3,'Final exam test',20,'Lock','2021-05-17 23:49:17','2021-05-20 21:52:39'),(7,4,'Mid-term test',20,'UnLock','2021-05-17 23:49:25','2021-05-17 23:49:25'),(8,4,'Final exam test',20,'Lock','2021-05-17 23:49:25','2021-05-20 21:52:43');
-/*!40000 ALTER TABLE `exams` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `failed_jobs`
---
-
-DROP TABLE IF EXISTS `failed_jobs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `failed_jobs` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `failed_jobs`
+-- Dumping data for table `category`
 --
 
-LOCK TABLES `failed_jobs` WRITE;
-/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (7,1,'STARTER','2020-05-17 00:06:26','2020-05-17 00:06:26'),(8,1,'MAIN DISH','2020-05-17 00:06:50','2020-05-17 00:06:50'),(9,1,'DESSERTS','2020-05-17 00:07:04','2020-05-17 00:07:04'),(10,1,'DRINKS','2020-05-17 00:07:13','2020-05-17 00:07:13');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `lessons`
+-- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `lessons`;
+DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lessons` (
+CREATE TABLE `comments` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `course_id` bigint unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link_video` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint unsigned NOT NULL,
+  `post_id` bigint unsigned NOT NULL,
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `lessons_course_id_foreign` (`course_id`),
-  CONSTRAINT `lessons_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `lessons`
+-- Dumping data for table `comments`
 --
 
-LOCK TABLES `lessons` WRITE;
-/*!40000 ALTER TABLE `lessons` DISABLE KEYS */;
-INSERT INTO `lessons` VALUES (1,1,'List interface in java','In this video we will discuss about What is List Interface and about its implementation classes. 1','<iframe width=\"922\" height=\"525\" src=\"https://www.youtube.com/embed/Ye95kwXDXIg\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>','2021-05-19 23:46:28','2021-05-20 00:19:23');
-/*!40000 ALTER TABLE `lessons` ENABLE KEYS */;
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,5,6,'hello','2020-06-15 03:41:29','2020-06-15 03:41:29'),(2,3,6,'ok chua do','2020-06-18 09:33:58','2020-06-18 09:33:58'),(3,3,6,'haha vui the','2020-06-30 06:02:55','2020-06-30 06:02:55');
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contacts`
+--
+
+DROP TABLE IF EXISTS `contacts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `contacts` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `message` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contacts`
+--
+
+LOCK TABLES `contacts` WRITE;
+/*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
+INSERT INTO `contacts` VALUES (1,'dsadsadsa','admin1@gmail.com','asdasdasdsadsadas','sdaasdasdsasadsadsa','2020-05-20 20:53:35','2020-05-20 20:53:35'),(2,'huynh dong','bzayti5@gmail.com','dsaasdd','ddsasd','2020-05-20 20:58:22','2020-05-20 20:58:22'),(3,'huynh dong123','admin1@gmail.com','dsadsadasdsad','dsadsadsadsadasdas','2020-05-20 21:01:14','2020-05-20 21:01:14');
+/*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customers`
+--
+
+DROP TABLE IF EXISTS `customers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `customers` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `country` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `street_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customers`
+--
+
+LOCK TABLES `customers` WRITE;
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,'Huynh','Dong','Viet Nam','ton dan da nang','01233122332','3120217020@ued.udn.vn','2020-06-06 01:36:12','2020-06-06 01:36:12'),(2,'qweqwe','qweqwe','Viet Nam','ton dan da nang','01233122332','3120217020@ued.udn.vn','2020-06-06 03:07:09','2020-06-06 03:07:09'),(3,'Huynh','Dong','Viet Nam','dsadsa','01235353553','d01295306466@gmail.com','2020-06-30 00:52:10','2020-06-30 00:52:10');
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invoice_product`
+--
+
+DROP TABLE IF EXISTS `invoice_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `invoice_product` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `invoice_id` bigint unsigned NOT NULL,
+  `product_id` bigint unsigned NOT NULL,
+  `quantity` bigint NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invoice_product`
+--
+
+LOCK TABLES `invoice_product` WRITE;
+/*!40000 ALTER TABLE `invoice_product` DISABLE KEYS */;
+INSERT INTO `invoice_product` VALUES (1,1,7,4,'2020-06-06 01:36:12','2020-06-06 01:36:12'),(2,1,6,1,'2020-06-06 01:36:12','2020-06-06 01:36:12'),(3,2,5,1,'2020-06-06 03:07:09','2020-06-06 03:07:09'),(4,2,6,1,'2020-06-06 03:07:09','2020-06-06 03:07:09'),(5,2,7,2,'2020-06-06 03:07:09','2020-06-06 03:07:09'),(6,3,5,4,'2020-06-30 00:52:10','2020-06-30 00:52:10');
+/*!40000 ALTER TABLE `invoice_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invoices`
+--
+
+DROP TABLE IF EXISTS `invoices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `invoices` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` bigint unsigned NOT NULL,
+  `total_price` decimal(8,2) unsigned NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invoices`
+--
+
+LOCK TABLES `invoices` WRITE;
+/*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
+INSERT INTO `invoices` VALUES (1,1,15.00,'0','2020-06-06 01:36:12','2020-06-06 01:36:12'),(2,2,12.00,'0','2020-06-06 03:07:09','2020-06-06 03:07:09'),(3,3,12.00,'0','2020-06-30 00:52:10','2020-06-30 00:52:10');
+/*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -237,10 +285,10 @@ DROP TABLE IF EXISTS `migrations`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `migrations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,74 +297,181 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2021_05_14_014930_create_admins_table',2),(5,'2021_05_14_043325_create_courses_table',3),(6,'2021_05_14_043407_create_exams_table',3),(7,'2021_05_14_043806_create_scores_table',3),(8,'2021_05_14_043934_create_questions_table',3),(9,'2021_05_14_044019_create_question_choices_table',3),(10,'2021_05_14_044103_create_course_user_table',3),(11,'2021_05_14_151804_create_class_rooms_table',4),(12,'2021_05_14_154043_create_class_user_table',4),(13,'2021_05_17_074250_create_note_privates_table',5),(14,'2021_05_17_074259_create_note_generals_table',5),(15,'2021_05_17_162953_create_questions_table',6),(16,'2021_05_20_060754_create_lessons_table',7);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_100000_create_password_resets_table',1),(2,'2016_06_01_000001_create_oauth_auth_codes_table',1),(3,'2016_06_01_000002_create_oauth_access_tokens_table',1),(4,'2016_06_01_000003_create_oauth_refresh_tokens_table',1),(5,'2016_06_01_000004_create_oauth_clients_table',1),(6,'2016_06_01_000005_create_oauth_personal_access_clients_table',1),(7,'2017_10_08_000001_create_oauth_access_token_providers_table',1),(8,'2020_05_10_104333_create_admins',1),(9,'2020_05_12_142909_create_roles',1),(10,'2020_05_12_144035_create_admin_role_pivot_table',1),(11,'2020_05_13_065858_create_category_table',1),(12,'2020_05_17_062250_create_products',1),(13,'2020_05_17_063257_create_customer',1),(14,'2020_05_19_150451_create_invoice_product',1),(15,'2020_05_19_150828_create_invoices',1),(16,'2020_05_21_032050_create_contacts_table',1),(17,'2020_05_25_041622_create_users_table',1),(18,'2020_05_25_083150_create_posts_table',1),(19,'2020_05_25_094234_create_comments_table',1),(20,'2020_05_26_115108_create_replies_table',1),(21,'2020_05_28_145231_create_bookings_talbe',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `note_generals`
+-- Table structure for table `oauth_access_token_providers`
 --
 
-DROP TABLE IF EXISTS `note_generals`;
+DROP TABLE IF EXISTS `oauth_access_token_providers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `note_generals` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `class_id` bigint unsigned NOT NULL,
-  `admin_id` bigint unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `oauth_access_token_providers` (
+  `oauth_access_token_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `provider` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `note_generals_class_id_foreign` (`class_id`),
-  KEY `note_generals_admin_id_foreign` (`admin_id`),
-  CONSTRAINT `note_generals_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`),
-  CONSTRAINT `note_generals_class_id_foreign` FOREIGN KEY (`class_id`) REFERENCES `class_rooms` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`oauth_access_token_id`),
+  CONSTRAINT `oauth_access_token_providers_oauth_access_token_id_foreign` FOREIGN KEY (`oauth_access_token_id`) REFERENCES `oauth_access_tokens` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `note_generals`
+-- Dumping data for table `oauth_access_token_providers`
 --
 
-LOCK TABLES `note_generals` WRITE;
-/*!40000 ALTER TABLE `note_generals` DISABLE KEYS */;
-INSERT INTO `note_generals` VALUES (3,1,5,'test tieu de general','noi dung general','2021-05-17 05:35:42','2021-05-17 05:35:42'),(4,3,5,'thong bao chung','thong bao chung','2021-05-19 07:29:13','2021-05-19 07:29:13');
-/*!40000 ALTER TABLE `note_generals` ENABLE KEYS */;
+LOCK TABLES `oauth_access_token_providers` WRITE;
+/*!40000 ALTER TABLE `oauth_access_token_providers` DISABLE KEYS */;
+INSERT INTO `oauth_access_token_providers` VALUES ('3dd59080462c1c21456d15297591ba7e9eb693ad6f4a38abf201785c8f50e6b53c559c9bc4ccf3ff','admins','2020-06-16 20:52:11','2020-06-16 20:52:11'),('48ddba6a6ffd20a6c3d4f4a9563620dcf0ac190a2abd79fa89c30ed44f7cbbab8165b38d97ea8136','admins','2020-06-16 21:26:43','2020-06-16 21:26:43'),('5399c29e5cc50079bf75638fc613c0fcf545fc1be7432610b5d0970ff210360e82c423fc095b2b4e','admins','2020-06-16 21:27:35','2020-06-16 21:27:35'),('6683696ed1f974779d548d741c303d02af6693cc22da5cf1d94f76a50988fce007882b8f26c48519','admins','2020-06-16 21:13:54','2020-06-16 21:13:54'),('84384e55388a568046c6ca86bd8bed646f848d24fc68fa84d94682735078f1fa1a5a5348d9e25ead','users','2020-06-16 21:01:52','2020-06-16 21:01:52'),('87fb00eec62a5244930c1534ddfde9070b797fcd5993d8faa2204b7b24f47a402b6d6d18eec30aa5','users','2020-06-16 21:05:37','2020-06-16 21:05:37');
+/*!40000 ALTER TABLE `oauth_access_token_providers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `note_privates`
+-- Table structure for table `oauth_access_tokens`
 --
 
-DROP TABLE IF EXISTS `note_privates`;
+DROP TABLE IF EXISTS `oauth_access_tokens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `note_privates` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `admin_id` bigint unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `oauth_access_tokens` (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` bigint DEFAULT NULL,
+  `client_id` int unsigned NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `scopes` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `revoked` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `expires_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `note_privates_user_id_foreign` (`user_id`),
-  KEY `note_privates_admin_id_foreign` (`admin_id`),
-  CONSTRAINT `note_privates_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`),
-  CONSTRAINT `note_privates_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `oauth_access_tokens_user_id_index` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `note_privates`
+-- Dumping data for table `oauth_access_tokens`
 --
 
-LOCK TABLES `note_privates` WRITE;
-/*!40000 ALTER TABLE `note_privates` DISABLE KEYS */;
-INSERT INTO `note_privates` VALUES (1,6,5,'test tieu de 4','test noi dung','2021-05-17 02:23:17','2021-05-19 07:30:04'),(2,8,5,'thong bao rieng','thong bao rieng','2021-05-19 07:29:40','2021-05-19 07:29:40'),(3,8,5,'thong bao rieng 2','thong bao rieng 2','2021-05-19 07:30:45','2021-05-19 07:30:45');
-/*!40000 ALTER TABLE `note_privates` ENABLE KEYS */;
+LOCK TABLES `oauth_access_tokens` WRITE;
+/*!40000 ALTER TABLE `oauth_access_tokens` DISABLE KEYS */;
+INSERT INTO `oauth_access_tokens` VALUES ('155be512ec232c862d00f8ca86c4561e7895a16ebf731f2ced848728a9c5a69279e085de7e0a0196',3,1,'Personal Access Token','[]',0,'2020-06-15 03:55:25','2020-06-15 03:55:25','2021-06-15 10:55:25'),('2829f167d4c1a6e626f6909996e36debbecd5ea0719b9435bdbc190690977be1a495c2a177b03167',2,1,'Personal Admin Access Token','[]',0,'2020-06-17 10:23:56','2020-06-17 10:23:56','2021-06-17 17:23:56'),('2f39387cf887e01db64b5144a4884ba7205fd215e5952e597208345d86056c14d8c35dd68dfc94fa',3,1,'Personal Access Token','[]',0,'2020-06-15 20:48:51','2020-06-15 20:48:51','2021-06-16 03:48:51'),('3dd59080462c1c21456d15297591ba7e9eb693ad6f4a38abf201785c8f50e6b53c559c9bc4ccf3ff',2,2,NULL,'[]',0,'2020-06-16 20:52:10','2020-06-16 20:52:10','2021-06-17 03:52:10'),('48ddba6a6ffd20a6c3d4f4a9563620dcf0ac190a2abd79fa89c30ed44f7cbbab8165b38d97ea8136',2,2,NULL,'[]',1,'2020-06-16 21:26:43','2020-06-16 21:26:43','2021-06-17 04:26:43'),('5399c29e5cc50079bf75638fc613c0fcf545fc1be7432610b5d0970ff210360e82c423fc095b2b4e',2,2,NULL,'[]',0,'2020-06-16 21:27:35','2020-06-16 21:27:35','2021-06-17 04:27:35'),('5afa0a1a1a9bd1b3b0db45ad5105c253691e76380626fb81519c14504c198fa9bc59520f03ef3230',3,1,'Personal Access Token','[]',0,'2020-06-16 23:04:05','2020-06-16 23:04:05','2021-06-17 06:04:05'),('63a246bf2a737478c00a65c380565acde8ef67ecb1935a2045c36ea922396fad10d31454da13ff03',2,1,'Personal Admin Access Token','[]',1,'2020-06-17 21:10:53','2020-06-17 21:10:53','2021-06-18 04:10:53'),('6683696ed1f974779d548d741c303d02af6693cc22da5cf1d94f76a50988fce007882b8f26c48519',2,2,NULL,'[]',0,'2020-06-16 21:13:54','2020-06-16 21:13:54','2021-06-17 04:13:54'),('677e7a056047f00be5e69368564bb3dcf7a5ffa2e07b3d19627067fc01ceae00daa98db5d25b62fc',3,1,'Personal Access Token','[]',0,'2020-06-15 04:54:07','2020-06-15 04:54:07','2021-06-15 11:54:07'),('7f67d43a72c039faf96f1046b6e07b2fa73c64c6886ae85cd382b0f31e6b1751a5cae7b49e4aa78c',3,1,'Personal Access Token','[]',0,'2020-06-17 10:04:58','2020-06-17 10:04:58','2021-06-17 17:04:58'),('84384e55388a568046c6ca86bd8bed646f848d24fc68fa84d94682735078f1fa1a5a5348d9e25ead',3,1,'Personal Access Token','[]',0,'2020-06-16 21:01:52','2020-06-16 21:01:52','2021-06-17 04:01:52'),('87fb00eec62a5244930c1534ddfde9070b797fcd5993d8faa2204b7b24f47a402b6d6d18eec30aa5',3,2,NULL,'[]',0,'2020-06-16 21:05:37','2020-06-16 21:05:37','2021-06-17 04:05:37'),('953fb604d0663051230bfa7305948464cb821b002e8a506a169915cee94c53d1797d90f09b448181',5,1,'Personal Access Token','[]',1,'2020-06-15 03:24:52','2020-06-15 03:24:52','2021-06-15 10:24:52'),('e720eda99714b00a2b5355a2785417cd5c4b8d7d59ba900a93c30a1cb77dc638d3305cccd2f81b11',2,1,'Personal Access Token','[]',1,'2020-06-17 10:11:31','2020-06-17 10:11:31','2021-06-17 17:11:31'),('fd2f1a6667166a085fa4ea7a50fa652848cd3caa167fb5a549fb93b3550e496958d3ab60a1437e94',1,1,'Personal Admin Access Token','[]',1,'2020-06-17 09:31:01','2020-06-17 09:31:01','2021-06-17 16:31:01');
+/*!40000 ALTER TABLE `oauth_access_tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `oauth_auth_codes`
+--
+
+DROP TABLE IF EXISTS `oauth_auth_codes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `oauth_auth_codes` (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` bigint NOT NULL,
+  `client_id` int unsigned NOT NULL,
+  `scopes` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `oauth_auth_codes`
+--
+
+LOCK TABLES `oauth_auth_codes` WRITE;
+/*!40000 ALTER TABLE `oauth_auth_codes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `oauth_auth_codes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `oauth_clients`
+--
+
+DROP TABLE IF EXISTS `oauth_clients`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `oauth_clients` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `secret` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `redirect` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `personal_access_client` tinyint(1) NOT NULL,
+  `password_client` tinyint(1) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_clients_user_id_index` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `oauth_clients`
+--
+
+LOCK TABLES `oauth_clients` WRITE;
+/*!40000 ALTER TABLE `oauth_clients` DISABLE KEYS */;
+INSERT INTO `oauth_clients` VALUES (1,NULL,'Laravel Personal Access Client','jWlNekBu9VhAjNzbfPSpinIyT4Ct7oEIwS3Lpa6t','http://localhost',1,0,0,'2020-06-14 02:49:16','2020-06-14 02:49:16'),(2,NULL,'Laravel Password Grant Client','VjSMNNg7sGJTdEF6GzjCK3o5MrBpLr8rAUzlXTHB','http://localhost',0,1,0,'2020-06-14 02:49:16','2020-06-14 02:49:16'),(3,3,'Laravel Personal Admin Access Client','dNtZOpl5l3Ta0JHh3sZC6Br4atiiLfNbuJR5BC1m','http://localhost',0,0,0,'2020-06-15 04:13:17','2020-06-15 04:13:17');
+/*!40000 ALTER TABLE `oauth_clients` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `oauth_personal_access_clients`
+--
+
+DROP TABLE IF EXISTS `oauth_personal_access_clients`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `oauth_personal_access_clients` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `client_id` int unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_personal_access_clients_client_id_index` (`client_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `oauth_personal_access_clients`
+--
+
+LOCK TABLES `oauth_personal_access_clients` WRITE;
+/*!40000 ALTER TABLE `oauth_personal_access_clients` DISABLE KEYS */;
+INSERT INTO `oauth_personal_access_clients` VALUES (1,1,'2020-06-14 02:49:16','2020-06-14 02:49:16');
+/*!40000 ALTER TABLE `oauth_personal_access_clients` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `oauth_refresh_tokens`
+--
+
+DROP TABLE IF EXISTS `oauth_refresh_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `access_token_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `oauth_refresh_tokens`
+--
+
+LOCK TABLES `oauth_refresh_tokens` WRITE;
+/*!40000 ALTER TABLE `oauth_refresh_tokens` DISABLE KEYS */;
+INSERT INTO `oauth_refresh_tokens` VALUES ('2996dde390684baaa17b520eeab6c660407d4bc6a9450a41fa464383337efcb0008c17183a2f90e2','3dd59080462c1c21456d15297591ba7e9eb693ad6f4a38abf201785c8f50e6b53c559c9bc4ccf3ff',0,'2021-06-17 03:52:11'),('9d777b97ba66be4f0397b6b715212175bcdefd7c81887cbb4cdef1a7695105d675595fdb5728580f','48ddba6a6ffd20a6c3d4f4a9563620dcf0ac190a2abd79fa89c30ed44f7cbbab8165b38d97ea8136',1,'2021-06-17 04:26:43'),('9de59adfbb213008bb11265c5badb31db686063880fc5870a205a77fcd5c7efc4573363fc8e111ec','5399c29e5cc50079bf75638fc613c0fcf545fc1be7432610b5d0970ff210360e82c423fc095b2b4e',0,'2021-06-17 04:27:35'),('c0301afa8e5dc234675103c09255ba0c85eae3d4526708c0421d818e25e7fd8c8783566a282067dc','87fb00eec62a5244930c1534ddfde9070b797fcd5993d8faa2204b7b24f47a402b6d6d18eec30aa5',0,'2021-06-17 04:05:37'),('c04183fd6c27362f0fa7d2f5634ae0b6c15e7257a5612493db59dab91155229964fa455021184f6e','6683696ed1f974779d548d741c303d02af6693cc22da5cf1d94f76a50988fce007882b8f26c48519',0,'2021-06-17 04:13:54');
+/*!40000 ALTER TABLE `oauth_refresh_tokens` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -327,11 +482,11 @@ DROP TABLE IF EXISTS `password_resets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -340,75 +495,125 @@ CREATE TABLE `password_resets` (
 
 LOCK TABLES `password_resets` WRITE;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
-INSERT INTO `password_resets` VALUES ('hvd.03.12.99@gmail.com','$2y$10$mjKFsWM.l8PZJyL5Vjy0PeCrumtRdphQWtAo05bQgqiNXOOx5d92K','2021-05-21 22:25:18');
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `questions`
+-- Table structure for table `posts`
 --
 
-DROP TABLE IF EXISTS `questions`;
+DROP TABLE IF EXISTS `posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `questions` (
+CREATE TABLE `posts` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `exam_id` bigint unsigned NOT NULL,
-  `name` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `answer_1` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `answer_2` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `answer_3` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `answer_4` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `answer_right` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_id` bigint unsigned NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `url_thumb` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `keyword` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `view` bigint NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `questions_exam_id_foreign` (`exam_id`),
-  CONSTRAINT `questions_exam_id_foreign` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `posts_slug_unique` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `questions`
+-- Dumping data for table `posts`
 --
 
-LOCK TABLES `questions` WRITE;
-/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (3,1,'2 + 3 = ?','2','5','4','14','5','Easy','2021-05-18 23:22:48','2021-05-18 23:22:48'),(4,1,'12+ 3 = ?','15','4','51','5','15','Easy','2021-05-18 23:23:18','2021-05-18 23:23:18'),(5,1,'5 + 7','57','12','4','6','12','Easy','2021-05-18 23:23:42','2021-05-18 23:23:42'),(6,1,'3 + 4 = ?','7','14','21','5','7','Easy','2021-05-18 23:24:04','2021-05-18 23:24:04'),(7,1,'7 + 24','13','31','15','52','31','Easy','2021-05-18 23:24:30','2021-05-18 23:24:30'),(8,1,'23 + 25','24','37','48','46','48','Easy','2021-05-18 23:24:55','2021-05-18 23:24:55'),(9,1,'2 + 9','11','24','3','6','11','Easy','2021-05-18 23:25:27','2021-05-18 23:25:27'),(10,1,'56 - 3','55','53','59','40','53','Easy','2021-05-18 23:25:52','2021-05-18 23:25:52'),(11,1,'31 - 9','23','40','56','22','22','Easy','2021-05-18 23:26:21','2021-05-18 23:26:21'),(12,1,'2 * 3 = ?','5','6','7','4','6','Medium','2021-05-18 23:26:47','2021-05-18 23:26:47'),(13,1,'4 * 4 = ?','8','16','32','4','16','Medium','2021-05-18 23:27:25','2021-05-18 23:27:25'),(14,1,'4 / 2 = ?','2','6','8','12','2','Medium','2021-05-18 23:27:46','2021-05-18 23:27:46'),(15,1,'32 - 4 * 3','16','37','20','25','20','Medium','2021-05-18 23:28:17','2021-05-18 23:28:17'),(16,1,'35 / 5','8','40','105','7','7','Medium','2021-05-18 23:28:41','2021-05-18 23:28:41'),(17,1,'2 - 5 / 5','10','20','1','12','1','Medium','2021-05-18 23:29:04','2021-05-18 23:29:04'),(18,1,'3 + 6 / 2','9','6','3','12','6','Medium','2021-05-18 23:29:31','2021-05-18 23:29:31'),(19,1,'6 * 3 + 8 / 2 = ?','24','12','34','22','22','Medium','2021-05-18 23:30:05','2021-05-18 23:30:05'),(20,1,'3 / 3 = ?','6','1','2','4','1','Medium','2021-05-18 23:30:22','2021-05-18 23:30:22'),(21,1,'4 / 0 = ?','3','4','0','Lỗi','Lỗi','Medium','2021-05-18 23:31:15','2021-05-18 23:31:15'),(22,1,'111 * 111','111111','11','111','12321','12321','Hard','2021-05-18 23:32:00','2021-05-18 23:32:00'),(23,1,'x + 2 = 5','3','4','2','6','3','Hard','2021-05-18 23:32:35','2021-05-18 23:32:35'),(24,1,'x + 6 = 0','-6','5','2','6','-6','Hard','2021-05-18 23:33:03','2021-05-18 23:33:03'),(25,1,'x * 3 = 12','2','4','6','9','4','Hard','2021-05-18 23:33:28','2021-05-18 23:33:28'),(26,1,'x / 3 = 12','12','36','42','24','36','Hard','2021-05-18 23:34:01','2021-05-18 23:34:01'),(27,1,'12 / x = 6','2','8','10','4','2','Hard','2021-05-18 23:34:47','2021-05-18 23:34:47'),(28,1,'105 * x + 5 = 26','15','10','5','15','5','Hard','2021-05-18 23:35:30','2021-05-18 23:35:30'),(30,1,'x - 2 = 7','9','12','5','8','9','Hard','2021-05-18 23:36:24','2021-05-18 23:36:24'),(31,1,'9 - x + 5 = 12','2','12','10','7','2','Hard','2021-05-18 23:37:21','2021-05-18 23:37:21'),(32,1,'15 * 5 + x = 100','20','15','12','25','25','Hard','2021-05-18 23:37:59','2021-05-18 23:37:59'),(33,1,'1 + 1 = ?','2','3','4','6','2','Easy','2021-05-19 07:50:55','2021-05-19 07:50:55'),(34,4,'1 + 6 = ?','7','5','9','10','7','Easy','2021-05-19 07:51:44','2021-05-19 07:51:44'),(35,1,'1 + 10 = ?','11','10','12','8','11','Easy','2021-05-19 22:49:16','2021-05-19 22:55:51');
-/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
+LOCK TABLES `posts` WRITE;
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (6,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\r\n\r\n<p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\r\n<strong>Differences</strong></p>\r\n\r\n<p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\r\n\r\n<p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\r\n\r\n<p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\r\n\r\n<p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\r\n\r\n<p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\r\n\r\n<p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\r\n\r\n<h2><strong>Similarities</strong></h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\r\n\r\n<p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\r\n\r\n<p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\r\n\r\n<p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\r\n\r\n<p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\r\n\r\n<p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\r\n\r\n<p><strong>Do you want to know more about cacao roasting?</strong></p>\r\n\r\n<p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','1',0,'2020-05-25 20:57:07','2020-06-06 03:32:11'),(7,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-959','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','1',0,'2020-05-25 21:06:05','2020-05-26 02:12:37'),(8,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\r\n\r\n<p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\r\n<strong>Differences</strong></p>\r\n\r\n<p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\r\n\r\n<p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\r\n\r\n<p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\r\n\r\n<p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\r\n\r\n<p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\r\n\r\n<p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\r\n\r\n<h2><strong>Similarities</strong></h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\r\n\r\n<p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\r\n\r\n<p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\r\n\r\n<p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\r\n\r\n<p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\r\n\r\n<p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\r\n\r\n<p><strong>Do you want to know more about cacao roasting?</strong></p>\r\n\r\n<p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>','thumbpost/1591438795.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-617','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','1',0,'2020-05-25 21:06:05','2020-06-06 03:19:55'),(9,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-1032','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','1',0,'2020-05-25 21:06:05','2020-05-26 02:46:26'),(10,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-258','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','1',0,'2020-05-25 21:06:05','2020-05-26 02:49:39'),(11,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-2488','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','1',0,'2020-05-25 21:06:05','2020-05-26 02:49:42'),(12,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-3367','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','1',0,'2020-05-25 21:06:05','2020-05-26 02:49:44'),(13,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-3715','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','1',0,'2020-05-25 21:06:05','2020-05-26 02:49:50'),(14,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-2502','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','0',0,'2020-05-25 21:06:05','2020-05-25 21:06:05'),(15,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-546','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','0',0,'2020-05-25 21:06:05','2020-05-25 21:06:05'),(16,1,'Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee','<h1>Cacao and Coffea - the Differences and Similarities of Chocolate and Coffee</h1>\n \n        <p>Coffee and chocolate are often compared thanks to the overlap between their growing regions and the similarities in flavor notes.&nbsp; Both coffee and cacao&nbsp;share a huge flavor profile; over 600 aromatic compounds in cacao and more than 1000 in coffee!&nbsp;Let&rsquo;s dig into more similarities and differences between the two gorgeous plants!<br />\n        <strong>Differences</strong></p>\n        \n        <p>Coffee and cacao come obviously from two very different plants, from two different continents.&nbsp; Cocoa comes from Theobroma cacao also known as &lsquo;fruit of the gods&rsquo;- an evergreen tree with fruits and flowers growing directly on its trunk. An oblong fruit, called a pod, differs in size, depending on species and is as colorful as one can imagine (red, yellow, purple, mixed colors) and each pod contains 20-60 cocoa beans, surrounded by sugary and fragrant pulp. Approximately 7-14 pods are necessary to produce 450 grams of cocoa beans. Just to remind, coffee beans come from coffee cherries that produce two beans per cherry.</p>\n        \n        <p><img alt=\"cacao pods\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/cacao%20nibs.JPG?itok=yW8vrgoN\" /></p>\n        \n        <p>Just like coffee trees, cacao flourishes in cocoa belt: along or near the Equator in Latin America, the tropics of western Africa, Asia and India. Originaly, Lower Amazon (South America) is home to cacao, yet now is best grown in Africa. And coffee comes from Africa and Arabia (Ethiopia and Yemen), and now is best grown in South America, kind of a switch there, but it works. ?<img alt=\"cocoa fruit\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/IMG_7712.JPG?itok=bxwxOGIo\" /></p>\n        \n        <p>Coffee&nbsp;has&nbsp;two main species: Arabica and Robusta, from which various varieties have developed over time (e.g. Caturra, Typica, Bourbon, Castillo). Cocoa beans also have different varietals &ndash; researchers are still finding new genetics, but now we know that there are more than 10 major families of cacao (before cacao was classified into only 3 varieties/genetics - Criollo/Forastero/Trinitario). And CCN-51, which is a clone with high yield, great resistance to diseases. Criollo is delicate, fine, more expensive, white beans but less productive. Forastero is more disease resistant, heartier yet poorer quality. Trinitario is the Goldilocks in-between. Each varietal has unique characteristics in terms of appearance and especially flavor. Importantly, every step of the process has influence over its end-flavor. The main guys are: genetics, terroir and fermentation at origin, and roasting and conching (just for chocolate). Even transportation and storing will have an impact.</p>\n        \n        <p><img alt=\"theobroma cacao\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/theobroma%20cacao.JPG?itok=4rn8gjlZ\" /></p>\n        \n        <p>Additionally, chocolate and coffee differ in its description usage of &ldquo;dark&rdquo;. For chocolate, a &ldquo;dark&rdquo; chocolate is a reference to the ratio of cocoa solids to other ingredients. Thus the higher the concentration of cocoa solids and cocoa butter, the more &ldquo;dark&rdquo; it is. Craft chocolate bar is made using very few ingredients, sometimes only two: cocoa and sugar. However, when talking about coffee, &ldquo;dark&rdquo; means the type of roast. A dark roast means the coffee was over roasted to achieve a specific flavor profile, such as smokey, burnt and caramel tasting notes. A light roast means that the coffee was a bit less roasted and preserves flavors of the bean&rsquo;s origin like the fruity and floral notes.</p>\n        \n        <h2><strong>Similarities</strong></h2>\n        \n        <p>&nbsp;</p>\n        \n        <p>es, the beans come from a different plant, but they serve quite a similar purpose: coffee and cacao should stimulate. We talk about those alkaloids, caffeine for coffee and theobromine for cacao. Cocoa was a ceremonial drink of Mayan and Aztek gods, then preferred by European royalty and much later became available to the general public.</p>\n        \n        <p>So both beans contain significant amounts of antioxidants - cacao more than coffee. Theobromine only occurs in cacao and tea,&nbsp;<a href=\"https://www.nutritionadvance.com/theobromine-benefits/\">thus it stimulates mildly and less effectively as caffeine.</a>&nbsp;&nbsp;(FYI A 70% dark chocolate bar can have as much as 810 mg of theobromine!) Also, those two play a role in keeping our brain and cognition sharp as we age. Dietary flavanoids found in cacao have been proved to protect against neuroinflammation and promote learning and memory. Our cup of Joe or caffeine has been shown to promote learning and memory with just a cup a day!</p>\n        \n        <p>The processes of fermentation, drying and roasting has many parallels. Let&rsquo;s look into those. As both fruits ripen at various times, manual picking from small farmers is&nbsp;required. Both Theobroma cacao and Coffea Arabica needs about 5 years before producing berries or cherries. So after harvesting, cacao pods are opened, beans are removed and piled into large wooden containers for fermentation (covered with banana leaves) for 2-7 or sometimes even 10 days, depending on variety. Beans are turned in order to ferment evenly. During fermentation, a number of chemical reactions occur which help develop flavor.&nbsp;</p>\n        \n        <p><img alt=\"coffee tree nursery\" src=\"https://www.baristainstitute.com/sites/default/files/styles/1x_width_100_wysiwyg/public/images/1%20-%20coffee%20trees%20in%20a%20nursery_0.JPG?itok=OK49S8aO\" /></p>\n        \n        <p>As for coffee, many options for processing: dry, wet, honey, anaerobic and so on. Either process removes the pulp from the beans while developing varying degrees of aroma, body, acidity that compose the bean&rsquo;s flavor. Both beans are then dried in the sun to reduce moisture levels.</p>\n        \n        <p>Coffee beans then undergo milling, hulling, cleaning, grading, and polishing the green coffee beans. The post-harvest process is crucial for both beans alike as to ensure properly developed flavors and quality.&nbsp; So here comes the roasting part. Both cocoa and coffee beans are roasted to draw out the unique flavors of the bean&rsquo;s origin. This requires technique on the part of chocolate makers and coffee roasters, who work to find the right balance in the roasting.</p>\n        \n        <p><strong>Do you want to know more about cacao roasting?</strong></p>\n        \n        <p><a href=\"https://www.youtube.com/watch?v=HM2eOm3-ws4\" target=\"_blank\">Roasting Cacao - Episode 2 - Craft Chocolate TV</a></p>\n        \n        <p>&nbsp;</p>\n        \n        <p>&nbsp;</p>','thumbpost/1590465427.jpg','cacao-and-coffea-the-differences-and-similarities-of-chocolate-and-coffee-1844','KEYWORDS,cacao,chocolate,coffee,flavor,flavor,pairing,flavour','0',0,'2020-05-25 21:06:05','2020-05-25 21:06:05'),(17,3,'My title','<p>qweqweqweasdasd</p>\r\n\r\n<p>hello friend!</p>','thumbpost/1590485867.jpg','my-title','TRÒ CHƠI KỲ ẢO','1',0,'2020-05-26 02:37:47','2020-05-26 02:46:39'),(18,3,'asdasd sd ad sa','<p>eiwoqewqioewqewq</p>','thumbpost/1591363122.jfif','asdasd-sd-ad-sa','sad,dsadsa','0',0,'2020-06-05 06:18:42','2020-06-05 06:18:42'),(19,3,'Banh mi goi','<p>đ&acirc;sdasdas</p>','thumbpost/1591365393.jpg','banh-mi-goi','dsad,dsadas','0',0,'2020-06-05 06:56:33','2020-06-05 06:56:33'),(21,3,'My title1','<p>dsadsadasdasd</p>','thumbpost/1591366203.jpg','my-title1','anohana','1',0,'2020-06-05 06:58:14','2020-06-14 01:22:58');
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `scores`
+-- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `scores`;
+DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `scores` (
+CREATE TABLE `products` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` bigint unsigned NOT NULL,
-  `exam_id` bigint unsigned NOT NULL,
-  `score` double(8,2) NOT NULL,
+  `cate_id` bigint unsigned NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `price` decimal(8,2) unsigned NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `url_image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `scores_user_id_foreign` (`user_id`),
-  KEY `scores_exam_id_foreign` (`exam_id`),
-  CONSTRAINT `scores_exam_id_foreign` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`id`),
-  CONSTRAINT `scores_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `scores`
+-- Dumping data for table `products`
 --
 
-LOCK TABLES `scores` WRITE;
-/*!40000 ALTER TABLE `scores` DISABLE KEYS */;
-INSERT INTO `scores` VALUES (1,8,1,9.00,NULL,NULL),(9,6,1,10.00,NULL,NULL);
-/*!40000 ALTER TABLE `scores` ENABLE KEYS */;
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (1,7,'Cornish - Mackerel',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699318.jpg','2020-05-17 00:08:38','2020-05-17 00:08:38'),(2,7,'Roasted Steak',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699414.jpg','2020-05-17 00:10:14','2020-05-17 00:10:14'),(3,7,'Seasonal Soup',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699485.jpg','2020-05-17 00:11:25','2020-05-17 00:11:25'),(4,7,'Chicken Curry',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699507.jpg','2020-05-17 00:11:47','2020-05-17 00:11:47'),(5,8,'Sea Trout',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699557.jpg','2020-05-17 00:12:38','2020-05-17 00:12:38'),(6,8,'Roasted Beef',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699574.jpg','2020-05-17 00:12:54','2020-05-17 00:12:54'),(7,8,'Butter Fried Chicken',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699588.jpg','2020-05-17 00:13:08','2020-05-17 00:13:08'),(8,8,'Chiken Filet',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699613.jpg','2020-05-17 00:13:33','2020-05-17 00:13:33'),(9,9,'Roasted Steak 1',1.00,'A small river named Duden flows by their place and supplies','uploads/1589699736.jpg','2020-05-17 00:15:36','2020-05-17 00:15:36'),(10,9,'Seasonal Soup 1',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699785.jpg','2020-05-17 00:16:25','2020-05-17 00:16:25'),(11,9,'Chicken Curry 1',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699812.jpg','2020-05-17 00:16:52','2020-05-17 00:16:52'),(12,9,'Sea Trout 1',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699833.jpg','2020-05-17 00:17:13','2020-05-17 00:17:13'),(13,10,'Roasted Beef 1',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699849.jpg','2020-05-17 00:17:29','2020-05-17 00:18:22'),(14,10,'Butter Fried Chicken 1',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699867.jpg','2020-05-17 00:17:47','2020-05-17 00:18:31'),(15,10,'Chiken Filet 1',3.00,'A small river named Duden flows by their place and supplies','uploads/1589699958.jpg','2020-05-17 00:19:18','2020-05-17 00:19:18'),(16,8,'test',1.00,'dsadsada','uploads/1591441215.jpg','2020-05-29 05:28:32','2020-06-06 04:00:15'),(18,7,'test 2',1.00,'dsadasdas','uploads/1591441187.jfif','2020-06-06 03:59:47','2020-06-06 03:59:47');
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `replies`
+--
+
+DROP TABLE IF EXISTS `replies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `replies` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint unsigned NOT NULL,
+  `comment_id` bigint unsigned NOT NULL,
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `replies`
+--
+
+LOCK TABLES `replies` WRITE;
+/*!40000 ALTER TABLE `replies` DISABLE KEYS */;
+INSERT INTO `replies` VALUES (1,3,3,'vui cc cut','2020-06-30 06:03:01','2020-06-30 06:03:01');
+/*!40000 ALTER TABLE `replies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roles` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'chay lai seed',NULL,NULL);
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -420,20 +625,18 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `birthday` date NOT NULL,
-  `url_avatar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url_thumb` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `provider` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `provider_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -442,7 +645,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (6,'Huỳnh Văn Đồng','hvd.03.12.99@gmail.com','0916510664','1999-03-12','/storage/uploads/image_course/1621224713.jpg','Active',NULL,'$2y$10$vnpxw2VQMtYGu8HM7bx//.nxrzDayg7Hprl.CNQUuZi8omz1RuLH2','FNG7nEPZ7JOZw5Zl3MuEUr8YP9zSZFMvCFModJPPP0GQDsvPHrphtajjUPvZ','2021-05-16 01:51:09','2021-05-21 22:38:11'),(8,'Huỳnh Văn Đồng','d01295306466@gmail.com','0839243436','1999-04-12','/storage/uploads/image_avatar/1621480983.jpg','Active',NULL,'$2y$10$fE9J9WiA.J92hyPuN2giDe6MOZhfz5FTrRccqjoncPBgq572gsWQO','7O7laBJNZaGsEu5dDVLnTlnVafv7LpFF7AmXx4PXo7CHV1MIVUkb9nwh0WE7','2021-05-19 07:24:25','2021-05-22 05:50:48');
+INSERT INTO `users` VALUES (2,'huynh dong','admin1@gmail.com','$2y$10$lEq9DAXABXiZSd5hapmgn.oWAhSmZWOFCUW2opfsA/gaAwS4rJ3hO','thumb/default_ava.jpg','common','2','0','2020-05-24 21:49:21','2020-06-02 06:27:07'),(3,'dong huynh','3120217020@ued.udn.vn','$2y$10$xiifv246Bbv9pPozjVojqOoLz.A7ivfBbpynKSEl9CeTNCB1Gqb8S','thumb/default_ava.jpg','common','3','0','2020-05-24 21:54:19','2020-05-24 21:54:19'),(4,'Dong Huynh',NULL,NULL,'thumb/1591355486.jpg','facebook','901401813655901','0','2020-06-05 04:11:26','2020-06-05 04:11:26'),(5,'dong','dsadas@gmail.com','$2y$10$/NN5wb7KV1IS9cmzE.CrIO5RMdeHX0MgflPzIabWQKz/A3MGEVK0K','thumb/default_ava.jpg','common','5','0','2020-06-15 01:41:35','2020-06-15 01:41:35');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -455,4 +658,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-23 13:16:36
+-- Dump completed on 2021-05-23 13:07:14
