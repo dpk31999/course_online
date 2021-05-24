@@ -229,7 +229,49 @@
         </footer>
         <!-- End Footer -->
     </div>
-
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="/images/image.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chat support</h4>
+                    <p class="chatbox__description--header">There are many variations of passages of Lorem Ipsum
+                        available</p>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div>
+                    <div class="messages__item messages__item--visitor">
+                        Can you let me talk to the support?
+                    </div>
+                    <div class="messages__item messages__item--operator">
+                        Sure!
+                    </div>
+                    <div class="messages__item messages__item--visitor">
+                        Can you let me talk to the support?
+                    </div>
+                    
+                    <div class="messages__item messages__item--typing">
+                        <span class="messages__dot"></span>
+                        <span class="messages__dot"></span>
+                        <span class="messages__dot"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbox__footer">
+                <img src="/images/emojis.svg" alt="">
+                <img src="/images/microphone.svg" alt="">
+                <input type="text" placeholder="Write a message...">
+                <a class="chatbox__send--footer">Send</a>
+                <img src="/images/attachment.svg" alt="">
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button>button</button>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous"></script>
