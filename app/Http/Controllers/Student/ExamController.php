@@ -18,6 +18,11 @@ class ExamController extends Controller
 
     public function quiz(Exam $exam)
     {
+        if(isset($exam->scores->where('id',Auth::guard('web')->user()->id)->first()->pivot->score))
+        {
+            return redirect()->route('student.exam.index');
+        }
+
         foreach(Auth::guard('web')->user()->classes as $class)
         {
             if($class->course == $exam->course && $exam->status == 'UnLock')
