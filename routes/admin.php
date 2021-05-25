@@ -73,6 +73,12 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::post('/questions','QuestionController@store')->name('store');
                 Route::post('/questions/edit/{question}','QuestionController@update')->name('update');
                 Route::get('/questions/delete/{question}','QuestionController@destroy')->name('delete');
+
+                // import Excel Or CSV
+                Route::get('/questions/import','QuestionController@showImportForm')->name('import');
+                Route::post('/question/import','QuestionController@import')->name('import.store');
+
+                Route::get('/questions/export','QuestionController@export')->name('export');
             });
 
             Route::name('student.')->group(function(){

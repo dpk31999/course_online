@@ -6,7 +6,10 @@ use App\Exam;
 use App\Course;
 use App\Question;
 use Illuminate\Http\Request;
+use App\Exports\QuestionsExport;
+use App\Imports\QuestionsImport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class QuestionController extends Controller
 {
@@ -106,5 +109,25 @@ class QuestionController extends Controller
         $question->delete();
 
         return redirect()->route('admin.question.show.exam',$question->exam->id);
+    }
+
+    public function showImportForm()
+    {
+        return view('admin.questions.add-excel');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+
+        $import = new QuestionsImport;
+        $import->import($file);
+
+        return back()->withStatus('Excel file imported successfully');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new QuestionsExport, 'questions.xlsx');
     }
 }

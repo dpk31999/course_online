@@ -8,11 +8,13 @@
             <h5 class="title">Hello: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
-    <div class="icon_sub">
-        <a href="{{ route('admin.question.add') }}">
-            <i class="fas fa-plus-circle fa-lg fa-fw mr-2 color__admin "></i>
-        </a>
-
+    <div class="justify-between">
+        <div class="">
+            <a href="{{ route('admin.question.add') }}"><button class="btn btn-primary">Add Question</button></a>
+        </div>
+        <div class="">
+            <a href="{{ route('admin.question.import') }}"><button class="btn btn-success">Add Question With Excel Or CSV File</button></a>
+        </div>
     </div>
     @foreach ($courses as $course)
     <div class="course-heading-title">
