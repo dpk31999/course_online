@@ -13,7 +13,7 @@
             <a href="{{ route('admin.notification.general.add') }}"><button class="btn btn-primary">Create general notification</button></a>
         </div>
         <div class="">
-            <a href="{{ route('admin.notification.private.add') }}"><button class="btn btn-success">Create private notification</button></a>
+            <a href="{{ route('admin.notification.private.add') }}"><button class="btn btn-success">Create specific notification</button></a>
         </div>
     </div>
     <div class="course-heading-title">
@@ -59,7 +59,7 @@
                 <div class="container">
                     <div class="col-sm-12 " style="text-align: center" ;>
                         <a href="" class="title-color-notify">                
-                            Private Notification
+                            Specific Notification
                             <i class="far fa-bell"></i>
                         </a>
                     </div>

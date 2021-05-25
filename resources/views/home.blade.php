@@ -18,7 +18,7 @@
                         {{ $course->name }}
                     </a>
                 </h3>
-                <p class="product-price" style = "max-width: 13rem;">{{ number_format($course->price, 2) }} $</p>
+                <p class="product-price" style = "max-width: 13rem;">$ {{ number_format($course->price, 2) }}</p>
                 <p class="product-desc">
                     <i class="fas fa-caret-right"></i>
                     Total time: <span class="product-time">{{ $course->total_time }} Month</span>

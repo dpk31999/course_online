@@ -20,20 +20,21 @@ class QuestionsImport implements ToModel, WithValidation
     public function model(array $row)
     {
         return new Question([
-            'exam_id' => $row[1],
-            'name' => $row[2],
-            'answer_1' => $row[3],
-            'answer_2' => $row[4],
-            'answer_3' => $row[5],
-            'answer_4' => $row[6],
-            'answer_right' => $row[7],
-            'level' => $row[8],
+            'exam_id' => $row[0],
+            'name' => $row[1],
+            'answer_1' => $row[2],
+            'answer_2' => $row[3],
+            'answer_3' => $row[4],
+            'answer_4' => $row[5],
+            'answer_right' => $row[6],
+            'level' => $row[7],
         ]);
     }
 
     public function rules() : array
     {
         return [
+            '0' => 'required',
             '1' => 'required',
             '2' => 'required',
             '3' => 'required',
@@ -41,7 +42,6 @@ class QuestionsImport implements ToModel, WithValidation
             '5' => 'required',
             '6' => 'required',
             '7' => 'required',
-            '8' => 'required',
         ];
     }
 }

@@ -126,7 +126,7 @@ CREATE TABLE `courses` (
   PRIMARY KEY (`id`),
   KEY `courses_admin_id_foreign` (`admin_id`),
   CONSTRAINT `courses_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,5,'New Front-End Programming',4,'uploads/image_course/1621079723.png',399,'Front end Programming course aims to train professional Front end programmers, meeting the work needs of today\'s software companies. Front end programmers are people who use languages ​​such as HTML, CSS, and JavaScript to create Web application interfaces that meet the increasing requirements of user interaction.','2021-05-15 03:02:40','2021-05-19 07:34:42'),(2,5,'IOS – Swift Programming',5,'uploads/image_course/1621074992.jpg',349,'The iOS Programming course equips you with the knowledge and skills to become a professional programmer on the basis of Apple devices such as iPhone, iPad, iWatch, Macbook... software companies today.','2021-05-15 03:36:32','2021-05-17 23:49:03'),(3,5,'Android -Kotlin Programming',5,'uploads/image_course/1621075040.jpg',299,'The Android Programming course equips you with knowledge, skills in programming languages, how to build applications, and working methods to help you become a professional Android Developer ready to work at software companies. ','2021-05-15 03:37:20','2021-05-17 23:49:17'),(4,5,'Software Testing',4,'uploads/image_course/1621075269.jpg',299,'Professional Software Testing course aims to help students approach software testing quickly and effectively. The course will not only help you get a job but also develop a good career later.','2021-05-15 03:41:09','2021-05-17 23:49:25');
+INSERT INTO `courses` VALUES (1,5,'New Front-End Programming',4,'uploads/image_course/1621079723.png',399,'Front end Programming course aims to train professional Front end programmers, meeting the work needs of today\'s software companies. Front end programmers are people who use languages ​​such as HTML, CSS, and JavaScript to create Web application interfaces that meet the increasing requirements of user interaction.','2021-05-15 03:02:40','2021-05-19 07:34:42'),(2,5,'IOS – Swift Programming',5,'uploads/image_course/1621074992.jpg',349,'The iOS Programming course equips you with the knowledge and skills to become a professional programmer on the basis of Apple devices such as iPhone, iPad, iWatch, Macbook... software companies today.','2021-05-15 03:36:32','2021-05-17 23:49:03'),(3,5,'Android -Kotlin Programming',5,'uploads/image_course/1621075040.jpg',299,'The Android Programming course equips you with knowledge, skills in programming languages, how to build applications, and working methods to help you become a professional Android Developer ready to work at software companies. ','2021-05-15 03:37:20','2021-05-17 23:49:17'),(4,5,'Software Testing',4,'uploads/image_course/1621075269.jpg',299,'Professional Software Testing course aims to help students approach software testing quickly and effectively. The course will not only help you get a job but also develop a good career later.','2021-05-15 03:41:09','2021-05-17 23:49:25'),(8,5,'Java Core Programming',5,'uploads/image_course/1621954769.jpg',399,'This Core Java Specialization is part of a series of programming specializations, derived from LearnQuest\'s private Java Bootcamps, designed to provide the skill set necessary to be hired as an IT developer using Java in many corporate environments.\r\n\r\nTo be successful in this specialization, we recommend you have an understanding of the fundamentals of software development in any language. LearnQuest offers a beginning programmer specialization that can help you prepare.\r\n\r\nIn the four courses of this specialization, you’ll quickly master the Java programming language and the packages that constitute its rich set of core libraries. We’ll provide hands-on exercises so you can practice your new skills. \r\n\r\n In Course 1, we’ll introduce you to the basic fundamentals of the Java language. \r\n\r\nCourse 2 provides a refresher on object-oriented programming, and how you can apply OO to Java. We’ll introduce Java classes, instances and packaging.\r\n\r\nBy the time you get to course 3, you’ll be ready to go deeper into applying OOP concepts in Java, including inheritance and polymorphism.\r\n\r\nIn course 4 you’ll learn how to use selected parts of the Java SE Class LIbrary, including Generics, Collections, Java Streams, I/O, Exceptions, Annotations and Enums.\r\n\r\nWhile we\'ll touch on other important Java topics, such as database connectivity, Java EE and Spring, those topics are covered in greater detail in other LearnQuest Java Specializations.','2021-05-25 07:59:29','2021-05-25 07:59:29');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +157,7 @@ CREATE TABLE `exams` (
   PRIMARY KEY (`id`),
   KEY `exams_course_id_foreign` (`course_id`),
   CONSTRAINT `exams_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +166,7 @@ CREATE TABLE `exams` (
 
 LOCK TABLES `exams` WRITE;
 /*!40000 ALTER TABLE `exams` DISABLE KEYS */;
-INSERT INTO `exams` VALUES (1,1,'Mid-term test',2,'UnLock','2021-05-17 23:48:44','2021-05-20 21:59:28'),(2,1,'Final exam test',20,'Lock','2021-05-17 23:48:44','2021-05-20 21:21:21'),(3,2,'Mid-term test',20,'UnLock','2021-05-17 23:49:03','2021-05-17 23:49:03'),(4,2,'Final exam test',20,'Lock','2021-05-17 23:49:03','2021-05-20 21:57:02'),(5,3,'Mid-term test',20,'UnLock','2021-05-17 23:49:17','2021-05-17 23:49:17'),(6,3,'Final exam test',20,'Lock','2021-05-17 23:49:17','2021-05-20 21:52:39'),(7,4,'Mid-term test',20,'UnLock','2021-05-17 23:49:25','2021-05-17 23:49:25'),(8,4,'Final exam test',20,'Lock','2021-05-17 23:49:25','2021-05-20 21:52:43');
+INSERT INTO `exams` VALUES (1,1,'Mid-term test',2,'UnLock','2021-05-17 23:48:44','2021-05-20 21:59:28'),(2,1,'Final exam test',20,'Lock','2021-05-17 23:48:44','2021-05-20 21:21:21'),(3,2,'Mid-term test',20,'UnLock','2021-05-17 23:49:03','2021-05-17 23:49:03'),(4,2,'Final exam test',20,'Lock','2021-05-17 23:49:03','2021-05-20 21:57:02'),(5,3,'Mid-term test',20,'UnLock','2021-05-17 23:49:17','2021-05-17 23:49:17'),(6,3,'Final exam test',20,'Lock','2021-05-17 23:49:17','2021-05-20 21:52:39'),(7,4,'Mid-term test',20,'UnLock','2021-05-17 23:49:25','2021-05-17 23:49:25'),(8,4,'Final exam test',20,'Lock','2021-05-17 23:49:25','2021-05-20 21:52:43'),(13,8,'Mid-term test',20,NULL,'2021-05-25 07:59:29','2021-05-25 07:59:29'),(14,8,'Final exam test',20,NULL,'2021-05-25 07:59:29','2021-05-25 07:59:29');
 /*!40000 ALTER TABLE `exams` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,7 +366,7 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`id`),
   KEY `questions_exam_id_foreign` (`exam_id`),
   CONSTRAINT `questions_exam_id_foreign` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -375,7 +375,6 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (3,1,'2 + 3 = ?','2','5','4','14','5','Easy','2021-05-18 23:22:48','2021-05-18 23:22:48'),(4,1,'12+ 3 = ?','15','4','51','5','15','Easy','2021-05-18 23:23:18','2021-05-18 23:23:18'),(5,1,'5 + 7','57','12','4','6','12','Easy','2021-05-18 23:23:42','2021-05-18 23:23:42'),(6,1,'3 + 4 = ?','7','14','21','5','7','Easy','2021-05-18 23:24:04','2021-05-18 23:24:04'),(7,1,'7 + 24','13','31','15','52','31','Easy','2021-05-18 23:24:30','2021-05-18 23:24:30'),(8,1,'23 + 25','24','37','48','46','48','Easy','2021-05-18 23:24:55','2021-05-18 23:24:55'),(9,1,'2 + 9','11','24','3','6','11','Easy','2021-05-18 23:25:27','2021-05-18 23:25:27'),(10,1,'56 - 3','55','53','59','40','53','Easy','2021-05-18 23:25:52','2021-05-18 23:25:52'),(11,1,'31 - 9','23','40','56','22','22','Easy','2021-05-18 23:26:21','2021-05-18 23:26:21'),(12,1,'2 * 3 = ?','5','6','7','4','6','Medium','2021-05-18 23:26:47','2021-05-18 23:26:47'),(13,1,'4 * 4 = ?','8','16','32','4','16','Medium','2021-05-18 23:27:25','2021-05-18 23:27:25'),(14,1,'4 / 2 = ?','2','6','8','12','2','Medium','2021-05-18 23:27:46','2021-05-18 23:27:46'),(15,1,'32 - 4 * 3','16','37','20','25','20','Medium','2021-05-18 23:28:17','2021-05-18 23:28:17'),(16,1,'35 / 5','8','40','105','7','7','Medium','2021-05-18 23:28:41','2021-05-18 23:28:41'),(17,1,'2 - 5 / 5','10','20','1','12','1','Medium','2021-05-18 23:29:04','2021-05-18 23:29:04'),(18,1,'3 + 6 / 2','9','6','3','12','6','Medium','2021-05-18 23:29:31','2021-05-18 23:29:31'),(19,1,'6 * 3 + 8 / 2 = ?','24','12','34','22','22','Medium','2021-05-18 23:30:05','2021-05-18 23:30:05'),(20,1,'3 / 3 = ?','6','1','2','4','1','Medium','2021-05-18 23:30:22','2021-05-18 23:30:22'),(21,1,'4 / 0 = ?','3','4','0','Lỗi','Lỗi','Medium','2021-05-18 23:31:15','2021-05-18 23:31:15'),(22,1,'111 * 111','111111','11','111','12321','12321','Hard','2021-05-18 23:32:00','2021-05-18 23:32:00'),(23,1,'x + 2 = 5','3','4','2','6','3','Hard','2021-05-18 23:32:35','2021-05-18 23:32:35'),(24,1,'x + 6 = 0','-6','5','2','6','-6','Hard','2021-05-18 23:33:03','2021-05-18 23:33:03'),(25,1,'x * 3 = 12','2','4','6','9','4','Hard','2021-05-18 23:33:28','2021-05-18 23:33:28'),(26,1,'x / 3 = 12','12','36','42','24','36','Hard','2021-05-18 23:34:01','2021-05-18 23:34:01'),(27,1,'12 / x = 6','2','8','10','4','2','Hard','2021-05-18 23:34:47','2021-05-18 23:34:47'),(28,1,'105 * x + 5 = 26','15','10','5','15','5','Hard','2021-05-18 23:35:30','2021-05-18 23:35:30'),(30,1,'x - 2 = 7','9','12','5','8','9','Hard','2021-05-18 23:36:24','2021-05-18 23:36:24'),(31,1,'9 - x + 5 = 12','2','12','10','7','2','Hard','2021-05-18 23:37:21','2021-05-18 23:37:21'),(32,1,'15 * 5 + x = 100','20','15','12','25','25','Hard','2021-05-18 23:37:59','2021-05-18 23:37:59'),(33,1,'1 + 1 = ?','2','3','4','6','2','Easy','2021-05-19 07:50:55','2021-05-19 07:50:55'),(34,4,'1 + 6 = ?','7','5','9','10','7','Easy','2021-05-19 07:51:44','2021-05-19 07:51:44'),(35,1,'1 + 10 = ?','11','10','12','8','11','Easy','2021-05-19 22:49:16','2021-05-19 22:55:51');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -398,7 +397,7 @@ CREATE TABLE `scores` (
   KEY `scores_exam_id_foreign` (`exam_id`),
   CONSTRAINT `scores_exam_id_foreign` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`id`),
   CONSTRAINT `scores_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -407,7 +406,7 @@ CREATE TABLE `scores` (
 
 LOCK TABLES `scores` WRITE;
 /*!40000 ALTER TABLE `scores` DISABLE KEYS */;
-INSERT INTO `scores` VALUES (1,8,1,9.00,NULL,NULL),(9,6,1,10.00,NULL,NULL);
+INSERT INTO `scores` VALUES (9,6,1,10.00,NULL,NULL),(15,8,1,0.00,NULL,NULL);
 /*!40000 ALTER TABLE `scores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,4 +454,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-23 13:16:36
+-- Dump completed on 2021-05-25 23:24:08

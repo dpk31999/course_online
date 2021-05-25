@@ -23,7 +23,7 @@
         <div class="title-heading ">
             <a href="" class="title-heading-a">
                 <i class="fab fa-vuejs"></i>
-                Course price : {{ number_format($course->price, 2) }} $
+                Course price : $ {{ number_format($course->price, 2) }}
             </a>
         </div>
     </div>

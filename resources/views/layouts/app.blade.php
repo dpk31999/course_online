@@ -207,8 +207,8 @@
                     <ul class="footer-item-body">
                         <li class="footer-sub">Tax number: 04016231</li>
                         <li class="footer-sub">Office: 154 Pham Nhu Xuong, Da Nang</li>
-                        <li class="footer-sub">Center: 263 Tieu La, Da Nang</li>
-                        <li class="footer-sub">Center: 52 Tran Phu, Hue</li>
+                        <li class="footer-sub">Location: 263 Tieu La, Da Nang</li>
+                        <li class="footer-sub">Location: 52 Tran Phu, Hue</li>
                         <li class="footer-sub">Hotline: 0777710005</li>
                     </ul>
                 </div>

@@ -12,6 +12,12 @@ class QuestionsExport implements FromCollection
     */
     public function collection()
     {
-        return Question::all();
+        $questions = Question::all();
+
+        $questions = $questions->map(function ($item, $key) {
+            return collect($item)->except(['id', 'created_at', 'updated_at'])->toArray();
+        });
+
+        return $questions;
     }
 }

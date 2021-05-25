@@ -4,7 +4,7 @@
 <div class="info-container">
     <div class="info-heading">
         <a href="#" class="info-title">
-            <h5 class="title">Add private notification</h5>
+            <h5 class="title">Add specific notification</h5>
         </a>
     </div>
     <hr class="sidebar-divider my-0" style="background-color: #4268D6;">

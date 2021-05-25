@@ -38,7 +38,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col-11 mr-4">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Private Notification</div>
+                                    Specific Notification</div>
                                 <div class="h6 mb-0 font-weight-bold text-gray-500">{{ $note_privates->count() }}
                                     notifications</div>
                             </div>

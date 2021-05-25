@@ -17,7 +17,7 @@
             <div class="toast__body">
                 <div class="toast__msg">
                     <p class="toast__msg-title">
-                        Private Notification
+                        Specific Notification
                     </p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
         <div class="modal-content">
             <!--Header-->
             <div class="modal-header head-color--pri">
-                <h4 class="modal-title" id="myModalLabel">Private Notification</h4>
+                <h4 class="modal-title" id="myModalLabel">Specific Notification</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" style="color: #fff;">×</span>
                 </button>
