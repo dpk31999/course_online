@@ -39,7 +39,7 @@
                                 <td class="text-align-center">
                                     <div class="btn--default">
                                        <a type="button" class="btn btn-primary mr10" href="{{ route('admin.exam.update',$exam->id) }}">Edit</a>
-                                       <a type="button" class="btn @if($exam->status == 'UnLock') btn-dark @else btn-success @endif" href="{{ route('admin.exam.update.status',$exam->id) }}">@if($exam->status == 'UnLock') Inactive @else Active @endif</a>
+                                       <a type="button" class="btn @if($exam->status == 'UnLock') btn-success @else btn-dark @endif" href="{{ route('admin.exam.update.status',$exam->id) }}">@if($exam->status == 'UnLock') Activated @else Inactivated @endif</a>
                                     </div>     
                                 </td>
                                 
