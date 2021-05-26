@@ -55,12 +55,14 @@ class CourseController extends Controller
         Exam::create([
             'course_id' => $course->id,
             'name' => 'Mid-term test',
+            'status' => 'Lock',
             'total_time' => '20',
         ]);
 
         Exam::create([
             'course_id' => $course->id,
             'name' => 'Final exam test',
+            'status' => 'Lock',
             'total_time' => '20',
         ]);
 
