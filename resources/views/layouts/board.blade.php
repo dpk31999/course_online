@@ -113,12 +113,17 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow ">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle"
-                                    src="{{ Auth::guard('web')->user()->url_avatar }}">
+                                <div class="flex-col">
+
+                                    <img class="img-profile rounded-circle"
+                                        src="{{ Auth::guard('web')->user()->url_avatar }}">
+                                    <div class="dashboard-fullname"><strong>{{ Auth::guard('web')->user()->fullname }} </strong></div>
+                                </div>
                             </a>
+                    
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
 

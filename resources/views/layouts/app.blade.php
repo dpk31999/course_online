@@ -141,10 +141,13 @@
                     </li>
                     @else
                     <li class="navbar-item navbar-item--has-nav dropdown">
-                        <a class="nav-link ">
-                            <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px"
-                                class="rounded-circle profile-photo mr-1" />
+                        <a class="nav-link  ">
+                                <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px"
+                                    class=" rounded-circle mr-1 " />
+
                         </a>
+
+                        <div class="user-fullname"><strong>{{ Auth::guard('web')->user()->fullname }} </strong></div>
                         <div class="dropdown-menu-user">
                             <a style="cursor: pointer" class="dropdown-item-user" href="{{ route('student.home') }}">
                                 <i class="far fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -237,8 +240,7 @@
                 </div>
                 <div class="chatbox__content--header">
                     <h4 class="chatbox__heading--header">Chat support</h4>
-                    <p class="chatbox__description--header">There are many variations of passages of Lorem Ipsum
-                        available</p>
+                  
                 </div>
             </div>
             <div class="chatbox__messages">

@@ -853,7 +853,7 @@ table {
 
 .dropdown-menu-user {
     position: absolute;
-    top: 118%;
+    top: 112%;
     left: 0;
     z-index: 1000;
     display: none;
@@ -878,9 +878,11 @@ table {
     left: 0;
     width: 200px;
     height: 20px;
+    color: #333;
 }
 
 .navbar-item--has-nav:hover .dropdown-menu-user {
+    color: #333;
     display: block;
 }
 
@@ -999,8 +1001,8 @@ table {
 .product-btn {
     padding: 10px;
     display: flex;
-    justify-content: center;
-    margin-left: -15px;
+    justify-content: start;
+    margin-left: -10px;
 }
 
 .form-container-admin {
@@ -1114,6 +1116,7 @@ table {
 
 /* HEADER */
 .chatbox__header {
+    width: 100%;
     position: fixed;
     top: 0;
     background: orange;
@@ -1123,7 +1126,7 @@ table {
 .chatbox__messages {
     height: 279px;
     /* top: 58px; */
-    margin-top: 98px;
+    margin-top: 78px;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -1160,8 +1163,8 @@ body {
 
 .chatbox__support {
     background: #f9f9f9;
-    height: 450px;
-    width: 350px;
+    height: 398px;
+    width: 315px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -1173,8 +1176,8 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    padding: 15px 20px;
+    justify-content: start;
+    padding: 10px 15px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: var(--primaryBoxShadow);
@@ -1203,7 +1206,7 @@ body {
     margin-top: 10px;
     background: #E0E0E0; 
     padding: 8px 12px;
-    max-width: 70%;
+    max-width: 64%;
 }
 .messages__item--operator,
 .chatbox__footer input,
@@ -1233,12 +1236,12 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px;
+    padding: 10px 15px;
     background: var(--secondaryGradient);
     box-shadow: var(--secondaryBoxShadow);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .chatbox__footer input {
@@ -1332,3 +1335,28 @@ span.messages__dot {
 .container-chat{
     position: relative;
 }
+/* boder-icon */
+.btn--default {
+    display: flex;
+    justify-content: start;
+    margin-left: 40px;
+}
+.user-fullname {
+    text-transform: none !important;
+    margin-left: -16px;
+}
+.user-fullname:hover {
+    color: #333;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    
+}
+.dashboard-fullname{
+    margin-left: -36px;
+    font-weight: 300;
+}
+

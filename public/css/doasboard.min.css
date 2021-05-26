@@ -6949,6 +6949,7 @@ button.bg-dark:hover {
 }
 
 .rounded-circle {
+    border: 1px solid #46add5;
     border-radius: 50%!important
 }
 
@@ -7254,7 +7255,9 @@ button.bg-dark:hover {
 .justify-content-center {
     justify-content: center!important
 }
-
+.text-align-center {
+    text-align: center !important;
+}
 .justify-content-between {
     justify-content: space-between!important
 }
@@ -8020,7 +8023,9 @@ button.bg-dark:hover {
 .my-1 {
     margin-top: .25rem!important
 }
-
+.mr10{
+    margin-right: 10px !important;
+}
 .mr-1,
 .mx-1 {
     margin-right: .25rem!important
@@ -10262,7 +10267,7 @@ a:focus {
 
 .bg-gradient-green {
     background-color: #008657;
-    background-image: linear-gradient(180deg, #2e3192 19.52%, #1bffff 100%);;
+    background-image: linear-gradient(180deg, rgba(46, 49, 146 , 0.8) 10%, rgba(46, 49, 146 , 0.7 ) 20%);;
     background-size: cover
 }
 
@@ -10524,8 +10529,8 @@ a:focus {
 
 .sidebar .nav-item .nav-link .img-profile,
 .topbar .nav-item .nav-link .img-profile {
-    height: 2rem;
-    width: 2rem
+    height: 2.3rem;
+    width: 2.3rem
 }
 
 .topbar {
