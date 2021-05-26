@@ -244,24 +244,24 @@
                                             '<div class="row m-right">' +
                                                 '<div class="col-sm-6 ">' +
                                                     '<label class="radio-inline ">' +
-                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_1 + ' class="check-box">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value="'+ data[key].answer_1 +'" class="check-box">' +
                                                         '<span>A: '+ data[key].answer_1 +'</span></label>' +
                                                 '</div>' +
                                                 '<div class="col-sm-6 ">' +
                                                     '<label class="radio-inline ">' +
-                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_2 + ' class="check-box">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value="'+ data[key].answer_2 +'" class="check-box">' +
                                                         '<span>B: '+ data[key].answer_2 +'</span></label>' +
                                                 '</div>' +
                                             '</div>' +
                                             '<div class="row m-right">' +
                                                 '<div class="col-sm-6 ">' +
                                                     '<label class="radio-inline ">' +
-                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_3 + ' class="check-box">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value="'+ data[key].answer_3 +'" class="check-box">' +
                                                         '<span>C: '+ data[key].answer_3 +'</span></label>' +
                                                 '</div>' +
                                                 '<div class="col-sm-6 ">' +
                                                     '<label class="radio-inline ">' +
-                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_4 + ' class="check-box">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value="'+ data[key].answer_4 +'" class="check-box">' +
                                                         '<span>D: '+ data[key].answer_4 +'</span></label>' +
                                                 '</div>' +
                                             '</div>' +
