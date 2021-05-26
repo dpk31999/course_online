@@ -130,18 +130,18 @@
 }
 
 .product-list {
-    margin: 1rem 2rem;
+    margin: 1rem 4rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: start;
 }
 
 .product-item {
     background-color: #f2f5f8;
-    max-width: 36.2rem;
+    max-width: 33.2rem;
     min-height: 34.6rem;
     border-radius: 4px;
-    margin: 10px 0;
+    margin: 10px 10px;
 }
 
 .product-item-body {
@@ -179,7 +179,8 @@
 }
 
 .product-img-style {
-    width: 35.4rem;
+
+    width: 100%;
     height: 20.8rem;
 }
 
@@ -1339,7 +1340,7 @@ span.messages__dot {
 .btn--default {
     display: flex;
     justify-content: start;
-    margin-left: 40px;
+    margin-left: 35% ;
 }
 .user-fullname {
     text-transform: none !important;
@@ -1360,3 +1361,10 @@ span.messages__dot {
     font-weight: 300;
 }
 
+.td-flex{
+    display: flex ;
+    justify-content: space-between;
+}
+.td-flex:nth-child(1) {
+    margin: 0 10px;
+}

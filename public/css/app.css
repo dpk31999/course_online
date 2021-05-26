@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
@@ -7200,7 +7200,6 @@ button.bg-dark:focus {
 }
 
 .rounded-circle {
-  border: 1px solid #46add5;
   border-radius: 50% !important;
 }
 

@@ -11,7 +11,9 @@
 
         @foreach ($courses as $course)
         <div class="product-item">
-            <a href="{{ route('course.show',$course->id) }}"><img src="/storage/{{$course->url_image}}" alt="" class="product-img-style"></a>
+            <a href="{{ route('course.show',$course->id) }}">
+                <img src="/storage/{{$course->url_image}}" alt="" class="product-img-style">
+            </a>
             <div class="product-item-body">
                 <h3 class="product-heading">
                     <a href="{{ route('course.show',$course->id) }}" class="product-heading-link">

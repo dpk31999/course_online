@@ -18,21 +18,27 @@
         <table class="table table-st">
             <thead class="color__theme">
                 <tr>
+                    <th>
                     <th>Course name</th>
                     <th>Title</th>
                     <th></th>
+                    
                 </tr>
             </thead>
             <tbody>
                 @foreach ($lessons as $lesson)
                 <tr>
+                    <td></td>
                     <td>{{ $lesson->course->name }}</td>
                     <td>{{ $lesson->title }}</td>
                     <td>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.lesson.edit', $lesson->id) }}">Edit</a>
-                        <a type="button" class="btn btn-primary" href="{{ route('admin.lesson.show', $lesson->id) }}">Detail</a>
-                        <a type="submit" href="{{ route('admin.lesson.delete', $lesson->id) }}" class="btn btn-danger">Delete</a>
+                        <div class="td-flex">
+                        <a type="button" class="btn btn-warning mrl" href="{{ route('admin.lesson.edit', $lesson->id) }}">Edit</a>
+                        <a type="button" class="btn btn-primary  " href="{{ route('admin.lesson.show', $lesson->id) }}">Detail</a>
+                        <a type="submit" href="{{ route('admin.lesson.delete', $lesson->id) }}" class="btn btn-danger mrl">Delete</a></td>
+                        </div>
                     </td>
+                
                 </tr>
                 @endforeach
             </tbody>

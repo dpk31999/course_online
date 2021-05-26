@@ -241,7 +241,9 @@ th {
     text-align: inherit;
     text-align: -webkit-match-parent
 }
-
+.padding-rl{
+    padding: 0 10px !important;
+}
 label {
     display: inline-block;
     margin-bottom: .5rem
@@ -8044,7 +8046,9 @@ button.bg-dark:hover {
 .m-2 {
     margin: .5rem!important
 }
-
+.mrl{
+    margin: 0 10px !important;
+}
 .mt-2,
 .my-2 {
     margin-top: .5rem!important

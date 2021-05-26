@@ -75,9 +75,9 @@
                                 <td>{{ $user->phone }}</td>
                                 <td>
                                     <a type="submit" class="btn btn-primary"
-                                        href="{{ route('admin.student.allow',$user->id) }}">Allow</a>
+                                        href="{{ route('admin.student.allow',$user->id) }}">Confirm</a>
                                     <a type="submit" class="btn btn-danger"
-                                        href="{{ route('admin.student.refuse',$user->id) }}">Refuse</a>
+                                        href="{{ route('admin.student.refuse',$user->id) }}">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

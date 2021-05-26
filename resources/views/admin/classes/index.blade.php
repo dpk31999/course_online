@@ -23,6 +23,7 @@
                     <th>Start course</th>
                     <th>Number of students</th>
                     <th></th>
+                  
                 </tr>
             </thead>
             <tbody>

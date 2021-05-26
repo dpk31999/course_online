@@ -39,8 +39,9 @@
         </div>
         <div class="form-group">
             <label for="url_image">Image:</label>
-            <input type="file" name="url_image" class="form-control @error('url_image') is-invalid @enderror" id="imgInp" required>
-            <img id="blah" src="" alt="your image" class="d-none"/>
+            <input type="file" name="url_image" class="form-control @error('url_image') is-invalid @enderror" id="imgInp"  required>
+            <div></div>
+            <img id="blah" src="" alt="your image" class="d-none" style="max-width: 200px; max-height: 100px;"/>
 
             @error('url_image')
                 <span class="invalid-feedback" role="alert">
