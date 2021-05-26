@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2021 at 10:07 AM
+-- Generation Time: May 26, 2021 at 12:08 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `courseonline`
 --
-DROP DATABASE IF EXISTS `courseonline`;
 CREATE DATABASE IF NOT EXISTS `courseonline` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `courseonline`;
 
@@ -105,7 +104,9 @@ INSERT INTO `class_user` (`id`, `user_id`, `class_id`, `created_at`, `updated_at
 (8, 8, 1, NULL, NULL),
 (10, 8, 8, NULL, NULL),
 (11, 10, 8, NULL, NULL),
-(12, 6, 8, NULL, NULL);
+(12, 6, 8, NULL, NULL),
+(14, 10, 5, NULL, NULL),
+(15, 10, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -157,15 +158,15 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`id`, `course_id`, `name`, `total_time`, `status`, `created_at`, `updated_at`) VALUES
-(1, 10, 'Mid-term test', 2, 'UnLock', '2021-05-17 23:48:44', '2021-05-20 21:59:28'),
+(1, 10, 'Mid-term test', 2, 'Lock', '2021-05-17 23:48:44', '2021-05-26 01:57:34'),
 (2, 10, 'Final exam test', 20, 'Lock', '2021-05-17 23:48:44', '2021-05-20 21:21:21'),
-(3, 2, 'Mid-term test', 20, 'UnLock', '2021-05-17 23:49:03', '2021-05-26 00:14:02'),
+(3, 2, 'Mid-term test', 20, 'Lock', '2021-05-17 23:49:03', '2021-05-26 01:57:44'),
 (4, 2, 'Final exam test', 20, 'Lock', '2021-05-17 23:49:03', '2021-05-20 21:57:02'),
-(5, 3, 'Mid-term test', 20, 'UnLock', '2021-05-17 23:49:17', '2021-05-17 23:49:17'),
+(5, 3, 'Mid-term test', 20, 'Lock', '2021-05-17 23:49:17', '2021-05-26 01:57:36'),
 (6, 3, 'Final exam test', 20, 'Lock', '2021-05-17 23:49:17', '2021-05-20 21:52:39'),
-(7, 4, 'Mid-term test', 20, 'UnLock', '2021-05-17 23:49:25', '2021-05-17 23:49:25'),
+(7, 4, 'Mid-term test', 20, 'Lock', '2021-05-17 23:49:25', '2021-05-26 01:57:39'),
 (8, 4, 'Final exam test', 20, 'Lock', '2021-05-17 23:49:25', '2021-05-20 21:52:43'),
-(13, 1, 'Mid-term test', 20, 'UnLock', '2021-05-25 07:59:29', '2021-05-26 00:22:26'),
+(13, 1, 'Mid-term test', 20, 'UnLock', '2021-05-25 07:59:29', '2021-05-26 01:57:54'),
 (14, 1, 'Final exam test', 20, 'Lock', '2021-05-25 07:59:29', '2021-05-26 00:26:21');
 
 -- --------------------------------------------------------
@@ -340,51 +341,51 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `exam_id`, `name`, `answer_1`, `answer_2`, `answer_3`, `answer_4`, `answer_right`, `level`, `created_at`, `updated_at`) VALUES
-(1, 13, 'Which of the following option leads to the portability and security of Java?', 'Bytecode is executed by the JVM.', 'The applet makes the Java code secure and portable', 'Use of exception handling', 'Dynamic binding between objects', 'Bytecode is executed by the JVM.', 'Easy', '2021-05-26 01:02:40', '2021-05-26 01:02:40'),
-(2, 13, 'Which of the following is not a Java features?', 'Dynamic', 'Architecture Neutral', 'Use of pointers', 'Object-oriented', 'Use of pointers', 'Easy', '2021-05-26 01:02:40', '2021-05-26 01:02:40'),
-(3, 13, 'The \\u0021 article referred to as a', 'Unicode escape sequence', 'Octal escape', 'Hexadecimal', 'Line feed', 'Unicode escape sequence', 'Easy', '2021-05-26 01:02:40', '2021-05-26 01:02:40'),
-(4, 13, '_____ is used to find and fix bugs in the Java programs.', 'JVM', 'JRE', 'JDK', 'JDB', 'JDB', 'Easy', '2021-05-26 01:02:40', '2021-05-26 01:02:40'),
-(5, 13, 'Which of the following is a valid declaration of a char?', 'char ch = \'\\utea\';', 'char ca = \'tea\';', 'char cr = \\u0223;', 'char cc = \'\\itea\';', 'char ch = \'\\utea\';', 'Easy', '2021-05-26 01:02:41', '2021-05-26 01:02:41'),
-(6, 13, 'What is the return type of the hashCode() method in the Object class?', 'Object', 'int', 'long', 'void', 'int', 'Easy', '2021-05-26 01:02:41', '2021-05-26 01:02:41'),
-(7, 13, 'Which of the following is a valid long literal?', 'ABH8097', 'L990023', '904423', '0xnf029L', '0xnf029L', 'Easy', '2021-05-26 01:02:41', '2021-05-26 01:02:41'),
-(8, 13, 'What does the expression float a = 35 / 0 return?', '0', 'Not a Number', 'Infinity', 'Run time exception', 'Infinity', 'Easy', '2021-05-26 01:02:41', '2021-05-26 01:02:41'),
-(9, 13, 'Evaluate the following Java expression, if x=3, y=5, and z=10: ++z + y - y + z + x++', '24', '23', '20', '25', '24', 'Easy', '2021-05-26 01:02:41', '2021-05-26 01:02:41'),
-(10, 13, 'Which of the following tool is used to generate API documentation in HTML format from doc comments in source code?', 'javap tool', 'javaw command', 'Javadoc tool', 'javah command', 'Javadoc tool', 'Easy', '2021-05-26 01:02:42', '2021-05-26 01:02:42'),
-(11, 13, 'Which of the following creates a List of 3 visible items and multiple selections abled?', 'new List(false, 3)', 'new List(3, true)', 'new List(true, 3)', 'new List(3, false)', 'new List(true, 3)', 'Medium', '2021-05-26 01:02:42', '2021-05-26 01:02:42'),
-(12, 13, 'Which of the following for loop declaration is not valid?', 'for ( int i = 99; i >= 0; i / 9 )', 'for ( int i = 7; i <= 77; i += 7 )', 'for ( int i = 20; i >= 2; - -i )', 'for ( int i = 2; i <= 20; i = 2* i )', 'for ( int i = 99; i>=0; i / 9)', 'Medium', '2021-05-26 01:02:42', '2021-05-26 01:02:42'),
-(13, 13, 'Which method of the Class.class is used to determine the name of a class represented by the class object as a String?', 'getClass()', 'intern()', 'getName()', 'toString()', 'getName()', 'Medium', '2021-05-26 01:02:42', '2021-05-26 01:02:42'),
-(14, 13, 'In which process, a local variable has the same name as one of the instance variables?', 'Serialization', 'Variable Shadowing', 'Abstraction', 'Multi-threading', 'Variable Shadowing', 'Medium', '2021-05-26 01:02:43', '2021-05-26 01:02:43'),
-(15, 13, 'Which of the following is true about the anonymous inner class?', 'It has only methods', 'Objects can\'t be created', 'It has a fixed class name', 'It has no class name', 'It has no class name', 'Medium', '2021-05-26 01:02:43', '2021-05-26 01:02:43'),
-(16, 13, 'Which package contains the Random class?', 'java.util package', 'java.lang package', 'java.awt package', 'java.io package', 'java.util package', 'Medium', '2021-05-26 01:02:43', '2021-05-26 01:02:43'),
-(17, 13, 'What do you mean by nameless objects?', 'An object created by using the new keyword.', 'An object of a superclass created in the subclass.', 'An object without having any name but having a reference.', 'An object that has no reference.', 'An object that has no reference.', 'Medium', '2021-05-26 01:02:43', '2021-05-26 01:02:43'),
-(18, 13, 'An interface with no fields or methods is known as a ______.', 'Runnable Interface', 'Marker Interface', 'Abstract Interface', 'CharSequence Interface', 'Marker Interface', 'Medium', '2021-05-26 01:02:43', '2021-05-26 01:02:43'),
-(19, 13, 'Which Set class should be most popular in a multi-threading environment, considering performance constraint?', 'HashSet', 'ConcurrentSkipListSet', 'LinkedHashSet', 'CopyOnWriteArraySet', 'ConcurrentSkipListSet', 'Hard', '2021-05-26 01:02:44', '2021-05-26 01:02:44'),
-(20, 13, 'Which Map class should be most popular in a multi-threading environment, considering performance constraint?', 'Hashtable', 'CopyOnWriteMap', 'ConcurrentHashMap', 'ConcurrentMap', 'ConcurrentHashMap', 'Hard', '2021-05-26 01:02:44', '2021-05-26 01:02:44'),
-(21, 13, 'Which allows the removal of elements from a collection?', 'Enumeration', 'Iterator', 'Both', 'None of the above', 'None of the above', 'Hard', '2021-05-26 01:02:45', '2021-05-26 01:02:45'),
-(22, 13, 'What is the return type of the hashCode() method in the Object class?', 'Object', 'int', 'long', 'void', 'int', 'Easy', '2021-05-26 01:02:45', '2021-05-26 01:02:45'),
-(23, 13, 'Which of the following is a valid long literal?', 'ABH8097', 'L990023', '904423', '0xnf029L', '0xnf029L', 'Easy', '2021-05-26 01:02:45', '2021-05-26 01:02:45'),
-(24, 13, 'What does the expression float a = 35 / 0 return?', '0', 'Not a Number', 'Infinity', 'Run time exception', 'Infinity', 'Easy', '2021-05-26 01:02:45', '2021-05-26 01:02:45'),
-(25, 14, 'What do you mean by chained exceptions in Java?', 'Exceptions occurred by the VirtualMachineError', 'An exception caused by other exceptions', 'Exceptions occur in chains with discarding the debugging information', 'None of the above', 'An exception caused by other exceptions', 'Easy', '2021-05-26 01:02:46', '2021-05-26 01:02:46'),
-(26, 14, 'In which memory a String is stored, when we create a string using new operator?', 'Stack', 'String memory', 'Heap memory', 'Random storage space', 'Heap memory', 'Easy', '2021-05-26 01:02:46', '2021-05-26 01:02:46'),
-(27, 14, 'What is the use of the intern() method?', 'It returns the existing string from memory', 'It creates a new string in the database', 'It modifies the existing string in the database', 'None of the above', 'It returns the existing string from memory', 'Easy', '2021-05-26 01:02:46', '2021-05-26 01:02:46'),
-(28, 14, 'Which of the following is a marker interface?', 'Runnable interface', 'Remote interface', 'Readable interface', 'Result interface', 'Remote interface', 'Easy', '2021-05-26 01:02:46', '2021-05-26 01:02:46'),
-(29, 14, 'Which of the following is a reserved keyword in Java?', 'object', 'strictfp', 'main', 'system', 'strictfp', 'Easy', '2021-05-26 01:02:47', '2021-05-26 01:02:47'),
-(30, 14, 'Which keyword is used for accessing the features of a package?', 'package', 'import', 'extends', 'export', 'import', 'Easy', '2021-05-26 01:02:47', '2021-05-26 01:02:47'),
-(31, 14, 'In java, jar stands for_____.', 'Java Archive Runner', 'Java Application Resource', 'Java Application Runner', 'None of the above', 'None of the above', 'Easy', '2021-05-26 01:02:47', '2021-05-26 01:02:47'),
-(32, 14, 'Which of the following is false?', 'The rt.jar stands for the runtime jar', 'It is an optional jar file', 'It contains all the compiled class files', 'All the classes available in rt.jar is known to the JVM', 'It is an optional jar file', 'Medium', '2021-05-26 01:02:47', '2021-05-26 01:02:47'),
-(33, 14, 'What is the use of \\w in regex?', 'Used for a whitespace character', 'Used for a non-whitespace character', 'Used for a word character', 'Used for a non-word character', 'Used for a word character', 'Medium', '2021-05-26 01:02:47', '2021-05-26 01:02:47'),
-(34, 14, 'Which of the given methods are of Object class?', 'notify(), wait( long msecs ), and synchronized()', 'wait( long msecs ), interrupt(), and notifyAll()', 'notify(), notifyAll(), and wait()', 'sleep( long msecs ), wait(), and notify()', 'notify(), notifyAll(), and wait()', 'Medium', '2021-05-26 01:02:48', '2021-05-26 01:02:48'),
-(35, 14, 'Which of the following is a valid syntax to synchronize the HashMap?', 'Map m = hashMap.synchronizeMap();', 'HashMap map =hashMap.synchronizeMap();', 'Map m1 = Collections.synchronizedMap(hashMap);', 'Map m2 = Collection.synchronizeMap(hashMap);', 'Map m1 = Collections.synchronizedMap(hashMap);', 'Medium', '2021-05-26 01:02:48', '2021-05-26 01:02:48'),
-(36, 14, 'Which of the following is a mutable class in java?', 'java.lang.String', 'java.lang.Byte', 'java.lang.Short', 'java.lang.StringBuilder', 'java.lang.StringBuilder', 'Medium', '2021-05-26 01:02:48', '2021-05-26 01:02:48'),
-(37, 14, 'What is meant by the classes and objects that dependents on each other?', 'Tight Coupling', 'Cohesion', 'Loose Coupling', 'None of the above', 'Tight Coupling', 'Medium', '2021-05-26 01:02:48', '2021-05-26 01:02:48'),
-(38, 14, 'Which of the following code segment would execute the stored procedure \"getPassword()\" located in a database server?', 'CallableStatement cs = connection.prepareCall(\"{call.getPassword()}\");\ncs.executeQuery();', 'CallabledStatement callable = conn.prepareCall(\"{call getPassword()}\");\ncallable.executeUpdate();', 'CallableStatement cab = con.prepareCall(\"{call getPassword()}\");\ncab.executeQuery();', 'Callablestatement cstate = connect.prepareCall(\"{call getpassword()}\");\ncstate.executeQuery();', 'CallableStatement cab = con.prepareCall(\"{call getPassword()}\");\ncab.executeQuery();', 'Medium', '2021-05-26 01:02:49', '2021-05-26 01:02:49'),
-(39, 14, 'How many threads can be executed at a time?', 'Only one thread', 'Multiple threads', 'Only main (main() method) thread', 'Two threads', 'Multiple threads', 'Medium', '2021-05-26 01:02:49', '2021-05-26 01:02:49'),
-(40, 14, 'Which of these is the most popularly used class as a key in a HashMap?', 'String', 'Integer', 'Double', ' All of the above', 'String', 'Hard', '2021-05-26 01:02:49', '2021-05-26 01:02:49'),
-(41, 14, 'If three threads trying to share a single object at the same time, which condition will arise in this scenario?', 'Time-Lapse', 'Critical situation', 'Race condition', 'Recursion', 'Race condition', 'Hard', '2021-05-26 01:02:49', '2021-05-26 01:02:49'),
-(42, 14, 'If a thread goes to sleep', 'It releases all the locks it has.', 'It does not release any locks.', 'It releases half of its locks.', 'It releases all of its lock except one.', 'It does not release any locks.', 'Hard', '2021-05-26 01:02:49', '2021-05-26 01:02:49'),
-(43, 14, 'Which of the following is a reserved keyword in Java?', 'object', 'strictfp', 'main', 'system', 'strictfp', 'Easy', '2021-05-26 01:02:50', '2021-05-26 01:02:50'),
-(44, 14, 'Which keyword is used for accessing the features of a package?', 'package', 'import', 'extends', 'export', 'import', 'Easy', '2021-05-26 01:02:50', '2021-05-26 01:02:50'),
-(45, 14, 'In java, jar stands for_____.', 'Java Archive Runner', 'Java Application Resource', 'Java Application Runner', 'None of the above', 'None of the above', 'Easy', '2021-05-26 01:02:50', '2021-05-26 01:02:50');
+(1, 13, 'Which of the following option leads to the portability and security of Java?', 'Bytecode is executed by the JVM.', 'The applet makes the Java code secure and portable', 'Use of exception handling', 'Dynamic binding between objects', 'Bytecode is executed by the JVM.', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(2, 13, 'Which of the following is not a Java features?', 'Dynamic', 'Architecture Neutral', 'Use of pointers', 'Object-oriented', 'Use of pointers', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(3, 13, 'The \\u0021 article referred to as a', 'Unicode escape sequence', 'Octal escape', 'Hexadecimal', 'Line feed', 'Unicode escape sequence', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(4, 13, '_____ is used to find and fix bugs in the Java programs.', 'JVM', 'JRE', 'JDK', 'JDB', 'JDB', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(5, 13, 'Which of the following is a valid declaration of a char?', 'char ch = \'\\utea\';', 'char ca = \'tea\';', 'char cr = \\u0223;', 'char cc = \'\\itea\';', 'char ch = \'\\utea\';', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(6, 13, 'What is the return type of the hashCode() method in the Object class?', 'Object', 'int', 'long', 'void', 'int', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(7, 13, 'Which of the following is a valid long literal?', 'ABH8097', 'L990023', '904423', '0xnf029L', '0xnf029L', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(8, 13, 'What does the expression float a = 35 / 0 return?', '0', 'Not a Number', 'Infinity', 'Run time exception', 'Infinity', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(9, 13, 'Evaluate the following Java expression, if x=3, y=5, and z=10: ++z + y - y + z + x++', '24', '23', '20', '25', '24', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(10, 13, 'Which of the following tool is used to generate API documentation in HTML format from doc comments in source code?', 'javap tool', 'javaw command', 'Javadoc tool', 'javah command', 'Javadoc tool', 'Easy', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(11, 13, 'Which of the following creates a List of 3 visible items and multiple selections abled?', 'new List(false, 3)', 'new List(3, true)', 'new List(true, 3)', 'new List(3, false)', 'new List(true, 3)', 'Medium', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(12, 13, 'Which of the following for loop declaration is not valid?', 'for ( int i = 99; i >= 0; i / 9 )', 'for ( int i = 7; i <= 77; i += 7 )', 'for ( int i = 20; i >= 2; - -i )', 'for ( int i = 2; i <= 20; i = 2* i )', 'for ( int i = 99; i >= 0; i / 9 )', 'Medium', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(13, 13, 'Which method of the Class.class is used to determine the name of a class represented by the class object as a String?', 'getClass()', 'intern()', 'getName()', 'toString()', 'getName()', 'Medium', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(14, 13, 'In which process, a local variable has the same name as one of the instance variables?', 'Serialization', 'Variable Shadowing', 'Abstraction', 'Multi-threading', 'Variable Shadowing', 'Medium', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(15, 13, 'Which of the following is true about the anonymous inner class?', 'It has only methods', 'Objects can\'t be created', 'It has a fixed class name', 'It has no class name', 'It has no class name', 'Medium', '2021-05-26 02:40:23', '2021-05-26 02:40:23'),
+(16, 13, 'Which package contains the Random class?', 'java.util package', 'java.lang package', 'java.awt package', 'java.io package', 'java.util package', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(17, 13, 'What do you mean by nameless objects?', 'An object created by using the new keyword.', 'An object of a superclass created in the subclass.', 'An object without having any name but having a reference.', 'An object that has no reference.', 'An object that has no reference.', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(18, 13, 'An interface with no fields or methods is known as a ______.', 'Runnable Interface', 'Marker Interface', 'Abstract Interface', 'CharSequence Interface', 'Marker Interface', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(19, 13, 'Which Set class should be most popular in a multi-threading environment, considering performance constraint?', 'HashSet', 'ConcurrentSkipListSet', 'LinkedHashSet', 'CopyOnWriteArraySet', 'ConcurrentSkipListSet', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(20, 13, 'Which Map class should be most popular in a multi-threading environment, considering performance constraint?', 'Hashtable', 'CopyOnWriteMap', 'ConcurrentHashMap', 'ConcurrentMap', 'ConcurrentHashMap', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(21, 13, 'Which allows the removal of elements from a collection?', 'Enumeration', 'Iterator', 'Both', 'None of the above', 'None of the above', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(22, 14, 'Which of the following is an immediate subclass of the Panel class?', 'Applet class', 'Window class', 'Frame class', 'Dialog class', 'Applet class', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(23, 14, 'Which option is false about the final keyword?', 'A final method cannot be overridden in its subclasses.', 'A final class cannot be extended.', 'A final class cannot extend other classes.', 'A final method can be inherited.', 'A final class cannot extend other classes.', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(24, 14, 'Which of these classes are the direct subclasses of the Throwable class?', 'RuntimeException and Error class', 'Exception and VirtualMachineError class', 'Error and Exception class', 'IOException and VirtualMachineError class', 'Error and Exception class', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(25, 14, 'What do you mean by chained exceptions in Java?', 'Exceptions occurred by the VirtualMachineError', 'An exception caused by other exceptions', 'Exceptions occur in chains with discarding the debugging information', 'None of the above', 'An exception caused by other exceptions', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(26, 14, 'In which memory a String is stored, when we create a string using new operator?', 'Stack', 'String memory', 'Heap memory', 'Random storage space', 'Heap memory', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(27, 14, 'What is the use of the intern() method?', 'It returns the existing string from memory', 'It creates a new string in the database', 'It modifies the existing string in the database', 'None of the above', 'It returns the existing string from memory', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(28, 14, 'Which of the following is a marker interface?', 'Runnable interface', 'Remote interface', 'Readable interface', 'Result interface', 'Remote interface', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(29, 14, 'Which of the following is a reserved keyword in Java?', 'object', 'strictfp', 'main', 'system', 'strictfp', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(30, 14, 'Which keyword is used for accessing the features of a package?', 'package', 'import', 'extends', 'export', 'import', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(31, 14, 'In java, jar stands for_____.', 'Java Archive Runner', 'Java Application Resource', 'Java Application Runner', 'None of the above', 'None of the above', 'Easy', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(32, 14, 'Which of the following is false?', 'The rt.jar stands for the runtime jar', 'It is an optional jar file', 'It contains all the compiled class files', 'All the classes available in rt.jar is known to the JVM', 'It is an optional jar file', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(33, 14, 'What is the use of \\w in regex?', 'Used for a whitespace character', 'Used for a non-whitespace character', 'Used for a word character', 'Used for a non-word character', 'Used for a word character', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(34, 14, 'Which of the given methods are of Object class?', 'notify(), wait( long msecs ), and synchronized()', 'wait( long msecs ), interrupt(), and notifyAll()', 'notify(), notifyAll(), and wait()', 'sleep( long msecs ), wait(), and notify()', 'notify(), notifyAll(), and wait()', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(35, 14, 'Which of the following is a valid syntax to synchronize the HashMap?', 'Map m = hashMap.synchronizeMap();', 'HashMap map =hashMap.synchronizeMap();', 'Map m1 = Collections.synchronizedMap(hashMap);', 'Map m2 = Collection.synchronizeMap(hashMap);', 'Map m1 = Collections.synchronizedMap(hashMap);', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(36, 14, 'Which of the following is a mutable class in java?', 'java.lang.String', 'java.lang.Byte', 'java.lang.Short', 'java.lang.StringBuilder', 'java.lang.StringBuilder', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(37, 14, 'What is meant by the classes and objects that dependents on each other?', 'Tight Coupling', 'Cohesion', 'Loose Coupling', 'None of the above', 'Tight Coupling', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(38, 14, 'Which of the following code segment would execute the stored procedure \"getPassword()\" located in a database server?', 'CallableStatement cs = connection.prepareCall(\"{call.getPassword()}\");\ncs.executeQuery();', 'CallabledStatement callable = conn.prepareCall(\"{call getPassword()}\");\ncallable.executeUpdate();', 'CallableStatement cab = con.prepareCall(\"{call getPassword()}\");\ncab.executeQuery();', 'Callablestatement cstate = connect.prepareCall(\"{call getpassword()}\");\ncstate.executeQuery();', 'CallableStatement cs = connection.prepareCall(\"{call.getPassword()}\");\ncs.executeQuery();', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(39, 14, 'How many threads can be executed at a time?', 'Only one thread', 'Multiple threads', 'Only main (main() method) thread', 'Two threads', 'Multiple threads', 'Medium', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(40, 14, 'Which of these is the most popularly used class as a key in a HashMap?', 'String', 'Integer', 'Double', ' All of the above', 'String', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(41, 14, 'If three threads trying to share a single object at the same time, which condition will arise in this scenario?', 'Time-Lapse', 'Critical situation', 'Race condition', 'Recursion', 'Race condition', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(42, 14, 'If a thread goes to sleep', 'It releases all the locks it has.', 'It does not release any locks.', 'It releases half of its locks.', 'It releases all of its lock except one.', 'It does not release any locks.', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(43, 14, ' Which of the following modifiers can be used for a variable so that it can be accessed by any thread or a part of a program?', 'global', 'transient', 'volatile', 'default', 'volatile', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(44, 14, 'In character stream I/O, a single read/write operation performs _____.', 'Two bytes read/write at a time.', 'Eight bytes read/write at a time.', 'One byte read/write at a time.', 'Five bytes read/ write at a time.', 'Two bytes read/write at a time.', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24'),
+(45, 14, 'What is the default encoding for an OutputStreamWriter?', 'UTF-8', 'Default encoding of the host platform', 'UTF-12', 'None of the above', 'Default encoding of the host platform', 'Hard', '2021-05-26 02:40:24', '2021-05-26 02:40:24');
 
 -- --------------------------------------------------------
 
@@ -406,8 +407,7 @@ CREATE TABLE `scores` (
 --
 
 INSERT INTO `scores` (`id`, `user_id`, `exam_id`, `score`, `created_at`, `updated_at`) VALUES
-(9, 6, 1, 10.00, NULL, NULL),
-(15, 8, 1, 0.00, NULL, NULL);
+(23, 10, 13, 10.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -561,7 +561,7 @@ ALTER TABLE `class_rooms`
 -- AUTO_INCREMENT for table `class_user`
 --
 ALTER TABLE `class_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -615,7 +615,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `scores`
 --
 ALTER TABLE `scores`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`
