@@ -30,13 +30,29 @@
     </div>
     <div class="star-quiz-btn">
     </div>
-    <button class="btn btn-primary" id="btn-start" data-id="{{ $exam->id }}" onclick="startQuiz()">Start</button>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form id="formSelectLevel" action="GET" data-id="{{ $exam->id }}">
+                @csrf
+                <div class="form-group">
+                    <label for="level">Level: </label>
+                    <select name="level" id="level" style="margin: auto" class="form-control">
+                        <option value="Easy">Easy</option>
+                        <option value="Medium" selected="selected">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Start</button>
+            </form>
+        </div>
+    </div>
+
     <form id="formQuiz" method="POST" action="{{ route('student.exam.quiz.check',$exam->id) }}">
         @csrf
         <div id="questions" class="multiple-container">
-            
+
         </div>
     </form>
-   
+
 </div>
 @endsection

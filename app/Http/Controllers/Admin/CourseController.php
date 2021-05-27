@@ -48,7 +48,7 @@ class CourseController extends Controller
             'name' => $data['name'],
             'total_time' => $data['total_time'],
             'url_image' => $image_path,
-            'price' => $data['price'],
+            'price' => intval(join("",explode(",",$data['price']))),
             'description' => $data['description'],
         ]);
 

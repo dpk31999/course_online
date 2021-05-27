@@ -70,8 +70,10 @@
                 </a>
                 <div id="account" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Change your infomation</a>
-                        <a href="{{ route('student.account.edit-password') }}" class="collapse-item">Change your password</a>
+                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Change your
+                            infomation</a>
+                        <a href="{{ route('student.account.edit-password') }}" class="collapse-item">Change your
+                            password</a>
                     </div>
                 </div>
             </li>
@@ -120,10 +122,11 @@
 
                                     <img class="img-profile rounded-circle"
                                         src="{{ Auth::guard('web')->user()->url_avatar }}">
-                                    <div class="dashboard-fullname"><strong>{{ Auth::guard('web')->user()->fullname }} </strong></div>
+                                    <div class="dashboard-fullname"><strong>{{ Auth::guard('web')->user()->fullname }}
+                                        </strong></div>
                                 </div>
                             </a>
-                    
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
 
@@ -174,47 +177,9 @@
                     }
                 });
 
-                $("body").on("click", ".answer" , function () {
-                    let question_Id = $(this).attr('name');
-                    let answer = $(this).val();
-                    var check = false;
-
-                    questions.forEach(question => {
-                        if (question.question_Id == question_Id) {
-                            question.answer = answer;
-                            check = true;
-                        }
-                    }) // =))))
-                    
-                    if (check == false) questions.push({'question_Id': question_Id, 'answer': answer})
-
-                })
-
-                // $('#formQuiz').on('submit', function(e){
-                //     e.preventDefault()
-                //     var exam_id = $('#btn-start').data('id')
-                //     $.ajax({
-                //     type: 'POST',
-                //     url: '/profile/exam/' + exam_id,
-                //     data: $(this).serialize(),
-                //     success: function(data){
-                //        console.log("ok");
-                //     }
-                // });
-
-            });
-
-            imgInp.onchange = evt => {
-                const [file] = imgInp.files
-                if (file) {
-                    blah.src = URL.createObjectURL(file)
-                }
-                document.getElementById('blah').classList.remove('d-none');
-            }
-
-            function startQuiz()
-            {
-                var exam_id = $('#btn-start').data('id')
+                $('#formSelectLevel').on('submit',function(e){
+                e.preventDefault();
+                var exam_id = $(this).data('id')
                 
                 var countDownDate = new Date();
                 countDownDate.setMinutes(countDownDate.getMinutes() + parseInt(document.getElementById('minute').innerHTML));
@@ -222,10 +187,10 @@
                 $.ajax({
                     method: 'get',
                     url: '/profile/exam/questions/' + exam_id,
-                    data: '',
+                    data: $(this).serialize(),
                     cache: false,
                     success: function(data){
-                        $('#btn-start').remove();
+                        $('#formSelectLevel').remove();
                         if(Object.keys(data).length == 10)
                         {
                             Object.keys(data).forEach(key => {
@@ -296,8 +261,21 @@
                         }
                     }
                 });
-            
+            })
+
+            });
+
+            imgInp.onchange = evt => {
+                const [file] = imgInp.files
+                if (file) {
+                    blah.src = URL.createObjectURL(file)
+                }
+                document.getElementById('blah').classList.remove('d-none');
             }
+
+            
+                
+            
         </script>
 
 </body>
