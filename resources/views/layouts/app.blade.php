@@ -244,30 +244,28 @@
                 </div>
             </div>
             <div class="chatbox__messages">
-                <div>
+                <div id="chatbot">
                     <div class="messages__item messages__item--visitor">
                         Can you let me talk to the support?
                     </div>
-                    <div class="messages__item messages__item--operator">
-                        Sure!
-                    </div>
                     <div class="messages__item messages__item--visitor">
-                        Can you let me talk to the support?
+                        Please type "/help" so I can support for you!
                     </div>
-                    
-                    <div class="messages__item messages__item--typing">
-                        <span class="messages__dot"></span>
-                        <span class="messages__dot"></span>
-                        <span class="messages__dot"></span>
-                    </div>
+                </div>
+                <div id="typing" class="messages__item messages__item--typing d-none">
+                    <span class="messages__dot"></span> 
+                    <span class="messages__dot"></span>
+                    <span class="messages__dot"></span>
                 </div>
             </div>
             <div class="chatbox__footer">
                 <img src="/images/emojis.svg" alt="">
                 <img src="/images/microphone.svg" alt="">
-                <input type="text" placeholder="Write a message...">
-                <a class="chatbox__send--footer">Send</a>
-                <img src="/images/attachment.svg" alt="">
+                <form id="form_submit_chat" method="get">
+                    @csrf
+                    <input id="text_chat" type="text" name="text_chat" placeholder="Write a message...">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
             </div>
         </div>
         <div class="chatbox__button">
@@ -287,6 +285,44 @@
                 currency: 'USD'
             })
         }
+
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#form_submit_chat').on('submit',function(e){
+                e.preventDefault();
+                var text_chat = $('#text_chat').val();
+                $('#text_chat').val("");
+
+                $('#chatbot').append("<div class='messages__item messages__item--operator'>" + text_chat + "</div>");
+                $(".chatbox__messages").scrollTop($(".chatbox__messages")[0].scrollHeight);
+                $('#typing').removeClass('d-none');
+                $.ajax({
+                    type: 'get',
+                    url: '/chatbot',
+                    data: {text_chat:text_chat},
+                    success: function(data){
+                        $('#typing').addClass('d-none');
+                        
+                        if(data.type == 'text')
+                        {
+                            $('#chatbot').append("<div class='messages__item messages__item--visitor'>" + data.data + "</div>");
+                        }
+                        else(data.type == 'array')
+                        {
+                            console.log(data.data)
+                        }
+                    },
+                    complete: function(){
+                        $(".chatbox__messages").scrollTop($(".chatbox__messages")[0].scrollHeight);
+                    }
+                });
+            });
+        });
 
     </script>
 </body>

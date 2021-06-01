@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','HomeController@index')->name('home');
-
+Route::get('/chatbot','HomeController@chatBot')->name('chatbot');
 //auth
 Auth::routes();
 
