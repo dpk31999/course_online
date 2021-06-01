@@ -263,7 +263,7 @@
                 <img src="/images/microphone.svg" alt="">
                 <form id="form_submit_chat" method="get">
                     @csrf
-                    <input id="text_chat" type="text" name="text_chat" placeholder="Write a message...">
+                    <input id="text_chat" type="text" name="text_chat" placeholder="Write a message..." autocomplete="off">
                     <button type="submit" class="btn btn-primary">Send</button>
                 </form>
             </div>
