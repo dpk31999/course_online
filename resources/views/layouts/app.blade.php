@@ -142,8 +142,8 @@
                     @else
                     <li class="navbar-item navbar-item--has-nav dropdown">
                         <a class="nav-link  ">
-                                <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px"
-                                    class=" rounded-circle mr-1 " />
+                            <img src="{{ Auth::guard('web')->user()->url_avatar }}" width="50px" height="50px"
+                                class=" rounded-circle mr-1 " />
 
                         </a>
 
@@ -240,20 +240,20 @@
                 </div>
                 <div class="chatbox__content--header">
                     <h4 class="chatbox__heading--header">Chat support</h4>
-                  
+
                 </div>
             </div>
             <div class="chatbox__messages">
                 <div id="chatbot">
                     <div class="messages__item messages__item--visitor">
-                        Can you let me talk to the support?
+                        Xin chào, bên tôi đang có các khoá học lập trình và có nhiều ưu đãi cho học viên mới.
                     </div>
                     <div class="messages__item messages__item--visitor">
-                        Please type "/help" so I can support for you!
+                        Bạn có nhu cầu gì cần tôi tư vấn không ạ?
                     </div>
                 </div>
                 <div id="typing" class="messages__item messages__item--typing d-none">
-                    <span class="messages__dot"></span> 
+                    <span class="messages__dot"></span>
                     <span class="messages__dot"></span>
                     <span class="messages__dot"></span>
                 </div>
@@ -277,7 +277,6 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
-
         function formatCurrency(money)
         {
             return (money).toLocaleString('en', {
@@ -296,33 +295,66 @@
             $('#form_submit_chat').on('submit',function(e){
                 e.preventDefault();
                 var text_chat = $('#text_chat').val();
-                $('#text_chat').val("");
 
-                $('#chatbot').append("<div class='messages__item messages__item--operator'>" + text_chat + "</div>");
-                $(".chatbox__messages").scrollTop($(".chatbox__messages")[0].scrollHeight);
-                $('#typing').removeClass('d-none');
-                $.ajax({
-                    type: 'get',
-                    url: '/chatbot',
-                    data: {text_chat:text_chat},
-                    success: function(data){
-                        $('#typing').addClass('d-none');
-                        
-                        if(data.type == 'text')
-                        {
-                            $('#chatbot').append("<div class='messages__item messages__item--visitor'>" + data.data + "</div>");
+                if(text_chat != '')
+                {
+                    $('#text_chat').val("");
+
+                    $('#chatbot').append("<div class='messages__item messages__item--operator'>" + text_chat + "</div>");
+                    $(".chatbox__messages").scrollTop($(".chatbox__messages")[0].scrollHeight);
+                    $('#typing').removeClass('d-none');
+                    $.ajax({
+                        type: 'get',
+                        url: '/chatbot',
+                        data: {text_chat:removeVietnameseTones(text_chat)},
+                        success: function(data){
+                            $('#typing').addClass('d-none');
+                            
+                            if(data.type == 'text')
+                            {
+                                $('#chatbot').append("<div class='messages__item messages__item--visitor'>" + data.data + "</div>");
+                            }
+                            else(data.type == 'array')
+                            {
+                                console.log(data.data)
+                            }
+                        },
+                        complete: function(){
+                            $(".chatbox__messages").scrollTop($(".chatbox__messages")[0].scrollHeight);
                         }
-                        else(data.type == 'array')
-                        {
-                            console.log(data.data)
-                        }
-                    },
-                    complete: function(){
-                        $(".chatbox__messages").scrollTop($(".chatbox__messages")[0].scrollHeight);
-                    }
-                });
+                    });
+                }
             });
         });
+
+        function removeVietnameseTones(str) {
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
+            str = str.replace(/đ/g,"d");
+            str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+            str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+            str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+            str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+            str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+            str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+            str = str.replace(/Đ/g, "D");
+            // Some system encode vietnamese combining accent as individual utf-8 characters
+            // Một vài bộ encode coi các dấu mũ, dấu chữ như một kí tự riêng biệt nên thêm hai dòng này
+            str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // ̀ ́ ̃ ̉ ̣  huyền, sắc, ngã, hỏi, nặng
+            str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // ˆ ̆ ̛  Â, Ê, Ă, Ơ, Ư
+            // Remove extra spaces
+            // Bỏ các khoảng trắng liền nhau
+            str = str.replace(/ + /g," ");
+            str = str.trim();
+            // Remove punctuations
+            // Bỏ dấu câu, kí tự đặc biệt
+            str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+            return str;
+        }
 
     </script>
 </body>
