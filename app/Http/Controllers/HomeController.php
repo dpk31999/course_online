@@ -96,7 +96,7 @@ class HomeController extends Controller
                 'data' => 'Bên trung tâm sẽ update câu hỏi cho học viên test thử mức độ học tập và hiểu bài của học viên qua 3 level và nếu học viên làm được 80/100 sẽ được tiếp tục học tiếp phần mới . còn nếu không được sẽ học lại phần học trước đó để đảm bảo hơn.'
             ], 200);
         }
-        else if(strpos($text_chat, 'hoc phi') !== false || strpos($text_chat, 'nop tien') !== false)
+        else if(strpos($text_chat, 'hoc phi') !== false || strpos($text_chat, 'nop tien') !== false || strpos($text_chat, 'tien') !== false)
         {
             return response()->json([
                 'type' => 'text',
