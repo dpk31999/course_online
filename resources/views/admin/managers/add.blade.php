@@ -4,14 +4,14 @@
 <div class="info-container">
     <div class="info-heading">
         <a href="#" class="info-title">
-            <h5 class="title">Thêm Manager</h5>
+            <h5 class="title">Add Manager</h5>
         </a>
     </div>
     <hr class="sidebar-divider my-0" style="background-color: #4268D6;">
     <form method="POST" action="{{ route('admin.manager.store') }}" style="font-size: 16px;margin-top: 20px;">
         @csrf
         <div class="form-group">
-            <label for="fullname">Tên</label>
+            <label for="fullname">Fullname</label>
             <input type="text" name="fullname" class="form-control @error('fullname') is-invalid @enderror" id="fullname"  value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
 
             @error('fullname')
@@ -59,7 +59,7 @@
             </select>
         </div>
 
-        <button type="submit" class="btn__default btn--add center__btn">Thêm</button>
+        <button type="submit" class="btn__default btn--add center__btn">Add</button>
     </form>
 </div>
 @endsection

@@ -49,7 +49,7 @@ class AccountController extends Controller
         Auth::guard('web')->user()->url_avatar = $image_path;
         Auth::guard('web')->user()->save();
 
-        $request->session()->flash('message', 'Thay đổi thông tin thành công!');
+        $request->session()->flash('message', 'Change your info successfull !');
 
         return redirect()->route('student.account.edit-profile');
     }
@@ -62,10 +62,18 @@ class AccountController extends Controller
     public function updatePassword(Request $request)
     {
         $data = $request->validate([
+            'old_password' => 'required',
             'password' => 'required|confirmed',
         ]);
 
-        $request->session()->flash('message', 'Đổi mật khẩu thành công!');
+        if(!Hash::check($data['old_password'], Auth::guard('web')->user()->password))
+        {
+            $request->session()->flash('error', 'Your old password are not correct !');
+
+            return redirect()->route('student.account.edit-password');
+        }
+
+        $request->session()->flash('message', 'Change password successfull !');
 
         Auth::guard('web')->user()->password = Hash::make($data['password']);
         Auth::guard('web')->user()->save();

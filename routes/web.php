@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','HomeController@index')->name('home');
-
+Route::get('/chatbot','HomeController@chatBot')->name('chatbot');
 //auth
 Auth::routes();
 
@@ -54,6 +54,11 @@ Route::namespace('Student')->prefix('profile')->name('student.')->middleware('au
     Route::name('class.')->group(function(){
         Route::get('/class','ClassController@index')->name('index');
         Route::get('/class/{class}','ClassController@show')->name('show');
+    });
+
+    Route::name('lesson.')->group(function(){
+        Route::get('/lesson/{course}','LessonController@show')->name('show');
+        Route::get('/lesson/show/{lesson}','LessonController@showLesson')->name('show-lesson');
     });
 
     Route::name('exam.')->group(function(){

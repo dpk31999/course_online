@@ -49828,6 +49828,12 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49856,6 +49862,76 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+
+var InteractiveChatbox = /*#__PURE__*/function () {
+  function InteractiveChatbox(a, b, c) {
+    _classCallCheck(this, InteractiveChatbox);
+
+    this.args = {
+      button: a,
+      chatbox: b
+    };
+    this.icons = c;
+    this.state = false;
+  }
+
+  _createClass(InteractiveChatbox, [{
+    key: "display",
+    value: function display() {
+      var _this = this;
+
+      var _this$args = this.args,
+          button = _this$args.button,
+          chatbox = _this$args.chatbox;
+      button.addEventListener('click', function () {
+        return _this.toggleState(chatbox);
+      });
+    }
+  }, {
+    key: "toggleState",
+    value: function toggleState(chatbox) {
+      this.state = !this.state;
+      this.showOrHideChatBox(chatbox, this.args.button);
+    }
+  }, {
+    key: "showOrHideChatBox",
+    value: function showOrHideChatBox(chatbox, button) {
+      if (this.state) {
+        chatbox.classList.add('chatbox--active');
+        this.toggleIcon(true, button);
+      } else if (!this.state) {
+        chatbox.classList.remove('chatbox--active');
+        this.toggleIcon(false, button);
+      }
+    }
+  }, {
+    key: "toggleIcon",
+    value: function toggleIcon(state, button) {
+      var _this$icons = this.icons,
+          isClicked = _this$icons.isClicked,
+          isNotClicked = _this$icons.isNotClicked;
+      var b = button.children[0].innerHTML;
+
+      if (state) {
+        button.children[0].innerHTML = isClicked;
+      } else if (!state) {
+        button.children[0].innerHTML = isNotClicked;
+      }
+    }
+  }]);
+
+  return InteractiveChatbox;
+}();
+
+var chatButton = document.querySelector('.chatbox__button');
+var chatContent = document.querySelector('.chatbox__support');
+var icons = {
+  isClicked: '<img src="/images/chatbox-icon.svg" width: auto;/>',
+  isNotClicked: '<img src="/images/chatbox-icon.svg" />'
+};
+var chatbox = new InteractiveChatbox(chatButton, chatContent, icons);
+chatbox.display();
+chatbox.toggleIcon(false, chatButton);
 
 /***/ }),
 

@@ -241,7 +241,9 @@ th {
     text-align: inherit;
     text-align: -webkit-match-parent
 }
-
+.padding-rl{
+    padding: 0 10px !important;
+}
 label {
     display: inline-block;
     margin-bottom: .5rem
@@ -2458,7 +2460,7 @@ textarea.form-control.is-invalid {
     background-color: transparent;
     border: 1px solid transparent;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 14px;
     line-height: 1.5;
     border-radius: .35rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
@@ -6949,6 +6951,7 @@ button.bg-dark:hover {
 }
 
 .rounded-circle {
+    border: 1px solid #46add5;
     border-radius: 50%!important
 }
 
@@ -7254,7 +7257,9 @@ button.bg-dark:hover {
 .justify-content-center {
     justify-content: center!important
 }
-
+.text-align-center {
+    text-align: center !important;
+}
 .justify-content-between {
     justify-content: space-between!important
 }
@@ -8020,7 +8025,9 @@ button.bg-dark:hover {
 .my-1 {
     margin-top: .25rem!important
 }
-
+.mr10{
+    margin-right: 10px !important;
+}
 .mr-1,
 .mx-1 {
     margin-right: .25rem!important
@@ -8039,7 +8046,9 @@ button.bg-dark:hover {
 .m-2 {
     margin: .5rem!important
 }
-
+.mrl{
+    margin: 0 10px !important;
+}
 .mt-2,
 .my-2 {
     margin-top: .5rem!important
@@ -10262,7 +10271,7 @@ a:focus {
 
 .bg-gradient-green {
     background-color: #008657;
-    background-image: linear-gradient(180deg, #d33 20%, #008657 100%);
+    background-image: linear-gradient(180deg, rgba(46, 49, 146 , 0.8) 10%, rgba(46, 49, 146 , 0.7 ) 20%);;
     background-size: cover
 }
 
@@ -10524,8 +10533,8 @@ a:focus {
 
 .sidebar .nav-item .nav-link .img-profile,
 .topbar .nav-item .nav-link .img-profile {
-    height: 2rem;
-    width: 2rem
+    height: 2.3rem;
+    width: 2.3rem
 }
 
 .topbar {

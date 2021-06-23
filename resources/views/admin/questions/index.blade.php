@@ -5,25 +5,37 @@
     <div class="course-heading">
         <a href="#" class="info-title" style=" font-size: 20px;">
             <i class="fas fa-graduation-cap fa-lg fa-fw mr-2 text-gray-400"></i>
-            <h5 class="title">Xin Chào: {{ Auth::guard('admin')->user()->fullname }}</h5>
+            <h5 class="title">Hello: {{ Auth::guard('admin')->user()->fullname }}</h5>
         </a>
     </div>
-    <div class="icon_sub">
-        <a href="{{ route('admin.question.add') }}">
-            <i class="fas fa-plus-circle fa-lg fa-fw mr-2 color__admin "></i>
-        </a>
-
+    <div class="justify-between">
+        <div class="">
+            <a href="{{ route('admin.question.add') }}"><button class="btn btn-primary">Add Question</button></a>
+        </div>
+        <div class="">
+            <a href="{{ route('admin.question.import') }}"><button class="btn btn-success">Add Question With Excel Or CSV File</button></a>
+        </div>
     </div>
     @foreach ($courses as $course)
-    <div><p class="text-primary">{{$course->name}}</p></div>
+    <div class="course-heading-title">
+        <div class="row exam-title-color-class">
+            <div class="container">
+                <div class="col-sm-12 " style="text-align: center" ;>
+                    <a href="" class="exam-title-class">
+                        <i class="fab fa-vuejs"></i>
+                        {{$course->name}}</a>
+                </div>
+            </div>
+        </div>  
+    </div>
     <div class="info-table-course">
         <table class="table table-st">
             <thead class="color__theme">
                 <tr>
-                    <th>Loại bài kiểm tra</th>
-                    <th>Số câu hỏi dễ</th>
-                    <th>Số câu hỏi trung bình</th>
-                    <th>Số câu hỏi khó</th>
+                    <th>Exam name</th>
+                    <th>Number of easy question</th>
+                    <th>Number of medium question</th>
+                    <th>Number of hard question</th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,7 +47,7 @@
                     <td>{{ $exam->questions()->where('level','Medium')->get()->count() }}</td>
                     <td>{{ $exam->questions()->where('level','Hard')->get()->count() }}</td>
                     <td>
-                        <a type="button" class="btn btn-warning" href="{{ route('admin.question.show.exam',$exam->id) }}">Xem chi tiết</a>
+                        <a type="button" class="btn btn-warning" href="{{ route('admin.question.show.exam',$exam->id) }}">Detail</a>
                     </td>
                 </tr>
                 @endforeach

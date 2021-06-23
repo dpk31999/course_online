@@ -44,20 +44,20 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('student.home') }}" style="text-align: center ">
-                    <span>Học Tập</span></a>
+                    <span>Study</span></a>
             </li>
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('student.class.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Lớp học</span></a>
+                    <span>Classes</span></a>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('student.exam.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Bài kiểm tra</span></a>
+                    <span>Exams</span></a>
             </li>
 
             <!-- Divider -->
@@ -66,13 +66,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#account">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Tài Khoản</span></a>
+                    <span>Account</span></a>
                 </a>
                 <div id="account" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Đổi thông tin tài
-                            khoản</a>
-                        <a href="{{ route('student.account.edit-password') }}" class="collapse-item">Đổi mật khẩu</a>
+                        <a href="{{ route('student.account.edit-profile') }}" class="collapse-item">Change your
+                            infomation</a>
+                        <a href="{{ route('student.account.edit-password') }}" class="collapse-item">Change your
+                            password</a>
                     </div>
                 </div>
             </li>
@@ -81,14 +82,14 @@
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('student.notification.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Thông báo </span></a>
+                    <span>Notifications </span></a>
             </li>
             <li class="nav-item">
 
                 <a class="nav-link " style="cursor: pointer"
                     onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Đăng Xuất </span></a>
+                    <span>Logout </span></a>
             </li>
 
             <!-- Divider -->
@@ -112,27 +113,20 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow ">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle"
-                                    src="{{ Auth::guard('web')->user()->url_avatar }}">
+                                <div class="flex-col">
+
+                                    <img class="img-profile rounded-circle"
+                                        src="{{ Auth::guard('web')->user()->url_avatar }}">
+                                    <div class="dashboard-fullname"><strong>{{ Auth::guard('web')->user()->fullname }}
+                                        </strong></div>
+                                </div>
                             </a>
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
 
@@ -183,33 +177,91 @@
                     }
                 });
 
-                $("body").on("click", ".answer" , function () {
-                    let question_Id = $(this).attr('name');
-                    let answer = $(this).val();
-                    var check = false;
+                $('#formSelectLevel').on('submit',function(e){
+                e.preventDefault();
+                var exam_id = $(this).data('id')
+                
+                var countDownDate = new Date();
+                countDownDate.setMinutes(countDownDate.getMinutes() + parseInt(document.getElementById('minute').innerHTML));
 
-                    questions.forEach(question => {
-                        if (question.question_Id == question_Id) {
-                            question.answer = answer;
-                            check = true;
+                $.ajax({
+                    method: 'get',
+                    url: '/profile/exam/questions/' + exam_id,
+                    data: $(this).serialize(),
+                    cache: false,
+                    success: function(data){
+                        $('#formSelectLevel').remove();
+                        if(Object.keys(data).length == 10)
+                        {
+                            Object.keys(data).forEach(key => {
+                                $('#questions').append('<div class="multiple-question-item">' +
+                                    '<div class="question-box">' +
+                                        '<div class="multiple-question__text">' +
+                                            '<div class="row">' +
+                                                '<div class="col-sm-2">Câu '+ (parseInt(key) + parseInt(1)) +':</div>' +
+                                                '<div class="col-sm-10">'+ data[key].name +'</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="option-box"></div>' +
+                                    '<div class="multiple-choice">' +
+                                        '<div class="container-choice">' +
+                                            '<div class="row m-right">' +
+                                                '<div class="col-sm-6 ">' +
+                                                    '<label class="radio-inline ">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value="'+ data[key].answer_1 +'" class="check-box">' +
+                                                        '<span>A: '+ data[key].answer_1 +'</span></label>' +
+                                                '</div>' +
+                                                '<div class="col-sm-6 ">' +
+                                                    '<label class="radio-inline ">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value="'+ data[key].answer_2 +'" class="check-box">' +
+                                                        '<span>B: '+ data[key].answer_2 +'</span></label>' +
+                                                '</div>' +
+                                            '</div>' +
+                                            '<div class="row m-right">' +
+                                                '<div class="col-sm-6 ">' +
+                                                    '<label class="radio-inline ">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value="'+ data[key].answer_3 +'" class="check-box">' +
+                                                        '<span>C: '+ data[key].answer_3 +'</span></label>' +
+                                                '</div>' +
+                                                '<div class="col-sm-6 ">' +
+                                                    '<label class="radio-inline ">' +
+                                                        '<input class="answer" type="radio" name="id'+ data[key].id +'" value="'+ data[key].answer_4 +'" class="check-box">' +
+                                                        '<span>D: '+ data[key].answer_4 +'</span></label>' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>');
+                            })
+                            $('#questions').append('<button type="submit" id="btn_submit_exam" data-id="'+ exam_id +'" class="btn__default btn--success" style="margin-top: 20px;">Submit</button>');
+
+                            // Update the count down every 1 second
+                        x = setInterval(function() {
+
+                            // Get today's date and time
+                            var now = new Date().getTime();
+                                
+                            // Find the distance between now and the count down date
+                            var distance = countDownDate - now;
+                                
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                
+                            // Output the result in an element with id="time"
+                            document.getElementById("time").innerHTML =minutes + "m " + seconds + "s ";
+                                
+                            // If the count down is over, write some text 
+                            if (distance < 0) {
+                                clearInterval(x);
+                                
+                                $('#btn_submit_exam').click()
+                            }
+                            }, 1000);
                         }
-                    }) // =))))
-                    
-                    if (check == false) questions.push({'question_Id': question_Id, 'answer': answer})
-
-                })
-
-                // $('#formQuiz').on('submit', function(e){
-                //     e.preventDefault()
-                //     var exam_id = $('#btn-start').data('id')
-                //     $.ajax({
-                //     type: 'POST',
-                //     url: '/profile/exam/' + exam_id,
-                //     data: $(this).serialize(),
-                //     success: function(data){
-                //        console.log("ok");
-                //     }
-                // });
+                    }
+                });
+            })
 
             });
 
@@ -221,93 +273,9 @@
                 document.getElementById('blah').classList.remove('d-none');
             }
 
-            function startQuiz()
-            {
+            
                 
-                var countDownDate = new Date();
-                countDownDate.setMinutes(countDownDate.getMinutes() + parseInt(document.getElementById('minute').innerHTML));
-
-                var exam_id = $('#btn-start').data('id')
-
-                $.ajax({
-                    method: 'get',
-                    url: '/profile/exam/questions/' + exam_id,
-                    data: '',
-                    cache: false,
-                    success: function(data){
-                        Object.keys(data).forEach(key => {
-                            $('#questions').append('<div class="multiple-question-item">' +
-                                '<div class="question-box">' +
-                                    '<div class="multiple-question__text">' +
-                                        '<div class="row">' +
-                                            '<div class="col-sm-2">Câu '+ (parseInt(key) + parseInt(1)) +':</div>' +
-                                            '<div class="col-sm-10">'+ data[key].name +'</div>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="option-box"></div>' +
-                                '<div class="multiple-choice">' +
-                                    '<div class="container-choice">' +
-                                        '<div class="row m-right">' +
-                                            '<div class="col-sm-6 ">' +
-                                                '<label class="radio-inline ">' +
-                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_1 + ' class="check-box">' +
-                                                    '<span>A: '+ data[key].answer_1 +'</span></label>' +
-                                            '</div>' +
-                                            '<div class="col-sm-6 ">' +
-                                                '<label class="radio-inline ">' +
-                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_2 + ' class="check-box">' +
-                                                    '<span>B: '+ data[key].answer_2 +'</span></label>' +
-                                            '</div>' +
-                                        '</div>' +
-                                        '<div class="row m-right">' +
-                                            '<div class="col-sm-6 ">' +
-                                                '<label class="radio-inline ">' +
-                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_3 + ' class="check-box">' +
-                                                    '<span>C: '+ data[key].answer_3 +'</span></label>' +
-                                            '</div>' +
-                                            '<div class="col-sm-6 ">' +
-                                                '<label class="radio-inline ">' +
-                                                    '<input class="answer" type="radio" name="id'+ data[key].id +'" value= ' + data[key].answer_4 + ' class="check-box">' +
-                                                    '<span>D: '+ data[key].answer_4 +'</span></label>' +
-                                            '</div>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</div>' +
-                            '</div>');
-                        })
-                        $('#questions').append('<button type="submit" id="btn_submit_exam" data-id="'+ exam_id +'" class="btn__default btn--success" style="margin-top: 20px;">Cập nhật</button>');
-                    }
-                
-                });
-
-                
-                // sao ngoai console thi lai dc, 
-                // hinh nhu m bo nham roi :))
-
-                // Update the count down every 1 second
-                setInterval(function() {
-
-                // Get today's date and time
-                var now = new Date().getTime();
-                    
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
-                    
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    
-                // Output the result in an element with id="time"
-                document.getElementById("time").innerHTML =minutes + "m " + seconds + "s ";
-                    
-                // If the count down is over, write some text 
-                if (distance < 0) {
-                    clearInterval(x);
-                    
-                    $('#btn_submit_exam').click()
-                }
-                }, 1000);
-            }
+            
         </script>
 
 </body>

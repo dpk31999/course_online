@@ -23,6 +23,14 @@ Route::namespace('Admin')->name('admin.')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/', 'HomeController@index')->name('home');
 
+        Route::name('account.')->group(function(){
+            Route::get('/account/profile','AccountController@showFormUpdateProfile')->name('edit-profile');
+            Route::post('/account/profile','AccountController@updateProfile')->name('update-profile');
+        
+            Route::get('/account/password','AccountController@showFormUpdatePassword')->name('edit-password');
+            Route::post('/account/password','AccountController@updatePassword')->name('update-password');
+        });
+
         Route::middleware('isManager')->group(function () {
 
             Route::name('course.')->group(function(){
@@ -45,6 +53,17 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::get('/classes/delete/{class}','ClassController@destroy')->name('delete');
             });
 
+            Route::name('lesson.')->group(function(){
+                Route::get('/lessons','LessonController@index')->name('index');
+                Route::get('/lessons/create','LessonController@create')->name('add');
+                Route::get('/lessons/show/{lesson}','LessonController@show')->name('show');
+                Route::get('/lessons/edit/{lesson}','LessonController@edit')->name('edit');
+
+                Route::post('/lessons','LessonController@store')->name('store');
+                Route::post('/lessons/edit/{lesson}','LessonController@update')->name('update');
+                Route::get('/lessons/delete/{lesson}','LessonController@destroy')->name('delete');
+            });
+
             Route::name('question.')->group(function(){
                 Route::get('/questions','QuestionController@index')->name('index');
                 Route::get('/questions/show/exam/{exam}','QuestionController@showExam')->name('show.exam');
@@ -54,6 +73,12 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::post('/questions','QuestionController@store')->name('store');
                 Route::post('/questions/edit/{question}','QuestionController@update')->name('update');
                 Route::get('/questions/delete/{question}','QuestionController@destroy')->name('delete');
+
+                // import Excel Or CSV
+                Route::get('/questions/import','QuestionController@showImportForm')->name('import');
+                Route::post('/question/import','QuestionController@import')->name('import.store');
+
+                Route::get('/questions/export','QuestionController@export')->name('export');
             });
 
             Route::name('student.')->group(function(){
@@ -63,6 +88,15 @@ Route::namespace('Admin')->name('admin.')->group(function () {
 
                 Route::get('/studentRegister/allow/{user}','StudentController@allow')->name('allow');
                 Route::get('/studentRegister/refuse/{user}','StudentController@refuse')->name('refuse');
+            });
+
+            Route::name('exam.')->group(function(){
+                Route::get('/exams','ExamController@index')->name('index');
+                Route::get('/exams/edit/{exam}','ExamController@edit')->name('edit');
+
+                Route::get('/exams/changeStatus/{exam}','ExamController@changeStatus')->name('update.status');
+
+                Route::post('/exams/edit/{exam}','ExamController@update')->name('update');
             });
 
             Route::namespace('Notification')->name('notification.')->group(function () {
@@ -98,14 +132,6 @@ Route::namespace('Admin')->name('admin.')->group(function () {
                 Route::post('/manager','ManageController@store')->name('store');
                 Route::post('/manager/edit/{admin}','ManageController@update')->name('update');
                 Route::get('/manager/delete/{admin}','ManageController@destroy')->name('delete');
-            });
-
-            Route::name('student.')->group(function(){
-
-                Route::get('/resetPassword','StudentController@indexResetPassword')->name('index.reset.admin');
-
-                Route::get('/resetPassword/allow/{user}','StudentController@resetAllow')->name('reset.allow');
-
             });
 
         });

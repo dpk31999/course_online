@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class ClassRoom extends Model
@@ -28,5 +29,21 @@ class ClassRoom extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, 'class_user', 'class_id', 'user_id');
+    }
+
+    public function percentExamComplete()
+    {
+        $total_exam = 0;
+        $exam_done = 0;
+        foreach($this->course->exams as $exam)
+        {
+            $total_exam++;
+            if(isset($exam->scores->where('id',Auth::guard('web')->user()->id)->first()->pivot->score))
+            {
+                $exam_done++;
+            }
+        }
+
+        return number_format(($exam_done/$total_exam)*100, 2);
     }
 }

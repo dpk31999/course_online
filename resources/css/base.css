@@ -3,6 +3,20 @@
     --black-color: #000;
     --red-color: #d33;
     --text-color: #333;
+    --white-color : #fff;
+    --black-color : #000 ;
+    --red-color   : #d33 ;
+    --text-color : #333 ;
+    --primaryGradient:linear-gradient(93.12deg, #b066fe 0.52%, #63e2ff 100%);
+    --secondaryGradient: linear-gradient(268.91deg, #b066fe  -2.14%, #63e2ff 99.69%);
+    --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+    --light: 300;
+    --regular: 400;
+    --semiBold: 600;
+    --extraLight: 300;
+    --italic: 300;
+    --primary: #581B98;
 }
 
 * {
@@ -42,4 +56,7 @@ body {
 .grid__row {
     display: flex;
     flex-wrap: wrap;
+}
+.mt-20 {
+    margin-top: 20px !important;
 }

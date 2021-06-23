@@ -37,4 +37,14 @@ class Course extends Model
     {
         return $this->hasMany(ClassRoom::class);
     }
+
+    /**
+     * Get all of the lessons for the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }

@@ -33,7 +33,7 @@ class CourseController extends Controller
 
         $user->classes()->attach($data['class']);
 
-        $request->session()->flash('message', 'Đăng ký thành công, tài khoản sẽ được duyệt bởi quản trị viên!');
+        $request->session()->flash('message', 'Successful registration, Your account will be approved by the administrator !');
 
         return redirect()->route('register-course',$course->id);
     }
@@ -77,7 +77,7 @@ class CourseController extends Controller
         {
             if($class->id == $data['class'])
             {
-                $request->session()->flash('message', 'Bạn đã đăng ký khóa học này rồi, Vui lòng chọn khóa học khác');
+                $request->session()->flash('message', 'You have already registered for this course, Please choose another course !');
 
                 return redirect()->route('register-course-member',$course->id);
             }
@@ -85,7 +85,7 @@ class CourseController extends Controller
 
         Auth::guard('web')->user()->classes()->attach($data['class']);
 
-        $request->session()->flash('message', 'Đăng ký thành công');
+        $request->session()->flash('message', 'Successful registration !');
 
         return redirect()->route('register-course-member',$course->id);
     }

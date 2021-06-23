@@ -48,19 +48,21 @@ class CourseController extends Controller
             'name' => $data['name'],
             'total_time' => $data['total_time'],
             'url_image' => $image_path,
-            'price' => $data['price'],
+            'price' => intval(join("",explode(",",$data['price']))),
             'description' => $data['description'],
         ]);
 
         Exam::create([
             'course_id' => $course->id,
-            'name' => 'Kiểm tra giữa khóa',
+            'name' => 'Mid-term test',
+            'status' => 'Lock',
             'total_time' => '20',
         ]);
 
         Exam::create([
             'course_id' => $course->id,
-            'name' => 'Kiểm tra cuối khóa',
+            'name' => 'Final exam test',
+            'status' => 'Lock',
             'total_time' => '20',
         ]);
 

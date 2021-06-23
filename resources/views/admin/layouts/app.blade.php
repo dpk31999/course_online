@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Admin - Dashboard</title>
-
+    <link rel="icon" href="https://iviettech.vn/wp-content/themes/viettech/img/front/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -41,7 +41,7 @@
             </a>
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
-            @auth
+            @auth('admin')
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('admin.home') }}" style="text-align: center ">
 
@@ -54,7 +54,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.course.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý khóa học</span>
+                    <span>Course Management</span>
                 </a>
 
             </li>
@@ -62,7 +62,15 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.class.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý lớp học</span>
+                    <span>Class Management</span>
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.lesson.index') }}">
+                    <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Lesson Management</span>
                 </a>
 
             </li>
@@ -70,7 +78,15 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.notification.index') }}">
                     <i class="fas fa-envelope fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý thông báo</span>
+                    <span>Notification Management</span>
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.exam.index') }}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Exam Management</span>
                 </a>
 
             </li>
@@ -78,7 +94,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.question.index') }}">
                     <i class="fas fa-graduation-cap  fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý đề thi</span>
+                    <span>Question Management</span>
                 </a>
 
             </li>
@@ -86,7 +102,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.student.index.manager') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý học viên</span>
+                    <span>Student Management</span>
                 </a>
 
             </li>
@@ -98,16 +114,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.manager.index') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý manager</span>
+                    <span>Admin Management</span>
                 </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.student.index.reset.admin') }}">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Quản lý cấp lại mật khẩu học viên</span>
-                </a>
-
             </li>
 
             @endif
@@ -116,10 +124,23 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#account">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <span>Account</span></a>
+                </a>
+                <div id="account" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a href="{{ route('admin.account.edit-profile') }}" class="collapse-item">Change Your Infomation</a>
+                        <a href="{{ route('admin.account.edit-password') }}" class="collapse-item">Change Your Password</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
 
                 <a class="nav-link " style="cursor: pointer" onclick="event.preventDefault(); document.querySelector('#admin-logout-form').submit();">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Đăng Xuất </span></a>
+                    <span>Logout</span></a>
             </li>
             @endauth
 
@@ -143,7 +164,7 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        @auth
+                        @auth('admin')
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,6 +207,16 @@
             <!-- Bootstrap core JavaScript-->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
             <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#price').on('blur', function() {
+                        const value = this.value.replace(/,/g, '');
+                        this.value = parseFloat(value).toLocaleString('en-US', {
+                            style: 'decimal',
+                            maximumFractionDigits: 2,
+                            minimumFractionDigits: 2
+                        });
+                    });
+                })
                 imgInp.onchange = evt => {
                     const [file] = imgInp.files
                     if (file) {
